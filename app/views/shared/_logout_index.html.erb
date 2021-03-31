@@ -1,0 +1,108 @@
+<%# /画面上部の帯部分 %>
+<div class='title-contents'>
+  <h3 class='service-title'>
+    もう一つのコリアンタウンを今ここに
+  </h3>
+  <p class='service-explain'>
+    K.chは "好き" を表現するあなたのプラットフォームです
+  </p>
+  <div class='store-btn'>
+    <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+    <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+  </div>
+</div>
+<%# /画面上部の帯部分 %>
+
+<%# ３つの広場の部分 %>
+<div class='all-contents-intro'>
+  <h2 class='title'>
+    3つの広場で ”好き” を表現しよう
+  </h2>
+  <ul class='contents-lists'>
+    <li class='list'>
+    <%= link_to top_plazas_path(1) do%>
+      <%= image_tag "kch-intro01.jpg", class:"list-pict" %>
+      <span class='contents-number'>1</span>
+      <h3 class='contents-text'>
+        <span class='contents-blue-text'>コスメ</span>
+      </h3>
+    <% end %>
+    <p class='contents-description'>
+      オルチャンメイクの秘訣を教え合おう
+    </p>
+    </li>
+    <li class='list'>
+    <%= link_to '#' do%>
+      <%= image_tag "kch-intro02.jpg", class:"list-pict" %>
+      <span class='contents-number'>2</span>
+      <h3 class='contents-text'>
+        <span class='contents-blue-text'>語学教室</span>
+      </h3>
+    <% end %>
+      <p class='contents-description'>
+        イケメンに教えてもらえるかも！？
+      </p>
+    </li>
+    <li class='list'>
+    <%= link_to '#' do%>
+      <%= image_tag "kch-intro03.jpg", class:"list-pict" %>
+      <span class='contents-number'>3</span>
+      <h3 class='contents-text'>
+        <span class='contents-blue-text'>韓国料理</span>
+      </h3>
+    <% end %>
+      <p class='contents-description'>
+        オンマの味を再現しよう！
+      </p>
+    </li>
+  </ul>
+</div>
+<%# /３つの広場の部分 %>
+
+<%# 画面中央の「韓国好きが集まる場所、K.ch」帯部分 %>
+<div class='ad-contents'>
+  <h2 class='ad-title'>
+    韓国好きが集まる場所、K.ch
+  </h2>
+  <p class='ad-explain'>
+    韓国の最新情報をあなたの手元に
+  </p>
+  <p class='ad-explain'>
+    ”なりたい”が見つかるこの場所へ
+  </p>
+  <div class='store-btn'>
+    <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+    <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+  </div>
+</div>
+<%# /画面中央の「韓国好きが集まる場所、K.ch」帯部分 %>
+
+<%# トップ記事 %>
+<div class='pickup-articles'>
+  <h2 class='title'>ピックアップコンテンツ</h2>
+  <%= link_to '注目の記事', "#", class: "subtitle" %>
+  <ul class='article-lists'>
+
+    <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+    <%# 商品がある場合は表示されないようにしましょう %>
+    <li class='list'>
+      <%= link_to '#' do %>
+      <div class='aticle-img-content'>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "article-img" %>
+      </div>
+      <div class='article-info'>
+        <h3 class='article-name'>
+          <%= "乞うご期待！" %>
+        </h3>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+            <span class='star-count'>0</span>
+          </div>
+      </div>
+      <% end %>
+    </li>
+    <%# //商品がある場合は表示されないようにしましょう %>
+    <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+  </ul>
+</div>
+<%# /トップ記事 %>

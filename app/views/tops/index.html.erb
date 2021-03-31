@@ -1,0 +1,61 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <% unless user_signed_in? %>
+    <%= render "shared/logout_index" %>
+    <%= render "shared/footer" %>
+  <% else %>
+  <div class="post-bar">
+    <p class="post-message">投稿する</p>
+  </div>
+  <div class="secound-main">
+    <div class="side-bar">
+    <ul class= "plaza-list">
+      <h2 class="plaza-header">広場一覧</h2>
+      <li class="plaza-name">コスメ</li>
+      <li class="plaza-name">語学教室</li>
+      <li class="plaza-name">料理</li>
+    </ul>
+    <ul class="premier-list">
+      <h2 class="plaza-header">プレミアム会員サービス</h2>
+      <li class="plaza-name">人気順検索</li>
+      <li class="plaza-name">解析</li>
+    </ul>
+  </div>
+  <div class="main-bar">
+    <div class="article-box">
+      <%# <%= link_to "投稿画像にリンクを付与（To:投稿詳細ページ）", "#" %>
+      <div class="article-body">
+        <%# <%= link_to "投稿のタイトルにリンクを付与（To:投稿詳細ページ）", "#" %>
+        <p class="article-title">
+        テスト表示
+        <%# "投稿記事の本文を抜粋表示" %>
+        </p>
+        <%# <%= link_to "投稿者名にリンクを付与（To:投稿者の詳細ページ）", "#" %>
+      </div>
+    </div>
+    <div class="article-box">
+      <%# <%= link_to "投稿画像にリンクを付与（To:投稿詳細ページ）", "#" %>
+      <div class="article-body">
+        <%# <%= link_to "投稿のタイトルにリンクを付与（To:投稿詳細ページ）", "#" %>
+        <p class="article-title">
+        テスト表示
+        <%# "投稿記事の本文を抜粋表示" %>
+        </p>
+        <%# <%= link_to "投稿者名にリンクを付与（To:投稿者の詳細ページ）", "#" %>
+      </div>
+    </div>
+    <div class="article-box">
+      <%# <%= link_to "投稿画像にリンクを付与（To:投稿詳細ページ）", "#" %>
+      <div class="article-body">
+        <%# <%= link_to "投稿のタイトルにリンクを付与（To:投稿詳細ページ）", "#" %>
+        <p class="article-title">
+        テスト表示
+        <%# "投稿記事の本文を抜粋表示" %>
+        </p>
+        <%# <%= link_to "投稿者名にリンクを付与（To:投稿者の詳細ページ）", "#" %>
+      </div>
+    </div>
+    
+  </div>
+  <% end %>
+</div>
