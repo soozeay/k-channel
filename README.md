@@ -58,6 +58,7 @@ Things you may want to cover:
 | text        | text       | null: false                   |
 | ingredients | text       | null: false                   |
 | trick       | text       | null: false                   |
+| plaza_id    | integer    | null:  false                  |
 | user        | references | null: false foreign_key: true |
 
 ### Association
