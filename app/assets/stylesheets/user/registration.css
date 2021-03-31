@@ -7,6 +7,7 @@
   justify-content: center;
 }
 
+
 /* form-wrapは商品購入画面でも使用しています */
 .form-wrap {
   width: 50%;
@@ -167,4 +168,8 @@
   color: #fff;
   font-size: 12px;
   font-weight: bold;
+}
+
+.select-box{
+  height: 40px;
 }
