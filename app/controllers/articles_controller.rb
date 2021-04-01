@@ -25,6 +25,11 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    if @article.update(article_params)
+      redirect_to article_path
+    else
+      render :edit
+    end
   end
 
   private
