@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @articles = Article.includes(:user).order('created_at DESC')
@@ -18,7 +19,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def edit
@@ -30,5 +30,9 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @article = Article.find(params[:id])
   end
 end
