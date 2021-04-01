@@ -5,7 +5,7 @@
     <%= render "shared/footer" %>
   <% else %>
   <div class="post-bar">
-    <p class="post-message">投稿する</p>
+    <%= link_to '投稿する', new_article_path, class: "post-message"%>
   </div>
   <div class="secound-main">
     <div class="side-bar">
