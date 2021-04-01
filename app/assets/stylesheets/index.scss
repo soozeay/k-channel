@@ -235,6 +235,72 @@ a {
 .star-count {
   font-size: 2vh;
 }
-
-
 /* //トップ記事 */
+
+/* ログイン後の表示 */
+.post-bar{
+  height: 8vh;
+  background-color: dimgray;
+  text-align: center;
+  align-items: center;display: flex;
+}
+
+.post-message{
+ padding: 6px;
+ background-color: firebrick;
+ margin: 0 auto;
+}
+
+.secound-main{
+  display: flex;
+}
+
+.side-bar{
+  width: 20vw;
+  height: 100vh;
+  background-color: blue;
+  padding: 20px;
+}
+
+.main-bar{
+  width: calc(100vw - 20vw);
+  height: 100vh;
+  background-color: coral;
+}
+
+.plaza-list{
+  background-color: gold;
+  margin-bottom: 30px;
+}
+
+.plaza-header{
+  margin-bottom: 5px;
+  background-color: firebrick;
+}
+
+.plaza-name{
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: firebrick;
+}
+
+.main-bar{
+  display: flex;
+  flex-wrap: wrap;
+  align-content:stretch;
+  overflow: scroll;
+}
+
+.article-box{
+  min-height: 40vh;
+  background-color: green;
+  width: 36vh;
+  margin: 20px;
+  padding: 3vh 0;
+}
+
+.item-img{
+  width: 33vh;
+  height: 33vh;
+}
+/* //ログイン後の表示 */

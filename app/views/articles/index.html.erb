@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <% unless user_signed_in? %>
+    <%= render "shared/logout_index" %>
+    <%= render "shared/footer" %>
+  <% else %>
+  <div class="post-bar">
+    <%= link_to '投稿する', new_article_path, class: "post-message"%>
+  </div>
+  <div class="secound-main">
+    <div class="side-bar">
+    <ul class= "plaza-list">
+      <h2 class="plaza-header">広場一覧</h2>
+      <li class="plaza-name">コスメ</li>
+      <li class="plaza-name">語学教室</li>
+      <li class="plaza-name">料理</li>
+    </ul>
+    <ul class="premier-list">
+      <h2 class="plaza-header">プレミアム会員サービス</h2>
+      <li class="plaza-name">人気順検索</li>
+      <li class="plaza-name">解析</li>
+    </ul>
+  </div>
+  <div class="main-bar">
+    <%= render partial:"article", collection: @articles, locals: {article: @article} %>
+  </div>
+  <% end %>
+</div>

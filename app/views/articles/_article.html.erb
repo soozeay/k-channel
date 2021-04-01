@@ -1,0 +1,13 @@
+<div class="article-box">
+  <%= link_to '#' do %>
+    <%= image_tag article.image, class: "item-img" %>
+    <div class="article-body">
+      <p class="article-title">
+        <%= article.title %><%# "投稿記事の本文を抜粋表示" %></p>
+      <p class="article-text">
+        <%= article.text %></p>
+      <p class="article-user">
+        <%= article.user.nickname %></p>
+    </div>
+  <% end %>
+</div>

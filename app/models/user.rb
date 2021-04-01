@@ -13,6 +13,7 @@ class User < ApplicationRecord
     validates :country_id
   end
 
+  has_many :articles
   belongs_to :gender
   belongs_to :country
 end
