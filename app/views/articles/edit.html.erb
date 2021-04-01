@@ -1,15 +1,17 @@
+<%# cssは商品出品のものを併用しています。
+app/assets/stylesheets/items/new.css %>
+
 <div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model:@article, local: true do |f| %>
+    <%= form_with model: @article, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
-    <%# 画像の投稿 %>
+    <%# 投稿画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
         投稿画像
@@ -22,8 +24,8 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /画像の投稿 %>
-    <%# 商品名と商品説明 %>
+    <%# /投稿画像 %>
+    <%# 記事本文の修正 %>
     <div class="new-items">
       <div class="weight-bold-text">
         記事タイトル
@@ -39,10 +41,10 @@
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
-          素材・材料
+          記事の材料・素材
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :ingredients, class:"items-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
@@ -53,8 +55,7 @@
       </div>
     </div>
     <%# /商品名と商品説明 %>
-
-    <%# 商品の詳細 %>
+    
     <div class="items-detail">
       <div class="form">
         <div class="weight-bold-text">
@@ -64,11 +65,11 @@
         <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
       </div>
     </div>
-    <%# /商品の詳細 %>
+
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
