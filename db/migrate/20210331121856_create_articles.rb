@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.text :ingredients,  null: false
       t.text :trick,        null: false
       t.integer :plaza_id,  null: false
+      t.references :user,   null: false, foreign_key: true
       t.timestamps
     end
   end
