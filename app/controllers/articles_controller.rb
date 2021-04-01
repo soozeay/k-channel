@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
+    @articles = Article.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -9,7 +10,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    if article.save
+    if @article.save
       redirect_to root_path
     else
       render :new
@@ -18,6 +19,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:articles).permit(:title, :text, :ingresients, :trick, :plaza_id, :image).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image).merge(user_id: current_user.id)
   end
 end
