@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.includes(:user).order('created_at DESC')
@@ -30,6 +30,11 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @article.destroy
+    redirect_to root_path
   end
 
   private
