@@ -1,0 +1,75 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @article.title %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @article.image ,class:"item-box-img" %>
+    </div>
+    <% if current_user == @article.user %>
+      <%= link_to "記事の編集", '#', class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "記事の削除", '#', method: :delete, class:"item-destroy" %>
+    <% end %>
+
+    <div class="item-explain-box">
+      <span><%= @article.title %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">投稿者</th>
+          <td class="detail-value"><%= @article.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">本文</th>
+          <td class="detail-value"><%= @article.text %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">素材</th>
+          <td class="detail-value"><%= @article.ingredients %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">コツ・ポイント</th>
+          <td class="detail-value"><%= @article.trick %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+    </div>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の商品
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの商品 ＞
+    </a>
+  </div>
+  <a href="#" class="another-item"><%= @article.plaza.name %> をもっと見る</a>
+</div>
+
+<%= render "shared/footer" %>
