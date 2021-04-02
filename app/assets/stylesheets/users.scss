@@ -15,14 +15,24 @@
 
 .cover-img{
   height: 40vh;
-  width: 100vw;
+  width: calc(100vw - 20vw);
   z-index: 1;
+  position: relative;
+  object-fit: none;
 }
 
 .user-icon{
   border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.icon-image{
+  border-radius: 50%;
   margin: 0 auto;
   border: 4px solid white ;
+  position: relative;
+  object-fit: contain;
 }
 
 .profile-bar{
@@ -49,4 +59,24 @@
   display: flex;
   flex-wrap: wrap;
   width: calc(100vw - 20vw);
+}
+
+.add-cover-icon{
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.add-icon{
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  cursor: pointer;
 }

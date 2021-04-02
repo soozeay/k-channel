@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :password, :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?[\d)])[a-z\d]+\z/i }
   validates :age, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 120 }
+  validates :intro, length: { maximum: 200 }
 
   has_one_attached :avater
   has_one_attached :cover

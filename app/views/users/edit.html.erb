@@ -1,0 +1,70 @@
+<%= render "shared/header" %>
+<%= render "shared/post-bar" %>
+<%= render "shared/side-bar" %>
+<%= form_with model: @user, local: true do |f| %>
+  <div class="user-main-page">
+    <div class="profile-images">
+      <div class="edit-icon">
+        <%= f.label :cover do %>
+        <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
+        <%= f.file_field :cover, style:"display:none;" %>
+        <% end %>
+      </div>
+      <% if @user.cover.attached? %>
+        <%= image_tag(@user.cover, class: "cover-img")%>
+      <% else %>
+        <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+      <% end %>
+    </div>
+
+    <div class="profile-bar">
+      <div class="user-icon">
+        <% if @user.avater.attached? %>
+          <%= image_tag @user.avater %>
+        <% else %>
+          <%= image_tag("default_user.png", size: "120x120", class: "icon-image") %> 
+        <% end %>
+      </div>
+      <%= f.label :avater do %>
+        <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
+        <%= f.file_field :avater, style:"display:none;" %>
+      <% end %>
+    </div>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :nickname, '名前（Name）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.text_field :nickname %>
+    </div>
+  </div>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :email, 'メールアドレス（E-mail）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.email_field :email %>
+    </div>
+  </div>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :password, 'パスワード（Password）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.password_field :password %>
+    </div>
+  </div>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :password_confirmation, 'パスワード再確認（Password_Confirmation）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+  <div class='actions'>
+    <%= f.submit "更新（Submit）", class: 'btn'%>
+  </div>
+<% end %>

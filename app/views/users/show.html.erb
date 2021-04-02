@@ -1,33 +1,21 @@
 <%= render "shared/header" %>
-<div class="secound-main">
-    <div class="side-bar">
-    <ul class= "plaza-list">
-      <h2 class="plaza-header">広場一覧</h2>
-      <li class="plaza-name"><%= link_to 'コスメ', articles_path(plaza_id: 1) %></li>
-      <li class="plaza-name"><%= link_to '語学教室', articles_path(plaza_id: 2) %></li>
-      <li class="plaza-name"><%= link_to '料理', articles_path(plaza_id: 3) %></li>
-    </ul>
-    <ul class="premier-list">
-      <h2 class="plaza-header">プレミアム会員サービス</h2>
-      <li class="plaza-name">人気順検索</li>
-      <li class="plaza-name">解析</li>
-    </ul>
-</div>
+<%= render "shared/post-bar" %>
+<%= render "shared/side-bar" %>
 <div class="user-main-page">
   <div class="profile-images">
     <% if @user.cover.attached? %>
-      <%= image_tag @user.cover %>
+      <%= image_tag(@user.cover, class: "cover-img") %>
     <% else %>
       <%= image_tag("dammy-cover.png", class: "cover-img") %> 
     <% end %>
   </div>
   <div class="profile-bar">
     <% if @user.avater.attached? %>
-      <%= image_tag @user.avatar %>
+      <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
     <% else %>
       <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
     <% end %>
-    <p class="edit-profile-icon">プロフィールを編集する</p>
+    <p class="edit-profile-icon"><%= link_to 'プロフィールを編集する', edit_user_path %></p>
   </div>
   <div class="profile-info">
     <div class="user-articles">
