@@ -2,6 +2,15 @@ a {
   text-decoration: none;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
+a:hover img{
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
+
 .main {
   background: #f8f8f8;
 }
@@ -257,14 +266,12 @@ a {
 
 .side-bar{
   width: 20vw;
-  height: 100vh;
   background-color: blue;
   padding: 20px;
 }
 
 .main-bar{
   width: calc(100vw - 20vw);
-  height: 100vh;
   background-color: coral;
 }
 
