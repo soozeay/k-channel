@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <%= render "shared/post-bar" %>
 <%= render "shared/side-bar" %>
-<%= form_with model: @article, local: true do |f| %>
+<%= form_with model: @user, local: true do |f| %>
   <div class="user-main-page">
     <div class="profile-images">
     <div class="edit-icon">
@@ -20,7 +20,7 @@
     <div class="profile-bar">
       <div class="user-icon">
         <% if @user.avater.attached? %>
-          <%= image_tag @user.avatar %>
+          <%= image_tag @user.avater %>
         <% else %>
           <%= image_tag("default_user.png", size: "120x120", class: "icon-image") %> 
         <% end %>
@@ -31,12 +31,13 @@
       <% end %>
     </div>
   </div>
+  <%= render 'shared/error_messages', model: f.object %>
   <div class='field'>
     <div class='field-label'>
       <%= f.label :nickname, '名前（Name）'%>
     </div>
     <div class='field-input'>
-      <%= f.text_field :name, autofocus: true%>
+      <%= f.text_field :nickname %>
     </div>
   </div>
   <div class='field'>
@@ -44,13 +45,26 @@
       <%= f.label :email, 'メールアドレス（E-mail）'%>
     </div>
     <div class='field-input'>
-      <%= f.email_field :email%>
+      <%= f.email_field :email %>
     </div>
   </div>
-    <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender-status"}) %>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :password, 'パスワード（Password）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.password_field :password %>
+    </div>
   </div>
-</div>
-<div class='actions'>
-  <%= f.submit "更新（Submit）", class: 'btn'%>
-</div>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :password_confirmation, 'パスワード再確認（Password_Confirmation）'%>
+    </div>
+    <div class='field-input'>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+  <div class='actions'>
+    <%= f.submit "更新（Submit）", class: 'btn'%>
+  </div>
 <% end %>
