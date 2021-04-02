@@ -4,14 +4,14 @@
 <div class="user-main-page">
   <div class="profile-images">
     <% if @user.cover.attached? %>
-      <%= image_tag @user.cover %>
+      <%= image_tag(@user.cover, class: "cover-img") %>
     <% else %>
       <%= image_tag("dammy-cover.png", class: "cover-img") %> 
     <% end %>
   </div>
   <div class="profile-bar">
     <% if @user.avater.attached? %>
-      <%= image_tag @user.avatar %>
+      <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
     <% else %>
       <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
     <% end %>

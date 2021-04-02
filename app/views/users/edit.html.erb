@@ -4,16 +4,16 @@
 <%= form_with model: @user, local: true do |f| %>
   <div class="user-main-page">
     <div class="profile-images">
-    <div class="edit-icon">
-      <%= f.label :cover do %>
-      <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
-      <%= f.file_field :cover, style:"display:none;" %>
-      <% end %>
-    </div>
+      <div class="edit-icon">
+        <%= f.label :cover do %>
+        <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
+        <%= f.file_field :cover, style:"display:none;" %>
+        <% end %>
+      </div>
       <% if @user.cover.attached? %>
-          <%= image_tag(@user.cover, class: "cover-img")%>
+        <%= image_tag(@user.cover, class: "cover-img")%>
       <% else %>
-          <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+        <%= image_tag("dammy-cover.png", class: "cover-img") %> 
       <% end %>
     </div>
 
