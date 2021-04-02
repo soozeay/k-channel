@@ -22,7 +22,7 @@
       <tbody>
         <tr>
           <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= @article.user.nickname %></td>
+          <td class="detail-value"><%= link_to @article.user.nickname, user_path(@article.user_id) %></td>
         </tr>
         <tr>
           <th class="detail-item">本文</th>
