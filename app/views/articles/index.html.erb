@@ -11,9 +11,9 @@
     <div class="side-bar">
     <ul class= "plaza-list">
       <h2 class="plaza-header">広場一覧</h2>
-      <li class="plaza-name">コスメ</li>
-      <li class="plaza-name">語学教室</li>
-      <li class="plaza-name">料理</li>
+      <li class="plaza-name"><%= link_to 'コスメ', articles_path(plaza_id: 1) %></li>
+      <li class="plaza-name"><%= link_to '語学教室', articles_path(plaza_id: 2) %></li>
+      <li class="plaza-name"><%= link_to '料理', articles_path(plaza_id: 3) %></li>
     </ul>
     <ul class="premier-list">
       <h2 class="plaza-header">プレミアム会員サービス</h2>
