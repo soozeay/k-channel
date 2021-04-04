@@ -78,7 +78,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class="another-item"><%= @article.plaza.name %> をもっと見る</a>
+  <%= link_to "「#{@article.plaza.name}」 の記事をもっと見る", articles_path(plaza_id: 1), class:"another-item" %>
 </div>
 
 <%= render "shared/footer" %>
