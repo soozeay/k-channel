@@ -55,6 +55,7 @@
       <%= render partial:"comments", locals: {comment: @comment} %>
     </div>
     <div class="form-box">
+      <% if user_signed_in? %>
       <%= form_with model: [@article, @comment], local: true do |f| %>
         <% f.label :comment, 'コメントの送信' %>
         <%= f.text_field :comment, class:"comment-text" %>
@@ -64,6 +65,7 @@
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
+      <% end %>
       <% end %>
     </div>
   </div>
