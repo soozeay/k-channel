@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 
 <%# 商品の概要 %>
+<div class="show-containor">
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
@@ -15,9 +16,6 @@
       <%= link_to "記事の削除", article_path, method: :delete, class:"item-destroy" %>
     <% end %>
 
-    <div class="item-explain-box">
-      <span><%= @article.title %></span>
-    </div>
     <table class="detail-table">
       <tbody>
         <tr>
@@ -45,22 +43,26 @@
       </div>
     </div>
   </div>
+</div>
   <%# /商品の概要 %>
 
+
   <div class="comment-box">
+    <%= render partial:"comments", locals: {comment: @comment} %>
     <%= form_with model: [@article, @comment], local: true do |f| %>
-      <div class="comment-text">
-      <% f.label :comment, 'コメントの送信' %>
-      <%= f.text_field :comment%>
-      </div>
+        <% f.label :comment, 'コメントの送信' %>
+        <%= f.text_field :comment, class:"comment-text" %>
+        <%= f.submit "コメントする", class: "comment-btn" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <%= f.submit "コメントする", class: "comment-btn" %>
     <% end %>
   </div>
+</div>
+</div>
+<div class="link-boxes">
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
