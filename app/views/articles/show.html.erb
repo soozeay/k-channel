@@ -48,8 +48,14 @@
 
 
   <div class="comment-box">
-    <%= render partial:"comments", locals: {comment: @comment} %>
-    <%= form_with model: [@article, @comment], local: true do |f| %>
+    <h3 class="comments-title">
+      コメント一覧
+    </h3>
+    <div class="comments-index">
+      <%= render partial:"comments", locals: {comment: @comment} %>
+    </div>
+    <div class="form-box">
+      <%= form_with model: [@article, @comment], local: true do |f| %>
         <% f.label :comment, 'コメントの送信' %>
         <%= f.text_field :comment, class:"comment-text" %>
         <%= f.submit "コメントする", class: "comment-btn" %>
@@ -58,7 +64,8 @@
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>

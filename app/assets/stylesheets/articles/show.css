@@ -195,8 +195,13 @@
 }
 
 .all-comments-box{
-  height:400px;
   padding: 0 40px;
+}
+
+.comments-index{
+  max-height: 300px;
+  margin-bottom: 20px;
+  overflow: scroll;
 }
 
 .comments-title{
@@ -210,4 +215,8 @@
 .comments_list{
   margin-bottom: 25px;
   border-bottom: 1px solid #3CCACE;
+}
+
+.form-box{
+  padding: 0 40px;
 }
