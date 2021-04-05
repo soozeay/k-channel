@@ -35,7 +35,7 @@
           記事の本文
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.rich_text_area :text, class:"items-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
