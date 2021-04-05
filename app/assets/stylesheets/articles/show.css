@@ -71,6 +71,9 @@
   height: 200px;
   margin-bottom: 20px;
   padding: 10px;
+  max-width: 100%; 
+  height: auto;
+  overflow: scroll;
 }
 
 .edit-btn {
