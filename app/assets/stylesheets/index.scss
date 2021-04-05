@@ -303,11 +303,22 @@ a:hover img{
   background-color: green;
   width: 36vh;
   margin: 20px;
-  padding: 3vh 0;
+  padding: 3vh 10px;
+}
+
+.article-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .item-img{
   width: 33vh;
   height: 33vh;
+}
+
+.created-time{
+  font-size: 10px;
+  color: darkgray;
 }
 /* //ログイン後の表示 */
