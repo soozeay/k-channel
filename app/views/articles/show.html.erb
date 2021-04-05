@@ -1,4 +1,15 @@
 <%= render "shared/header" %>
+<div class="post-bar">
+  <div class="link-post-btn">
+    <%= link_to '投稿する', new_article_path, class: "post-btn"%>
+  </div>
+  <div class="edit-bar">
+    <% if current_user.id == @article.user_id %>
+      <%= link_to "記事の編集", edit_article_path, class: "edit-btn" %>
+      <%= link_to "記事の削除", article_path, method: :delete, class:"destroy-btn" %>
+    <% end %>
+  </div>
+</div>
 
 <%# 商品の概要 %>
 <div class="show-containor">
@@ -10,11 +21,6 @@
     <div class="item-img-content">
       <%= image_tag @article.image ,class:"item-box-img" %>
     </div>
-    <% if current_user == @article.user %>
-      <%= link_to "記事の編集", edit_article_path, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "記事の削除", article_path, method: :delete, class:"item-destroy" %>
-    <% end %>
 
     <table class="detail-table">
       <tbody>

@@ -251,13 +251,25 @@ a:hover img{
   height: 8vh;
   background-color: dimgray;
   text-align: center;
-  align-items: center;display: flex;
+  align-items: center;
+  display: flex;
 }
 
-.post-message{
- padding: 6px;
- background-color: firebrick;
- margin: 0 auto;
+.link{
+  margin: 0 auto;
+}
+
+.link-post-btn{
+  width: 70vw;
+}
+
+.post-btn{
+  text-align: center;
+  background-color:#3ccace;
+  font-weight: bold;
+  color: #FFF;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .secound-main{
