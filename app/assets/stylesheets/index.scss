@@ -251,13 +251,25 @@ a:hover img{
   height: 8vh;
   background-color: dimgray;
   text-align: center;
-  align-items: center;display: flex;
+  align-items: center;
+  display: flex;
 }
 
-.post-message{
- padding: 6px;
- background-color: firebrick;
- margin: 0 auto;
+.link{
+  margin: 0 auto;
+}
+
+.link-post-btn{
+  width: 70vw;
+}
+
+.post-btn{
+  text-align: center;
+  background-color:#3ccace;
+  font-weight: bold;
+  color: #FFF;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .secound-main{
@@ -303,11 +315,22 @@ a:hover img{
   background-color: green;
   width: 36vh;
   margin: 20px;
-  padding: 3vh 0;
+  padding: 3vh 10px;
+}
+
+.article-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .item-img{
   width: 33vh;
   height: 33vh;
+}
+
+.created-time{
+  font-size: 10px;
+  color: darkgray;
 }
 /* //ログイン後の表示 */

@@ -5,57 +5,96 @@
   justify-content: space-between;
 }
 
-.item-show {
+.article-show {
   width: 70vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 5vh 0;
 }
 
-.item-box {
+.article-upper-content {
   background-color: #FFF;
   width: 70vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
-.item-box>.name {
+.title-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
 
-.item-box-img {
+.title-box{
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.contributor {
+  margin-right: 0;
+  text-align: end;
+  position: absolute;
+  right: 5vw;
+  bottom: 0;
+}
+
+.nickname-link{
+  text-decoration: underline;
+  color: #333333;
+}
+
+
+.article-box-img {
   height: 50vh;
   width: 60vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
+  margin: 0 auto;
 }
 
-.item-red-btn {
+.article-desc{
+  margin: 0 auto;
+}
+
+.content-header{
+  font-size: 20px;
+  border-bottom: 2px solid #3CCACA;
+}
+
+.content-area{
+  width: 60vw;
+  height: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  max-width: 100%; 
+  height: auto;
+  overflow: scroll;
+}
+
+.edit-btn {
   text-align: center;
   background-color: #ea352d;
-  font-size: 24px;
   font-weight: bold;
   color: #FFF;
-  margin: 20px 0px;
-  padding: 2vh 10vw;
+  padding: 10px;
+  margin-right: 20px;
 }
 
 .or-text {
   font-size: 20px;
 }
 
-.item-destroy {
+.destroy-btn {
   background-color: lightgray;
   text-align: center;
-  font-size: 24px;
+  font-weight: bold;
   color: black;
-  margin: 20px 0px;
-  padding: 2vh 10vw;
+  padding: 10px;
 }
 
 .item-explain-box {
@@ -148,9 +187,8 @@
 }
 
 .comment-btn {
-  line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
+  line-height: 35px;
+  background-color: lightgray;
   color: #fff;
   width: 50%;
   min-width: 150px;

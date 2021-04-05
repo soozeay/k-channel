@@ -1,52 +1,57 @@
 <%= render "shared/header" %>
-
-<%# 商品の概要 %>
-<div class="show-containor">
-<div class="item-show">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @article.title %>
-    </h2>
-    <div class="item-img-content">
-      <%= image_tag @article.image ,class:"item-box-img" %>
-    </div>
-    <% if current_user == @article.user %>
-      <%= link_to "記事の編集", edit_article_path, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "記事の削除", article_path, method: :delete, class:"item-destroy" %>
+<div class="post-bar">
+  <div class="link-post-btn">
+    <%= link_to '投稿する', new_article_path, class: "post-btn"%>
+  </div>
+  <div class="edit-bar">
+    <% if current_user.id == @article.user_id %>
+      <%= link_to "記事の編集", edit_article_path, class: "edit-btn" %>
+      <%= link_to "記事の削除", article_path, method: :delete, class:"destroy-btn" %>
     <% end %>
+  </div>
+</div>
 
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= link_to @article.user.nickname, user_path(@article.user_id) %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">本文</th>
-          <td class="detail-value"><%= @article.text %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">素材</th>
-          <td class="detail-value"><%= @article.ingredients %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">コツ・ポイント</th>
-          <td class="detail-value"><%= @article.trick %></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+<%# 記事本文 %>
+<div class="show-containor">
+  <div class="article-show">
+    <div class="article-upper-content">
+      <div class="title-box">
+        <h2 class="name"><%= @article.title %></h2>
+        <div class="contributor"> by <%= link_to @article.user.nickname, user_path(@article.user_id), class: "nickname-link" %></div>
+      </div>
+      <div class="item-img-content">
+        <%= image_tag @article.image ,class:"article-box-img" %>
+      </div>
+    </div>
+    <div class="article-desc">
+      <div class="content-header">
+        素材・材料・参考資料など
+      </div>
+      <div class="content-area">
+        <%= @article.ingredients %>
+      </div>
+      <div class="content-header">
+        投稿記事本文
+      </div>
+      <div class="content-area">
+        <%= @article.text %>
+      </div>
+      <div class="content-header">
+        コツ・ポイント等
+      </div>
+      <div class="content-area">
+        <%= @article.trick %>
+      </div>
+      <div class="option">
+        <div class="favorite-btn">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  <%# /商品の概要 %>
-
-
+  <%# /記事本文 %>
+  
   <div class="comment-box">
     <h3 class="comments-title">
       コメント一覧
@@ -56,30 +61,22 @@
     </div>
     <div class="form-box">
       <% if user_signed_in? %>
-      <%= form_with model: [@article, @comment], local: true do |f| %>
-        <% f.label :comment, 'コメントの送信' %>
-        <%= f.text_field :comment, class:"comment-text" %>
-        <%= f.submit "コメントする", class: "comment-btn" %>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <% end %>
+        <%= form_with model: [@article, @comment], local: true do |f| %>
+          <% f.label :comment, 'コメントの送信' %>
+          <%= f.text_field :comment, class:"comment-text" %>
+          <%= f.submit "コメントする", class: "comment-btn" %>
+          <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+          <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-</div>
+
 <div class="link-boxes">
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
   <%= link_to "「#{@article.plaza.name}」 の記事をもっと見る", articles_path(plaza_id: 1), class:"another-item" %>
 </div>
 

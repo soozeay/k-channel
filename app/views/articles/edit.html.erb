@@ -37,14 +37,14 @@ app/assets/stylesheets/items/new.css %>
           記事の本文
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.rich_text_area :text, class:"items-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
           記事の材料・素材
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :ingredients, class:"items-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
