@@ -1,10 +1,10 @@
-<div class="items-sell-contents">
-  <header class="items-sell-header">
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+<div class="article-contents">
+  <header class="article-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), root_path %>
 
   </header>
-  <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
+  <div class="article-main">
+    <h2 class="article-title">記事の投稿フォーム</h2>
     <%= form_with model:@article, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
@@ -16,46 +16,45 @@
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
+        <p>クリックしてファイルをアップロード</p>
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /画像の投稿 %>
-    <%# 商品名と商品説明 %>
-    <div class="new-items">
+
+    <%# 記事本文 %>
+    <div class="new-articles">
       <div class="weight-bold-text">
         記事タイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
-        <div class="weight-bold-text">
-          記事の本文
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.rich_text_area :text, class:"items-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-      <div class="items-explain">
+      <%= f.text_area :title, class:"articles-title", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="articles-explain">
         <div class="weight-bold-text">
           素材・材料
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :ingredients, class:"items-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :ingredients, class:"articles-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
-      <div class="items-explain">
+      <div class="articles-explain">
+        <div class="weight-bold-text">
+          記事本文
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="articles-explain">
         <div class="weight-bold-text">
           コツやポイント
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :trick, class:"items-text", id:"item-info", placeholder:"コツやポイントの説明（必須 1,000文字まで）例）キムチの残り汁を入れるとうま味UP！  生地は最低でも3時間冷蔵庫で寝かせましょう！  等" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :trick, class:"articles-text", id:"item-info", placeholder:"コツやポイントの説明（必須 1,000文字まで）例）キムチの残り汁を入れるとうま味UP！  生地は最低でも3時間冷蔵庫で寝かせましょう！  等" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
-    <%# /商品名と商品説明 %>
+    <%# /記事本文 %>
 
-    <%# 商品の詳細 %>
-    <div class="items-detail">
+    <%# プラザ選択 %>
+    <div class="choice-plaza">
       <div class="form">
         <div class="weight-bold-text">
           カテゴリー
@@ -64,11 +63,16 @@
         <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
       </div>
     </div>
-    <%# /商品の詳細 %>
+    <%# /プラザ選択 %>
+
     <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <div class="send-btn-contents">
+      <div class="send-btn">
+        <%= f.submit "投稿する" %>
+      </div>
+      <div class="back-btn">
+        <%=link_to 'もどる', root_path %>
+      </div>
     </div>
     <%# /下部ボタン %>
   </div>
