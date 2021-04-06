@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: black;
 }
 
 a:hover{
@@ -293,6 +294,8 @@ a:hover img{
 }
 
 .plaza-header{
+  font-size: 20px;
+  border-bottom: 1px solid #3ccace;
   margin-bottom: 5px;
   background-color: firebrick;
 }
@@ -318,6 +321,12 @@ a:hover img{
   padding: 3vh 10px;
 }
 
+.article-title-name{
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .article-body{
   display: flex;
   justify-content: space-between;
@@ -327,6 +336,16 @@ a:hover img{
 .item-img{
   width: 33vh;
   height: 33vh;
+}
+
+.check{
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .created-time{

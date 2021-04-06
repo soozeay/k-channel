@@ -1,9 +1,18 @@
 <div class="article-box">
   <%= link_to article_path(article.id) do %>
-    <%= image_tag article.image, class: "item-img" %>
+    <% if article.image.present? %>
+      <%= image_tag article.image, class: "item-img" %>
+    <% else %>
+      <%= image_tag("dammy-cover.png", class: "item-img") %> 
+    <% end %>
+  <% end %>
+  <%= link_to article_path(article.id) do %>
     <div class="article-body">
-      <h3 class="article-title">
+      <h3 class="article-title-name">
         <%= article.title %>
+        <% if article.youtube_url.present? %>
+        <span class="check">動画有</span>
+        <% end %>
       </h3>
     </div>
   <% end %>

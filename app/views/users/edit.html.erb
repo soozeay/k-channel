@@ -2,12 +2,13 @@
 <%= render "shared/post-bar" %>
 <%= render "shared/side-bar" %>
 <%= form_with model: @user, local: true do |f| %>
-  <div class="user-main-page">
-    <div class="profile-images">
+<div class="user-main-page">
+  <div class="profile-box">
+    <div class="cover-images">
       <div class="edit-icon">
         <%= f.label :cover do %>
-        <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
-        <%= f.file_field :cover, style:"display:none;" %>
+          <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
+          <%= f.file_field :cover, style:"display:none;" %>
         <% end %>
       </div>
       <% if @user.cover.attached? %>
@@ -16,25 +17,25 @@
         <%= image_tag("dammy-cover.png", class: "cover-img") %> 
       <% end %>
     </div>
-
     <div class="profile-bar">
-      <div class="user-icon">
+      <div class="pofile-image-name">
         <% if @user.avater.attached? %>
-          <%= image_tag @user.avater %>
+          <%= image_tag @user.avater, size: "120x120", class:"user-icon"%>
         <% else %>
-          <%= image_tag("default_user.png", size: "120x120", class: "icon-image") %> 
+          <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
+        <% end %>
+        <%= f.label :avater do %>
+          <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
+          <%= f.file_field :avater, style:"display:none;" %>
         <% end %>
       </div>
-      <%= f.label :avater do %>
-        <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
-        <%= f.file_field :avater, style:"display:none;" %>
-      <% end %>
     </div>
   </div>
+</div>
   <%= render 'shared/error_messages', model: f.object %>
   <div class='field'>
     <div class='field-label'>
-      <%= f.label :nickname, '名前（Name）'%>
+      <%= f.label :nickname, 'ニックネーム（Nickname）'%>
     </div>
     <div class='field-input'>
       <%= f.text_field :nickname %>
@@ -51,6 +52,7 @@
   <div class='field'>
     <div class='field-label'>
       <%= f.label :password, 'パスワード（Password）'%>
+      <span class="check">必須</span>
     </div>
     <div class='field-input'>
       <%= f.password_field :password %>
@@ -59,6 +61,7 @@
   <div class='field'>
     <div class='field-label'>
       <%= f.label :password_confirmation, 'パスワード再確認（Password_Confirmation）'%>
+      <span class="check">必須</span>
     </div>
     <div class='field-input'>
       <%= f.password_field :password_confirmation %>
