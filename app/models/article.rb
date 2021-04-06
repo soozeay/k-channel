@@ -4,7 +4,6 @@ class Article < ApplicationRecord
     validates :text
     validates :ingredients
     validates :trick
-    validates :image
   end
   belongs_to :user
   has_many :comments
