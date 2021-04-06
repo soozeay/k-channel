@@ -33,7 +33,7 @@
           </div>
           <% if current_user.id == @user.id %>
             <div class="edit-profile-icon">
-              <%= link_to 'プロフィールを編集する', edit_user_path %>
+              <%= link_to 'プロフィールを編集する', edit_user_registration_path(current_user.id) %>
             </div>
           <% end %>
         </div>
