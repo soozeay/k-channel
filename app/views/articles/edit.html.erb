@@ -79,7 +79,7 @@ app/assets/stylesheets/items/new.css %>
         <%= f.submit "変更する" ,class:"send-btn" %>
       </div>
       <div class="btn">
-        <%=link_to 'もどる', "#", class:"back-btn" %>
+        <%=link_to 'もどる', article_path(@article.id), class:"back-btn" %>
       </div>
     </div>
     <%# /下部ボタン %>
