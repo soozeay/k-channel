@@ -117,7 +117,7 @@
 .intro-title{
   font-size: 19px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .intro-text{
@@ -149,3 +149,44 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+/* ユーザー情報の更新ページ */
+
+.edit-nickname{
+  height: 55%;
+  font-size: 35px;
+  font-weight: bold;
+  width: 60%;
+  padding: auto;
+  border-bottom: 1px solid #3CCACE;
+  margin: 0 auto 10px;
+  align-items: center;
+}
+
+.edit-intro{
+  height: 120px;
+  width: 35vw;
+}
+
+.other-info-box{
+  width: 100%;
+}
+
+.field-e-user{
+  width: 50%;
+  margin: 0 auto 20px;
+}
+
+.actions{
+  display: flex;
+}
+
+.e-submit-btn{
+  width: 130px;
+  margin: 0 auto 20px;
+  border: 1px solid #3CCACE;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: bold;
+}
+/* //ユーザー情報の更新ページ */

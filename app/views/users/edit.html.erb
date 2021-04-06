@@ -19,55 +19,74 @@
     </div>
     <div class="profile-bar">
       <div class="pofile-image-name">
-        <% if @user.avater.attached? %>
-          <%= image_tag @user.avater, size: "120x120", class:"user-icon"%>
-        <% else %>
-          <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
-        <% end %>
-        <%= f.label :avater do %>
-          <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
-          <%= f.file_field :avater, style:"display:none;" %>
-        <% end %>
+        <div class="icon-box">
+          <% if @user.avater.attached? %>
+            <%= image_tag @user.avater, size: "120x120", class:"user-icon"%>
+          <% else %>
+            <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
+          <% end %>
+          <%= f.label :avater do %>
+            <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
+            <%= f.file_field :avater, style:"display:none;" %>
+          <% end %>
+        </div>
+        <div class="name-box">
+            <div class="edit-nickname">
+              <%= f.label :nickname do %>
+                <%= f.text_field :nickname, class:"edit-nickname", style: "border: none" %>
+              <% end %>
+            </div>
+          <div class="sub-profile">
+            <div class="user-age">
+              <%= "#{@user.age} 歳" %>
+            </div>
+            <div class="user-registration-day">
+              <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-box">
+        <div class="intro-title">
+          自己紹介（200字以内）
+        </div>
+          <%= f.label :intro do %>
+            <%= f.text_field :intro, class:"edit-intro", :placeholder => "こんにちは！  どうぞよろしくお願いします！ 等を200字以内で入力ください" %>
+          <% end %>
       </div>
     </div>
   </div>
 </div>
   <%= render 'shared/error_messages', model: f.object %>
-  <div class='field'>
-    <div class='field-label'>
-      <%= f.label :nickname, 'ニックネーム（Nickname）'%>
+  <div class="other-info-box">
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :email, 'メールアドレス（E-mail）'%>
+      </div>
+      <div class='field-input'>
+        <%= f.email_field :email %>
+      </div>
     </div>
-    <div class='field-input'>
-      <%= f.text_field :nickname %>
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :password, 'パスワード（Password）'%>
+        <span class="check">必須</span>
+      </div>
+      <div class='field-input'>
+        <%= f.password_field :password %>
+      </div>
     </div>
-  </div>
-  <div class='field'>
-    <div class='field-label'>
-      <%= f.label :email, 'メールアドレス（E-mail）'%>
-    </div>
-    <div class='field-input'>
-      <%= f.email_field :email %>
-    </div>
-  </div>
-  <div class='field'>
-    <div class='field-label'>
-      <%= f.label :password, 'パスワード（Password）'%>
-      <span class="check">必須</span>
-    </div>
-    <div class='field-input'>
-      <%= f.password_field :password %>
-    </div>
-  </div>
-  <div class='field'>
-    <div class='field-label'>
-      <%= f.label :password_confirmation, 'パスワード再確認（Password_Confirmation）'%>
-      <span class="check">必須</span>
-    </div>
-    <div class='field-input'>
-      <%= f.password_field :password_confirmation %>
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :password_confirmation, 'パスワード再確認（Password_Confirmation）'%>
+        <span class="check">必須</span>
+      </div>
+      <div class='field-input'>
+        <%= f.password_field :password_confirmation %>
+      </div>
     </div>
   </div>
   <div class='actions'>
-    <%= f.submit "更新（Submit）", class: 'btn'%>
+    <%= f.submit "保存（Save）", class: 'e-submit-btn'%>
   </div>
 <% end %>
