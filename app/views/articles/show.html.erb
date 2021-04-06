@@ -19,13 +19,13 @@
         <h2 class="name"><%= @article.title %></h2>
         <div class="contributor"> by <%= link_to @article.user.nickname, user_path(@article.user_id), class: "nickname-link" %></div>
       </div>
-      <% if @article.image.present? %>
-        <div class="item-img-content">
-          <%= image_tag @article.image ,class:"article-box-img" %>
-        </div>
-      <% elsif @article.youtube_url.present? %>
+      <% if @article.youtube_url.present? %>
         <div class="item-img-content">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @article.youtube_url[32..42]%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      <% elsif @article.image.present? %>
+        <div class="item-img-content">
+          <%= image_tag @article.image ,class:"article-box-img" %>
         </div>
       <% else %>
         <%= image_tag("dammy-cover.png", class: "cover-img") %> 
