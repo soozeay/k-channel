@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
-  validates :password, :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?[\d)])[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d)])[a-z\d]+\z/i }, on: :create
   validates :age, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 120 }
   validates :intro, length: { maximum: 200 }
 
@@ -21,4 +21,17 @@ class User < ApplicationRecord
   has_many :comments
   belongs_to :gender
   belongs_to :country
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 end
