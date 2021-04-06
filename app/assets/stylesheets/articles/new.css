@@ -27,7 +27,8 @@
   font-size: 22px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #3CCACE;
 }
 
 /* 共通 */
@@ -88,6 +89,13 @@
 
 .click-upload>p {
   margin-bottom: 15px;
+}
+
+.youtube-upload{
+  width: 25vw;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* /投稿画像 */

@@ -12,8 +12,7 @@
     <%# 画像の投稿 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        投稿画像
-        <span class="indispensable">必須</span>
+        画像の投稿 又は サムネイルの添付
       </div>
       <div class="click-upload">
         <p>クリックしてファイルをアップロード</p>
@@ -21,7 +20,14 @@
       </div>
     </div>
     <%# /画像の投稿 %>
-
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        YouTubeの動画投稿
+      </div>
+      <div class="click-upload">
+        <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "YouTubeのURLを入力してください" %>
+      </div>
+    </div>
     <%# 記事本文 %>
     <div class="new-articles">
       <div class="weight-bold-text">
