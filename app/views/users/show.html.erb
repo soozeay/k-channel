@@ -2,22 +2,55 @@
 <%= render "shared/post-bar" %>
 <%= render "shared/side-bar" %>
 <div class="user-main-page">
-  <div class="profile-images">
-    <% if @user.cover.attached? %>
-      <%= image_tag(@user.cover, class: "cover-img") %>
-    <% else %>
-      <%= image_tag("dammy-cover.png", class: "cover-img") %> 
-    <% end %>
+  <div class="profile-box">
+    <div class="cover-images">
+      <% if @user.cover.attached? %>
+        <%= image_tag(@user.cover, class: "cover-img") %>
+      <% else %>
+        <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+      <% end %>
+    </div>
+    <div class="profile-bar">
+      <div class="pofile-image-name">
+        <div class="icon-box">
+          <% if @user.avater.attached? %>
+            <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
+          <% else %>
+            <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
+          <% end %>
+        </div>
+        <div class="name-box">
+          <div class="user-name">
+            <%= @user.nickname %>
+          </div>
+          <div class="sub-profile">
+            <div class="user-age">
+              <%= "#{@user.age} 歳" %>
+            </div>
+            <div class="user-registration-day">
+              <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+            </div>
+          </div>
+          <div class="edit-profile-icon">
+            <%= link_to 'プロフィールを編集する', edit_user_path %>
+          </div>
+        </div>
+      </div>
+      <div class="intro-box">
+        <div class="intro-title">
+          自己紹介
+        </div>
+        <div class="intro-text">
+          <% if @user.intro.present? %>
+            <%= @user.intro %>
+          <% else %>
+            自己紹介を追加しましょう！
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="profile-bar">
-    <% if @user.avater.attached? %>
-      <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
-    <% else %>
-      <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
-    <% end %>
-    <p class="edit-profile-icon"><%= link_to 'プロフィールを編集する', edit_user_path %></p>
-  </div>
-  <div class="profile-info">
+  <div class="articles-box">
     <div class="user-articles">
     <%= render partial: "articles/article", collection: @articles %>
     </div>
