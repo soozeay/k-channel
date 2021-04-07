@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @articles = @user.articles
+    @articles = @user.articles.order('created_at DESC')
   end
 
   private
