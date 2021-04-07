@@ -2,6 +2,11 @@ if(document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
   document.addEventListener('DOMContentLoaded', function() {
     const ImagePreview = document.getElementById('image-preview');
     document.getElementById('article-image').addEventListener('change', function(e){
+      const imageContent = document.querySelector('img');
+      if(imageContent){
+        imageContent.remove();
+      }
+      
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
 
