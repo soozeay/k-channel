@@ -1,3 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log(123);
+  const ImagePreview = document.getElementById('image-preview');
+  document.getElementById('article-image').addEventListener('change', function(e){
+    console.log(123)
+  });
 });
