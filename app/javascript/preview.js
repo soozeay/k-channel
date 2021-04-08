@@ -1,5 +1,5 @@
-if(document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
-  document.addEventListener('DOMContentLoaded', function() {
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
+  document.addEventListener('DOMContentLoaded', function(){
     const ImagePreview = document.getElementById('image-preview');
 
     const createImageHTML = (blob) =>{
@@ -13,13 +13,13 @@ if(document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
     document.getElementById('article-image').addEventListener('change', function(e){
       const imageContent = document.querySelector('img');
-      if(imageContent){
+
+      if (imageContent){
         imageContent.remove();
       }
-      
+
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
-
       createImageHTML(blob);
     });
   });
