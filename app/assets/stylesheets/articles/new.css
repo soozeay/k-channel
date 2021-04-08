@@ -91,6 +91,12 @@
   margin-bottom: 15px;
 }
 
+.preview-image{
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+
 .youtube-upload{
   width: 25vw;
   padding: 10px;

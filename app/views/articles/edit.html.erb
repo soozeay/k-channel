@@ -1,5 +1,5 @@
-<%# cssは商品出品のものを併用しています。
-app/assets/stylesheets/items/new.css %>
+<%# app/assets/stylesheets/articles/new.css %>
+
 <div class="article-contents">
   <header class="article-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), root_path %>
@@ -18,8 +18,9 @@ app/assets/stylesheets/items/new.css %>
       </div>
       <div class="click-upload">
         <p>クリックしてファイルをアップロード</p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :image, id:"article-image" %>
       </div>
+      <div id="image-preview"></div>
     </div>
     <%# /画像の投稿 %>
     <div class="img-upload">
