@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <% unless user_signed_in? %>
+    <%= render "shared/logout_index" %>
+    <%= render "shared/footer" %>
+  <% else %>
+  <%= render "shared/post-bar" %>
+  <%= render "shared/side-bar" %>
+  <div class="main-bar">
+    <%= render partial:"article", collection: @articles, locals: {article: @article} %>
+  </div>
+  <% end %>
+</div>

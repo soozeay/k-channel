@@ -4,7 +4,7 @@
   <%= link_to image_tag("furima-logo-color.png", class:"kch-icon"), root_path %>
     <ul class='lists-left'>
       <li><%= link_to '広場一覧', "#", class: "category-list" %></li>
-      <li><%= form_with(url: search_articles_path, local: true, class:"search-form") do |f| %>
+      <li><%= form_with(url: search_articles_path, local: true, method: :get, class:"search-form") do |f| %>
             <%= f.text_field :keyword, placeholder: 'キーワードから探す', class:'input-box' %>
             <div class="search-button">
                 <%= image_submit_tag("search.png" ,class:"search-icon") %>
