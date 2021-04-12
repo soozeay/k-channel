@@ -12,13 +12,15 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = ArticlesTag.new
+    @article = Article.new
   end
 
   def create
-    @article = ArticlesTag.new(article_params)
+    @article = current_user.articles.build(article_params)
+    tag_list = params[:article][:tag_ids].split(',')
     if @article.valid?
       @article.save
+      @article.save_tags(tag_list)
       return redirect_to root_path
     else
       render :new
@@ -55,7 +57,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:articles_tag).permit(:title, :text, :ingredients, :trick, :plaza_id, :image, :youtube_url, :name).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image, :youtube_url).merge(user_id: current_user.id)
   end
 
   def set_item
