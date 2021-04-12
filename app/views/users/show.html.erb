@@ -13,11 +13,20 @@
     <div class="profile-bar">
       <div class="pofile-image-name">
         <div class="icon-box">
-          <% if @user.avater.attached? %>
-            <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
-          <% else %>
-            <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
-          <% end %>
+          <div class="user-icon-box">
+            <% if @user.avater.attached? %>
+              <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
+            <% else %>
+              <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
+            <% end %>
+          </div>
+          <div class="coutry-icon">
+            <% if @user.country_id == 1 %>
+              <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+            <% else %>
+              <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+            <% end %>
+          </div>
         </div>
         <div class="name-box">
           <div class="user-name">
@@ -53,6 +62,9 @@
     </div>
   </div>
   <div class="articles-box">
+    <div class="article-index-title">
+      <%= @user.nickname + " さんの投稿一覧" %>
+    </div>
     <div class="user-articles">
     <%= render partial: "articles/article", collection: @articles %>
     </div>
