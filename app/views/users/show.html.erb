@@ -18,6 +18,13 @@
           <% else %>
             <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
           <% end %>
+          <div class="coutry-icon">
+            <% if @user.country_id == 1 %>
+              <%= image_tag("country_japan.png", size: "35x35", class: "user-icon") %>
+            <% else %>
+              <%= image_tag("country_korea.png", size: "10x10", class: "user-icon") %> 
+            <% end %>
+          </div>
         </div>
         <div class="name-box">
           <div class="user-name">
