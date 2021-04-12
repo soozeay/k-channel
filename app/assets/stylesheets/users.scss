@@ -46,18 +46,34 @@
   width: 120px;
   height: 100%;
   position: relative;
+  background-color: aqua;
+}
+
+.user-icon-box{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .user-icon{
   position: absolute;
   border-radius: 50%;
-  margin: 0 auto;
   border: 1px solid black;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: auto;
+}
+
+.coutry-icon{
+  position: absolute;
+  right: 3vw;
+  bottom: 3vh;
+  z-index: 10;
 }
 
 .name-box{
