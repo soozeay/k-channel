@@ -1,14 +1,13 @@
 if (location.pathname.match("articles/new")){
   document.addEventListener("DOMContentLoaded", () => {
-    const inputElement = document.getElementById("articles_tag_name");
+    const inputElement = document.getElementById("tag_ids");
     inputElement.addEventListener("keyup", () => {
-      const keyword = document.getElementById("articles_tag_name").value;
+      const keyword = document.getElementById("tag_ids").value;
       const XHR = new XMLHttpRequest();
       XHR.open("GET", `search/?keyword=${keyword}`, true);
       XHR.responseType = "json";
       XHR.send();
       XHR.onload = () => {
-        const tagName = XHR.response.keyword;
         const searchResult = document.getElementById("search-result");
         searchResult.innerHTML = "";
         if (XHR.response) {
@@ -21,7 +20,7 @@ if (location.pathname.match("articles/new")){
             searchResult.appendChild(childElement);
             const clickElement = document.getElementById(tag.id);
             clickElement.addEventListener("click", () => {
-              document.getElementById("articles_tag_name").value = clickElement.textContent;
+              document.getElementById("tag_ids").value = clickElement.textContent;
               clickElement.remove();
             });
           });
