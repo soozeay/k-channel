@@ -5,7 +5,7 @@
   </header>
   <div class="article-main">
     <h2 class="article-title">記事の投稿フォーム</h2>
-    <%= form_with model:@article, local: true do |f| %>
+    <%= form_with model:@article, url: articles_path, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -56,6 +56,14 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :trick, class:"articles-text", id:"item-info", placeholder:"コツやポイントの説明（必須 1,000文字まで）例）キムチの残り汁を入れるとうま味UP！  生地は最低でも3時間冷蔵庫で寝かせましょう！  等" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <div class="articles-explain">
+        <div class="weight-bold-text">
+          タグ
+        </div>
+        <%= f.text_field :tag_ids, class:"articles-text", id: 'tag_ids', placeholder:",で区切ります" %>
+      <div id="search-result">
       </div>
     </div>
     <%# /記事本文 %>

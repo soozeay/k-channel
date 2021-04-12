@@ -16,9 +16,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    if @article.save
-      redirect_to root_path
+    @article = current_user.articles.build(article_params)
+    tag_list = params[:article][:tag_ids].split(',')
+    if @article.valid?
+      @article.save
+      @article.save_tags(tag_list)
+      return redirect_to root_path
     else
       render :new
     end
@@ -47,6 +50,9 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.search(params[:keyword]).includes(:user).order('created_at DESC')
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
   end
 
   private
