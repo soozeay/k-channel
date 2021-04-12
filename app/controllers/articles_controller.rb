@@ -45,6 +45,10 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @articles = Article.search(params[:keyword]).includes(:user).order('created_at DESC')
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image, :youtube_url).merge(user_id: current_user.id)
