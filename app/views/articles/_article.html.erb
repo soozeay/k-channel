@@ -20,7 +20,7 @@
    <% if article.tags.present? %>
    <ul class="tag">
       <li class="tag-list">
-        <%tweet.tags.each do |tag| %>
+        <%article.tags.each do |tag| %>
           #<%=tag.name%>
         <%end%>
       </li>
