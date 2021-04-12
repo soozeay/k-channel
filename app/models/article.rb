@@ -9,6 +9,8 @@ class Article < ApplicationRecord
   has_many :comments
   has_one_attached :image
   has_rich_text :text
+  has_many :article_tag_relations
+  has_many :tags, through: :article_tag_relations
 
   def self.search(search)
     if search != ""
