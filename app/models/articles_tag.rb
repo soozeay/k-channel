@@ -13,7 +13,6 @@ class ArticlesTag
 
   def save
     article = Article.create( title: title, ingredients: ingredients, trick: trick, youtube_url: youtube_url, plaza_id: plaza_id, user_id: user_id)
-    binding.pry
     tag = Tag.create(name: name)
     tag = Tag.where(name: name).first_or_initialize
     tag.save
