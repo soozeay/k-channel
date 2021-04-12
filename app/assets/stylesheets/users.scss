@@ -46,7 +46,6 @@
   width: 120px;
   height: 100%;
   position: relative;
-  background-color: aqua;
 }
 
 .user-icon-box{
@@ -71,8 +70,8 @@
 
 .coutry-icon{
   position: absolute;
-  right: 3vw;
-  bottom: 3vh;
+  right: 0;
+  bottom: 0;
   z-index: 10;
 }
 
