@@ -14,13 +14,16 @@ class User < ApplicationRecord
     validates :country_id
   end
 
-
   has_one_attached :avater
   has_one_attached :cover
   has_many :articles
   has_many :comments
   belongs_to :gender
   belongs_to :country
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
@@ -34,4 +37,20 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+
 end
