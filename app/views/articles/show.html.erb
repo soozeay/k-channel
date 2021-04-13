@@ -31,6 +31,18 @@
         <%= image_tag("dammy-cover.png", class: "article-box-img") %> 
       <% end %>
     </div>
+    <div class="tag-area">
+      <% if @tags.present? %>
+      <ul class="article-tag">
+        <li class="tag-name">
+          <% @article.tags.each do |tag| %>
+          #<%=tag.name%>
+          <%end%>
+        </li>
+      </ul>
+      <% else %> #タグはついていません
+      <% end %>
+    </div>
 
     <div class="article-desc">
       <div class="content-header">
