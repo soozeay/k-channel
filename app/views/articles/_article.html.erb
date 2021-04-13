@@ -17,10 +17,10 @@
     </div>
   <% end %>
   <div class="tags">
-   <% if article.tags.present? %>
+   <% if @tags.present? %>
    <ul class="tag">
       <li class="tag-list">
-        <%article.tags.each do |tag| %>
+        <% @tags.each do |tag| %>
           #<%=tag.name%>
         <%end%>
       </li>
