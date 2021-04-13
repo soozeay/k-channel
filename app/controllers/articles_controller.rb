@@ -4,12 +4,16 @@ class ArticlesController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
+    @tags = Article.tag_counts_on(:tags)
     if params[:plaza_id].present?
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
     else
       @articles = Article.includes(:user).order('created_at DESC')
     end
-    @tags = Article.tag_counts_on(:tags)
+    if set_q_for_article
+      @q = Article.ransack(params[:q])
+      @articles = @q.result(distinct: true).order('created_at DESC')
+    end
   end
 
   def new
