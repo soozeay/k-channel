@@ -65,3 +65,5 @@ gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
 
 gem 'acts-as-taggable-on', '~> 7.0'
+
+gem 'ransack'
