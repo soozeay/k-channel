@@ -62,7 +62,7 @@
         <div class="weight-bold-text">
           タグ
         </div>
-        <%= f.text_field :tag_ids, class:"articles-text", id: 'tag_ids', placeholder:",で区切ります" %>
+        <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"articles-text", id: 'tag_ids', placeholder:",で区切ります" %>
       <div id="search-result">
       </div>
     </div>

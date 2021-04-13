@@ -4,10 +4,15 @@ class ArticlesController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
+    @tags = Article.tag_counts_on(:tags)
     if params[:plaza_id].present?
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
     else
       @articles = Article.includes(:user).order('created_at DESC')
+    end
+    if set_q_for_article
+      @q = Article.ransack(params[:q])
+      @articles = @q.result(distinct: true).order('created_at DESC')
     end
   end
 
@@ -17,10 +22,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    tag_list = params[:article][:tag_ids].split(',')
     if @article.valid?
       @article.save
-      @article.save_tags(tag_list)
       return redirect_to root_path
     else
       render :new
@@ -30,6 +33,7 @@ class ArticlesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
+    @tags = Article.tag_counts_on(:tags)
   end
 
   def edit
@@ -57,7 +61,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image, :youtube_url).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text, :ingredients, :trick, :plaza_id, :image, :youtube_url, :tag_list).merge(user_id: current_user.id)
   end
 
   def set_item

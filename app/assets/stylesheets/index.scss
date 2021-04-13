@@ -333,6 +333,10 @@ a:hover img{
   align-items: flex-end;
 }
 
+.article-user{
+  font-size: 13px;
+}
+
 .item-img{
   width: 33vh;
   height: 33vh;
@@ -352,4 +356,15 @@ a:hover img{
   font-size: 10px;
   color: darkgray;
 }
+
+.tags{
+  height: 3vh;
+  margin-bottom: 10px;
+}
+
+.tag{
+  color: darkblue;
+}
+
+
 /* //ログイン後の表示 */
