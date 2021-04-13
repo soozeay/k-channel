@@ -50,6 +50,9 @@
       <div class="intro-box">
         <div class="intro-title">
           自己紹介
+          <div class="user-follow-btn">
+            <%= render "relationships/follow_button", user: @user %>
+          </div>
         </div>
         <div class="intro-text">
           <% if @user.intro.present? %>
