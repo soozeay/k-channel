@@ -57,6 +57,13 @@
   margin: 0 auto;
 }
 
+.tag-area{
+  height: 5vh;
+  padding: 10px;
+  width: 60vw;
+  margin: 0 auto 10px;
+}
+
 .article-desc{
   margin: 0 auto;
 }
@@ -71,7 +78,6 @@
   height: 200px;
   margin-bottom: 20px;
   padding: 10px;
-  max-width: 100%; 
   height: auto;
   overflow: scroll;
 }
