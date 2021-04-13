@@ -6,11 +6,10 @@ class ArticlesController < ApplicationController
   def index
     if params[:plaza_id].present?
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
-      @tags = Article.tag_counts_on(:tags).most_used(20)
     else
       @articles = Article.includes(:user).order('created_at DESC')
-      @tags = Article.tag_counts_on(:tags).most_used(20)
     end
+    @tags = Article.tag_counts_on(:tags)
   end
 
   def new
