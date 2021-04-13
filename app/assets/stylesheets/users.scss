@@ -133,6 +133,13 @@
   font-size: 19px;
   font-weight: bold;
   margin-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.user-follow-btn{
+  margin-right: 5vw;
 }
 
 .intro-text{
