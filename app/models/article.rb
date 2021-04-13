@@ -14,14 +14,6 @@ class Article < ApplicationRecord
     end
   end
 
-  def save_tags(article_tags)
-    article_tags.each do |new_name|
-    article_tag = Tag.find_or_create_by(name: new_name)
-    self.tags << article_tag
-    end
-  end
-
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   validates :plaza_id, presence: true, numericality: { other_than: 0 }
   belongs_to :plaza
