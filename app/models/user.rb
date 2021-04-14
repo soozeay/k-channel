@@ -16,8 +16,10 @@ class User < ApplicationRecord
 
   has_one_attached :avater
   has_one_attached :cover
-  has_many :articles
-  has_many :comments
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :article
   belongs_to :gender
   belongs_to :country
   has_many :relationships
@@ -51,6 +53,10 @@ class User < ApplicationRecord
 
   def following?(other_user)
     self.followings.include?(other_user)
+  end
+
+  def already_liked?(article)
+    self.likes.exists?(article_id: article.id)
   end
 
 end

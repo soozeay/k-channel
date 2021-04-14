@@ -44,6 +44,12 @@
       <% end %>
     </div>
 
+    <% if current_user.already_liked?(@article) %>
+      <%= button_to 'いいねを取り消す', article_like_path(@article), method: :delete %>：<%= @article.likes.count %>
+    <% else %>
+      <%= button_to 'いいね', article_likes_path(@article) %>：<%= @article.likes.count %>
+    <% end %>
+
     <div class="article-desc">
       <div class="content-header">
         素材・材料・参考資料など

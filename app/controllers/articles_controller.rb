@@ -34,6 +34,7 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
     @tags = Article.tag_counts_on(:tags)
+    @like = Like.new
   end
 
   def edit
