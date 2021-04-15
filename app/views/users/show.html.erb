@@ -13,11 +13,11 @@
     <div class="profile-bar">
       <div class="pofile-image-name">
         <div class="icon-box">
-          <div class="user-icon-box">
+          <div class="user-icon-box set-center">
             <% if @user.avater.attached? %>
-              <%= image_tag(@user.avater, size: "120x120", class: "user-icon") %>
+              <%= image_tag(@user.avater, size: "120x120", class: "user-icon set-center") %>
             <% else %>
-              <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
+              <%= image_tag("default_user.png", size: "120x120", class: "user-icon set-center") %> 
             <% end %>
           </div>
           <div class="coutry-icon">

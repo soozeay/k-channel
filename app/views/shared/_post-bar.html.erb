@@ -4,6 +4,15 @@
   </div>
 
   <div class="notifications-icon">
-    <%= link_to '通知', notifications_path %>
+    <div class="demo">
+      <%= link_to root_path do %>
+        <i class="far fa-envelope"></i>
+      <% end %>
+    </div>
+    <div class="demo">
+      <%= link_to notifications_path do %>
+        <i class="far fa-bell fa-3x" style="color: #f0f0f0;" id="notifications"></i>
+      <% end %>
+    </div>
   </div>
 </div>

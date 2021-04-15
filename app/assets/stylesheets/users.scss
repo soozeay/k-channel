@@ -48,7 +48,7 @@
   position: relative;
 }
 
-.user-icon-box{
+.set-center{
   position: absolute;
   margin: auto;
   top: 0;
@@ -58,14 +58,8 @@
 }
 
 .user-icon{
-  position: absolute;
   border-radius: 50%;
   border: 1px solid black;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
 }
 
 .coutry-icon{
