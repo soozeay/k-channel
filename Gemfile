@@ -67,3 +67,7 @@ gem 'pry-rails'
 gem 'acts-as-taggable-on', '~> 7.0'
 
 gem 'ransack'
+
+gem 'kaminari'
+
+gem 'font-awesome-sass'
