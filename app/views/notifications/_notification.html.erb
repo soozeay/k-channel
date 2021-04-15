@@ -1,18 +1,55 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-  <%= link_to user_path(visitor) do %>
-    <%= visitor.nickname %>
-  <% end %>
-  さんが
-  <% case notification.action 
-    when 'follow' then %>
-    <%= 'あなたをフォローしました' %>
-  <% when 'like' then %>
-    <%= link_to 'あなたの投稿', notification.article %>
-    <%= 'にいいねしました' %>
-  <% when 'comment' then %>
-    <% if notification.article.user_id == visited.id %>
-      <%= link_to "あなたの投稿", notification.article %>
+<div class="notifications-box">
+  <div class="icon-box">
+    <%= link_to user_path(visitor) do %>
+      <% if visitor.avater.attached? %>
+        <%= image_tag(visitor.avater, size: "60x60", class: "user-icon set-center") %>
+      <% else %>
+        <%= image_tag("default_user.png", size: "60x60", class: "user-icon set-center") %> 
+      <% end %>
     <% end %>
-    <%= 'にコメントしました' %>
-  <% end %>
+  </div>
+  <div class="notification-text-box">
+    <%= link_to user_path(visitor) do %>
+      <%= visitor.nickname %>
+    <% end %>
+    さんが
+    <% case notification.action 
+      when 'follow' then %>
+      <%= 'あなたをフォローしました' %>
+      <div class= "notifications-info">
+        <div class="concerned-item"></div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "前"%>
+        </div>
+      </div>
+    <% when 'like' then %>
+      <%= link_to 'あなたの投稿', notification.article %>
+      <%= 'にいいねしました' %>
+      <div class= "notifications-info">
+        <div class="concerned-item">
+          <i class="fas fa-heart" style="color:red;"></i>
+          <%= notification.article.title%>
+        </div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "前"%>
+        </div>
+      </div>
+    <% when 'comment' then %>
+      <% if notification.article.user_id == visited.id %>
+        <%= link_to "あなたの投稿", notification.article %>
+      <% end %>
+      <%= 'にコメントしました' %>
+      <div class= "notifications-info">
+        <div class="concerned-item">
+          <i class="fas fa-comments" style="color:#a64456;"></i>
+          <%= Comment.find_by(id: notification.comment_id)&.comment %>
+        </div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "前"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
