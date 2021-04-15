@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
       @q = Article.ransack(params[:q])
       @articles = @q.result(distinct: true).order('created_at DESC')
     end
+    @page = Article.all.page(params[:page])
+    @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
   end
 
   def new
