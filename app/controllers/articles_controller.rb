@@ -5,17 +5,15 @@ class ArticlesController < ApplicationController
 
   def index
     @tags = Article.tag_counts_on(:tags)
+    @page = Article.all.page(params[:page])
+    @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
     if params[:plaza_id].present?
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
+    elsif params[:tag]
+      @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
     else
       @articles = Article.includes(:user).order('created_at DESC')
     end
-    if set_q_for_article
-      @q = Article.ransack(params[:q])
-      @articles = @q.result(distinct: true).order('created_at DESC')
-    end
-    @page = Article.all.page(params[:page])
-    @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
   end
 
   def new
@@ -53,13 +51,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to root_path
-  end
-
-  def search
-    @articles = Article.search(params[:keyword]).includes(:user).order('created_at DESC')
-    return nil if params[:keyword] == ""
-    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: tag }
   end
 
   private
