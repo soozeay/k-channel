@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
     if params[:plaza_id].present?
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
-    elsif params[:tag]
+    elsif @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
     else
       @articles = Article.includes(:user).order('created_at DESC')
