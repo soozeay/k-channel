@@ -7,7 +7,11 @@
   <%= render "shared/post-bar" %>
   <%= render "shared/side-bar" %>
   <div class="main-bar">
-    <%= render partial:"article", collection: @articles, locals: {article: @article} %>
+    <% if @search_articles_result.present? %>
+     <%= render partial:"article", collection: @search_articles_result, locals: {article: @article} %>
+    <% else %>
+      <%= render partial:"article", collection: @articles, locals: {article: @article} %>
+    <% end %>
   </div>
   <% end %>
 </div>
