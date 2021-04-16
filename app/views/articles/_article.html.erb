@@ -21,7 +21,9 @@
    <ul class="tag">
       <li class="tag-list">
         <% article.tags.each do |tag| %>
-          #<%= tag.name %>
+          <%= link_to articles_path(tag: tag.name) do%>
+            #<%= tag.name %>
+          <%end %>
         <%end%>
       </li>
     </ul>
