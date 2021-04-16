@@ -55,4 +55,19 @@ class Article < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  scope :by_any_texts, -> (string){
+    words = string.split(/[\p{blank}\s]+/)
+    searchs = search(title_or_user_nickname_cont_all: words).result(distinct: true)
+    search_tag = Article.by_any_tag(words)
+    search_result = (searchs + search_tag).uniq
+  }
+
+  scope :by_any_tag, -> (words){
+    article_tag = Article.tagged_with(words, named_like_any: true)
+  }
+  
+  def self.ransackable_scopes(auth_object = nil)
+    %i[text_or_user_name_cont_all]
+  end
 end
