@@ -260,10 +260,6 @@ a:hover img{
   margin: 0 auto;
 }
 
-.link-post-btn{
-  width: 70vw;
-}
-
 .post-btn{
   text-align: center;
   background-color:#3ccace;
@@ -272,6 +268,18 @@ a:hover img{
   padding: 10px;
   margin: 0 auto;
   border: none;
+}
+
+.notifications-icon{
+  width: 25vw;
+  height: 100%;
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo{
+  margin: 0 auto;
 }
 
 .secound-main{
@@ -287,6 +295,9 @@ a:hover img{
 .main-bar{
   width: calc(100vw - 20vw);
   background-color: coral;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
 }
 
 .plaza-list{
@@ -305,13 +316,6 @@ a:hover img{
   padding-left: 10px;
   margin-bottom: 10px;
   background-color: firebrick;
-}
-
-.main-bar{
-  display: flex;
-  flex-wrap: wrap;
-  align-content:stretch;
-  overflow: scroll;
 }
 
 .article-box{
@@ -354,7 +358,7 @@ a:hover img{
 }
 
 .created-time{
-  font-size: 10px;
+  font-size: 13px;
   color: darkgray;
 }
 

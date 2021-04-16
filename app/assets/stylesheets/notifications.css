@@ -1,0 +1,27 @@
+.notifications-list{
+  width: calc(100vw - 20vw);
+}
+
+.notifications-box{
+  width: 60%;
+  height: 10vh;
+  background-color: aqua;
+  border: 1px solid black;
+  margin: 0 auto 10px;
+  display: flex;
+}
+
+.notification-text-box{
+  padding: 10px;
+}
+
+.notifications-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.concerned-item{
+  font-size: 13px;
+  
+}
