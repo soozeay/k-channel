@@ -72,6 +72,4 @@ gem 'kaminari'
 
 gem 'font-awesome-sass'
 
-gem "jquery-rails"
-
 gem 'jquery-ui-rails'
