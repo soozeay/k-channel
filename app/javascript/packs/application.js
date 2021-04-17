@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("../preview")
 require("../tag")
+require("jquery")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,3 +21,12 @@ require("../tag")
 
 require("trix")
 require("@rails/actiontext")
+
+//= require jquery
+//= require rails-ujs
+//= require jquery_ujs
+//= require jquery.turbolinks
+//= require jquery-ui
+//= require activestorage
+//= require bootstrap-sprockets
+//= require_tree .
