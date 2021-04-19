@@ -6,6 +6,22 @@ class UsersController < ApplicationController
 
   def show
     @articles = @user.articles.order('created_at DESC')
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+        unless @isRoom
+          @room = Room.new
+          @entry = Entry.new
+        end
+      end
+    end
   end
 
   private
