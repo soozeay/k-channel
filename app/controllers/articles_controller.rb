@@ -14,10 +14,10 @@ class ArticlesController < ApplicationController
       @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
     elsif @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
-    else
+    elsif user_signed_in?
       @user = User.find(current_user.id) #フォローしているユーザーを取得
       @follow_users = @user.followings #フォローユーザーのツイートを表示
-      @articles = @articles_all.where(user_id: @follow_users).order("created_at DESC").page(params[:page]).per(10)
+      @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).order("created_at DESC").page(params[:page]).per(10)
     end
   end
 

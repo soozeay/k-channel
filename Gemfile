@@ -71,3 +71,5 @@ gem 'ransack'
 gem 'kaminari'
 
 gem 'font-awesome-sass'
+
+gem 'jquery-ui-rails'

@@ -16,3 +16,11 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "../../javascript/stylesheets/tagsinput";
+
+/*
+ *= require jquery-ui
+ *= require_tree ./shared
+ *= require_tree ./staff
+ *= require 'jquery-ui/autocomplete'
+ */
