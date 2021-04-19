@@ -22,12 +22,11 @@
       <li class="tag-list">
         <% article.tags.each do |tag| %>
           <%= link_to articles_path(tag: tag.name) do%>
-            #<%= tag.name %>
+            <span class="badge badge-info">#<%= tag.name %></span>
           <%end %>
         <%end%>
       </li>
     </ul>
-    <% else %> #
     <% end %>
   </div>
 
