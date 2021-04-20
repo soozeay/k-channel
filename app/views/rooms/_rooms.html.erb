@@ -1,0 +1,41 @@
+<div class="room-container">
+  <div class="room-header">
+    <div class="header-message">
+      <h3 style="font-weight: bold; color: #006669;">メッセージ</h3>
+    </div>
+  </div>
+  <% @rooms.each do |room| %>
+    <% if room.entries[0].user_id == current_user.id %>
+      <% user = User.find(room.entries[1].user_id) %>
+    <% else %>
+      <% user = User.find(room.entries[0].user_id) %>
+    <% end %>
+    <div class="partner-box">
+      <%= link_to room_path(room), class: "room" do %>
+        <div class="img-box">
+          <% if user.avatar.attached? %>
+            <%= image_tag(rails_blob_path(user.avatar), size: "35x35", class: "img-circle") %>
+          <% else %>
+            <%= image_tag("default_user.png", size: "35x35", class: "img-circle") %>
+          <% end %>
+        </div>
+        <div class="partner-info">
+            <div class="partner-name">
+              <h5><%= user.nickname %></h5>
+            </div>
+            <div class="partner-details">
+              <div class="latest-message">
+                <%= most_new_message_preview(room) %>
+              </div>
+              <div class="created-time">
+                <%= message_time(room) + '前'%>
+              </div>
+            </div> 
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="left-button">
+    <%= link_to "トップページに戻る", root_path %>
+  </div>
+</div>

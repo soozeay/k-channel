@@ -1,0 +1,53 @@
+<%= render "shared/header" %>
+<%= render "shared/post-bar" %>
+<%= render "shared/side-bar" %>
+<div class="message-rooms">
+  <%= render "rooms" %>
+</div>
+<div class="chats">
+  <div class="chat">
+    <div class="msg_history pt-2" id="msg-history">
+      <div id= "messages">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+            <% if m.user.id == current_user.id %> <%# 自分にプロフィールアイコンは表示しない %>
+              <div class="outgoing_msg" >
+                <div class="sent_msg">
+                  <p><%= m.content %></p>
+                  <span class="time_date"><%= time_ago_in_words(m.created_at) %>前</span>
+                </div>
+              </div>
+            <% else %> <%# トーク相手はプロフィール画像を表示 %>
+              <div class="incoming_msg">
+                <div class="incoming_msg_img"> 
+                  <%= link_to user_path(m.user.id) do %>
+                    <% if m.user.avatar.attached? %>
+                      <%= image_tag(rails_blob_path(m.user.avatar), size: "35x35", class: "img-circle") %>
+                    <% else %>
+                      <%= image_tag("default_user.png", size: "35x35", class: "img-circle") %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="received_msg">
+                  <div class="received_withd_msg">
+                    <p><%= m.content %></p>
+                    <span class="time_date"><%= time_ago_in_words(m.created_at) %>前</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="posts">
+    <%= form_with model: @message do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= button_tag type: 'submit', class: "msg_send_btn"  do %>
+        <i class="fas fa-comment-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
