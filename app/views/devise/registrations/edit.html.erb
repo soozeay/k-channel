@@ -20,14 +20,14 @@
     <div class="profile-bar">
       <div class="pofile-image-name">
         <div class="icon-box">
-          <% if @user.avater.attached? %>
-            <%= image_tag @user.avater, size: "120x120", class:"user-icon"%>
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, size: "120x120", class:"user-icon"%>
           <% else %>
             <%= image_tag("default_user.png", size: "120x120", class: "user-icon") %> 
           <% end %>
-          <%= f.label :avater do %>
+          <%= f.label :avatar do %>
             <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
-            <%= f.file_field :avater, style:"display:none;" %>
+            <%= f.file_field :avatar, style:"display:none;" %>
           <% end %>
         </div>
         <div class="name-box">

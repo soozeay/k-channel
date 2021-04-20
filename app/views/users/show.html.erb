@@ -14,8 +14,8 @@
       <div class="pofile-image-name">
         <div class="icon-box">
           <div class="user-icon-box set-center">
-            <% if @user.avater.attached? %>
-              <%= image_tag(@user.avater, size: "120x120", class: "user-icon set-center") %>
+            <% if @user.avatar.attached? %>
+              <%= image_tag(@user.avatar, size: "120x120", class: "user-icon set-center") %>
             <% else %>
               <%= image_tag("default_user.png", size: "120x120", class: "user-icon set-center") %> 
             <% end %>
@@ -32,6 +32,22 @@
           <div class="user-name">
             <%= @user.nickname %>
           </div>
+          <% unless @user.id == current_user.id %>
+            <% if (current_user.following? @user) && (@user.following? current_user) %>
+              <% if @isRoom == true %>
+                <div class="user-show-room">
+                <%= link_to 'チャットへ', room_path(@roomId), class:"btn btn-primary btn-lg" %>
+                </div>
+              <% else %>
+                <%= form_with model: @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, value: @user.id %>
+                  <% end %>
+                  <%= button_tag type: 'submit', class:"btn btn-primary btn-lg user-show-chat" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
           <div class="sub-profile">
             <div class="user-age">
               <%= "#{@user.age} 歳" %>
@@ -51,7 +67,7 @@
         <div class="intro-title">
           自己紹介
           <div class="user-follow-btn">
-            <%= render "relationships/follow_button", user: @user %>
+            <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
           </div>
         </div>
         <div class="intro-text">
