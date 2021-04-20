@@ -6,20 +6,20 @@ class UsersController < ApplicationController
 
   def show
     @articles = @user.articles.order('created_at DESC')
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
-          if cu.room_id == u.room_id
+          if cu.room_id == u.room_id then
             @isRoom = true
             @roomId = cu.room_id
           end
         end
-        unless @isRoom
-          @room = Room.new
-          @entry = Entry.new
-        end
+      end
+      unless @isRoom
+        @room = Room.new
+        @entry = Entry.new
       end
     end
   end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :cover, :avater, :intro)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :cover, :avatar, :intro)
   end
 
   def move_to_index
