@@ -6,7 +6,7 @@ class Plaza < ActiveHash::Base
     { id: 3, name: '語学' },
     { id: 4, name: 'グルメ情報' },
     { id: 5, name: '日記' },
-    { id: 4, name: 'その他' }
+    { id: 6, name: 'その他' }
   ]
   include ActiveHash::Associations
   has_many :articles
