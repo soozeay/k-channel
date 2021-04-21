@@ -2,9 +2,14 @@ module UsersHelper
 
   def follow_users
     # フォローユーザーを配列で取得
-    @follow_users = Relationship.where(user_id: current_user)
-
+    @follow_users = current_user.followings
   end
     
-  # @follower_users = current_user.followers
+  def follower_users
+    @follower_users = current_user.followers
+  end
+
+  def like_articles
+    @like_articles = current_user.likes
+  end
 end

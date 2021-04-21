@@ -1,11 +1,11 @@
-<% if current_user.followings.present? %>
-  <% follow_users.each do |f|%>
-    <% follow_user = User.find(f.id) %>
+<% if current_user.followers.present? %>
+  <% follower_users.each do |f|%>
+    <% follower_user = User.find(f.id) %>
     <div class="partner-box">
       <%= link_to user_path(f.id), class: "room" do %>
         <div class="img-box">
-          <% if follow_user.avatar.attached? %>
-            <%= image_tag(rails_blob_path(follow_user.avatar), size: "35x35", class: "img-circle") %>
+          <% if follower_user.avatar.attached? %>
+            <%= image_tag(rails_blob_path(follower_user.avatar), size: "35x35", class: "img-circle") %>
           <% else %>
             <%= image_tag("default_user.png", size: "35x35", class: "img-circle") %>
           <% end %>
@@ -13,12 +13,12 @@
       <% end %>
     </div>
     <div class="follow-user-name">
-      <%= follow_user.nickname + "さん" %>
+      <%= follower_user.nickname + "さん" %>
     </div>
     <div class="follow-user-info">
-      <%= follow_user.intro %>
+      <%= follower_user.intro %>
     </div>
   <% end %>
 <% else %>
-  <%= 'フォローしているユーザーはいません' %>
+  <%= 'フォロワーはいません' %>
 <% end %>
