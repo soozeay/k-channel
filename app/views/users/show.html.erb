@@ -81,8 +81,16 @@
     </div>
   </div>
   <div class="articles-box">
-    <div class="article-index-title">
-      <%= @user.nickname + " さんの投稿一覧" %>
+    <div class="user-nav-bar">
+      <div class="nav-title">
+        <%= @user.nickname + " さんの投稿" %>
+      </div>
+      <div class="nav-title">
+        <%= "フォロー・フォロワー" %>
+      </div>
+      <div class="nav-title">
+        <%= "いいね" %>
+      </div>
     </div>
     <div class="user-articles">
     <%= render partial: "articles/article", collection: @articles %>
