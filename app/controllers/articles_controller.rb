@@ -1,36 +1,37 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @tags = Article.tag_counts_on(:tags)
-    @page = Article.all.page(params[:page])
-    @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
-    @articles_all =Article.includes(:user,:taggings,:likes)
+    if user_signed_in?
+      @tags = Article.tag_counts_on(:tags)
+      @page = Article.all.page(params[:page])
+      @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
+      @articles_all =Article.includes(:user,:taggings,:likes)
 
-    # タグのリンクをクリックした際の表示
-    if @tag = params[:tag]
-      @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
-    end
+      # タグのリンクをクリックした際の表示
+      if @tag = params[:tag]
+        @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
+      end
 
-    # トップページの表示切替
-    if params[:country_id].present? && params[:plaza_id].present? # 地域別且プラザを選択した場合
-      @users = User.where(country_id: params[:country_id])
-      @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id]).order('created_at DESC')
-    elsif params[:plaza_id].present? # プラザのみ選択した場合
-      @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
-    else # 地域別で全ての投稿を表示したい場合
-      @users = User.where(country_id: params[:country_id])
-      @articles = Article.where(user_id: @users.ids).order('created_at DESC')
-      if @users == []
-        # トップページはフォーローユーザーと自身の投稿を表示
-        @user = User.find(current_user.id)
-        @follow_users = @user.followings
-        @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).order("created_at DESC").page(params[:page]).per(10)
+      # トップページの表示切替
+      if params[:country_id].present? && params[:plaza_id].present? # 地域別且プラザを選択した場合
+        @users = User.where(country_id: params[:country_id])
+        @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id]).order('created_at DESC')
+      elsif params[:plaza_id].present? # プラザのみ選択した場合
+        @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
+      else # 地域別で全ての投稿を表示したい場合
+        @users = User.where(country_id: params[:country_id])
+        @articles = Article.where(user_id: @users.ids).order('created_at DESC')
+        if @users == []
+          # トップページはフォーローユーザーと自身の投稿を表示
+          @user = User.find(current_user.id)
+          @follow_users = @user.followings
+          @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).order("created_at DESC").page(params[:page]).per(10)
+        end
       end
     end
-
   end
 
   def new
