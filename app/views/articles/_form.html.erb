@@ -1,0 +1,76 @@
+<%= form_with model:@article, url: articles_path, local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
+
+<%# 画像・動画の投稿 %>
+<div class="img-upload">
+  <div class="weight-bold-text">
+    画像の投稿 又は サムネイルの添付
+  </div>
+  <div class="click-upload">
+    <p>クリックしてファイルをアップロード</p>
+    <%= f.file_field :image, id:"article-image" %>
+  </div>
+  <div id="image-preview"></div>
+</div>
+<div class="img-upload">
+  <div class="weight-bold-text">
+    YouTubeの動画投稿
+  </div>
+  <div class="click-upload">
+    <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "YouTubeのURLを入力してください" %>
+  </div>
+</div>
+<%# /画像・動画の投稿 %>
+
+<%# 記事本文 %>
+<div class="new-articles">
+  <div class="weight-bold-text">
+    記事タイトル
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.text_area :title, class:"articles-title", id:"item-name", placeholder:"タイトル（必須 40文字まで)   例）話題のグルメ日本初上陸！", maxlength:"40" %>
+  <div class="articles-explain">
+    <div class="weight-bold-text">
+      記事本文
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）\n例）先週、新大久保に焼肉屋「Good Calvi」がオープンしました。先行レポートをお届けします…" ,rows:"7" ,maxlength:"1000" %>
+  </div>
+  <div class="articles-explain">
+    <div class="weight-bold-text">
+      コツやポイント
+    </div>
+    <%= f.text_area :trick, class:"articles-text", id:"item-info", placeholder:"コツやポイントを書きましょう（必須 1,000文字まで）\n例）休日は3時間待ちです、平日のランチを狙いましょう！！" ,rows:"7" ,maxlength:"1000" %>
+  </div>
+</div>
+<div class="articles-explain">
+    <div class="weight-bold-text">
+      タグ
+    </div>
+    <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"articles-text", data: {role: "tagsinput"}, placeholder:",で区切ります。（5つまで）" %>
+</div>
+<%# /記事本文 %>
+
+<%# プラザ選択 %>
+<div class="choice-plaza">
+  <div class="form">
+    <div class="weight-bold-text">
+      投稿記事のカテゴリー
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+</div>
+<%# /プラザ選択 %>
+
+<%# 下部ボタン %>
+  <div class="send-btn-contents">
+    <div class="btn">
+      <%= f.submit "送信する", class:"send-btn" %>
+    </div>
+    <div class="btn">
+      <%= link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+  </div>
+  <%# /下部ボタン %>
+<% end %>

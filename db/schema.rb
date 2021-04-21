@@ -45,8 +45,7 @@ ActiveRecord::Schema.define(version: 2021_04_19_075534) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "ingredients", null: false
-    t.text "trick", null: false
+    t.text "trick"
     t.integer "plaza_id", null: false
     t.bigint "user_id", null: false
     t.string "youtube_url"
@@ -147,7 +146,6 @@ ActiveRecord::Schema.define(version: 2021_04_19_075534) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

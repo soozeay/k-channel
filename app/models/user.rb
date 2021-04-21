@@ -14,7 +14,7 @@ class User < ApplicationRecord
     validates :country_id
   end
 
-    # ユーザーの設定する画像
+  # ユーザーの設定する画像
   has_one_attached :avatar
   has_one_attached :cover
   

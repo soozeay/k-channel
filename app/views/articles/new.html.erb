@@ -1,107 +1,13 @@
 <div class="article-contents">
   <header class="article-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), root_path %>
-
   </header>
   <div class="article-main">
     <h2 class="article-title">記事の投稿フォーム</h2>
-    <%= form_with model:@article, url: articles_path, local: true do |f| %>
-
-    <%= render 'shared/error_messages', model: f.object %>
-
-    <%# 画像の投稿 %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        画像の投稿 又は サムネイルの添付
-      </div>
-      <div class="click-upload">
-        <p>クリックしてファイルをアップロード</p>
-        <%= f.file_field :image, id:"article-image" %>
-      </div>
-      <div id="image-preview"></div>
-    </div>
-    <%# /画像の投稿 %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        YouTubeの動画投稿
-      </div>
-      <div class="click-upload">
-        <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "YouTubeのURLを入力してください" %>
-      </div>
-    </div>
-    <%# 記事本文 %>
-    <div class="new-articles">
-      <div class="weight-bold-text">
-        記事タイトル
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :title, class:"articles-title", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="articles-explain">
-        <div class="weight-bold-text">
-          素材・材料
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_area :ingredients, class:"articles-text", id:"item-info", placeholder:"材料・素材・参考テキストの紹介欄（必須 1,000文字まで）例）・キムチ：100g、コチュジャン：大さじ2、ごま油：小さじ1、粉唐辛子：小さじ1、ダシダ：小さじ1/2  等" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-      <div class="articles-explain">
-        <div class="weight-bold-text">
-          記事本文
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）①調味料を混ぜ合わせる  ②鍋で肉を炒める  ③出汁スープを入れる  等" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-      <div class="articles-explain">
-        <div class="weight-bold-text">
-          コツやポイント
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_area :trick, class:"articles-text", id:"item-info", placeholder:"コツやポイントの説明（必須 1,000文字まで）例）キムチの残り汁を入れるとうま味UP！  生地は最低でも3時間冷蔵庫で寝かせましょう！  等" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-    </div>
-    <div class="articles-explain">
-        <div class="weight-bold-text">
-          タグ
-        </div>
-        <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"articles-text", id: 'tag_ids', data: {role: "tagsinput"}, placeholder:",で区切ります" %>
-      <div id="search-result">
-      </div>
-    </div>
-    <%# /記事本文 %>
-
-    <%# プラザ選択 %>
-    <div class="choice-plaza">
-      <div class="form">
-        <div class="weight-bold-text">
-          カテゴリー
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-      </div>
-    </div>
-    <%# /プラザ選択 %>
-
-    <%# 下部ボタン %>
-    <div class="send-btn-contents">
-      <div class="btn">
-        <%= f.submit "投稿する", class:"send-btn" %>
-      </div>
-      <div class="btn">
-        <%= link_to 'もどる', root_path, class:"back-btn" %>
-      </div>
-    </div>
-    <%# /下部ボタン %>
+    <%= render "form" %>
   </div>
-  <% end %>
 
   <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">K.ch利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-    <p class="inc">
-      ©︎Furima,Inc.
-    </p>
+    <%= render "shared/footer_light_ver" %>
   </footer>
 </div>
