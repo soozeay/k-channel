@@ -1,12 +1,18 @@
 <%= render "shared/header" %>
 <div class="post-bar">
-  <div class="link-post-btn">
-    <%= link_to '投稿する', new_article_path, class: "post-btn"%>
+  <div class="post-btn">
+    <%= link_to  new_article_path, class: "post-btn" do%>
+      投稿する <i class="fas fa-pencil-alt"></i>
+    <% end %>
   </div>
   <div class="edit-bar">
     <% if current_user.id == @article.user_id %>
-      <%= link_to "記事の編集", edit_article_path, class: "edit-btn" %>
-      <%= link_to "記事の削除", article_path, method: :delete, class:"destroy-btn" %>
+      <%= link_to edit_article_path, class: "edit-btn" do%>
+        編集する <i class="fas fa-spell-check"></i>
+      <% end %>
+      <%= link_to article_path, method: :delete, class:"destroy-btn" do %>
+        削除する <i class="fas fa-trash-alt"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -37,7 +43,7 @@
         <li class="tag-name">
           <% @article.tags.each do |tag| %>
           <%= link_to articles_path(tag: tag.name) do%>
-            #<%= tag.name %>
+            <span class="badge badge-info">#<%= tag.name %></span>
           <%end %>
           <%end%>
         </li>
@@ -45,13 +51,6 @@
       <% else %> #タグはついていません
       <% end %>
     </div>
-
-    <% if current_user.already_liked?(@article) %>
-      <%= button_to 'いいねを取り消す', article_like_path(@article), method: :delete %>：<%= @article.likes.count %>
-    <% else %>
-      <%= button_to 'いいね', article_likes_path(@article) %>：<%= @article.likes.count %>
-    <% end %>
-
     <div class="article-desc">
       <div class="content-header">
         投稿記事本文
@@ -65,8 +64,20 @@
       <div class="content-area">
         <%= @article.trick %>
       </div>
+      <div class="like-btn">
+        <% if current_user.already_liked?(@article) %>
+          <%= button_to  article_like_path(@article), method: :delete, class:"thumbs-up-btn", style:"color: black" do %>
+            <i class="fas fa-thumbs-up fa-3x"></i>
+          <% end %>
+        <% else %>
+          <%= button_to article_likes_path(@article), class:"thumbs-up-btn", style:"color: #a64456" do %>
+            <i class="fas fa-thumbs-up fa-3x"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+
   <%# /記事本文 %>
   
   <div class="comment-box">
@@ -76,12 +87,15 @@
     <div class="comments-index">
       <%= render partial:"comments", locals: {comment: @comment} %>
     </div>
-    <div class="form-box">
+    <ul class="form-box">
       <% if user_signed_in? %>
-        <%= form_with model: [@article, @comment], local: true do |f| %>
-          <% f.label :comment, 'コメントの送信' %>
-          <%= f.text_field :comment, class:"comment-text" %>
-          <%= f.submit "コメントする", class: "comment-btn" %>
+        <li><%= form_with model: [@article, @comment], local: true do |f| %>
+            <% f.label :comment, 'コメントの送信' %>
+            <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %></li>
+          <div>
+            <%= f.submit "送信", class: "comment-btn" %>
+          </div>
+    </ul>
           <p class="comment-warn">
           相手のことを考え丁寧なコメントを心がけましょう。
           <br>
@@ -92,9 +106,4 @@
     </div>
   </div>
 </div>
-
-<div class="link-boxes">
-  <%= link_to "「#{@article.plaza.name}」 の記事をもっと見る", articles_path(plaza_id: 1), class:"another-item" %>
-</div>
-
 <%= render "shared/footer" %>

@@ -1,3 +1,10 @@
+/* ヘッダー部 */
+.edit-bar{
+  width: 40vw;
+  padding: 0 20px;
+}
+
+
 /* 商品の概要 */
 
 .show-containor{
@@ -88,101 +95,50 @@
   font-weight: bold;
   color: #FFF;
   padding: 10px;
-  margin-right: 20px;
-}
-
-.or-text {
-  font-size: 20px;
+  margin-right: 40px;
+  border-radius: 3px;
 }
 
 .destroy-btn {
   background-color: lightgray;
+  border-radius: 3px;
   text-align: center;
   font-weight: bold;
   color: black;
   padding: 10px;
 }
-
-.item-explain-box {
-  font-size: 18px;
-  margin: 40px 0px;
-  overflow-wrap: anywhere;
-}
-
-.detail-table {
-  margin-bottom: 30px;
-  width: 60vw;
-}
-
-.detail-item {
-  width: 20%;
-  background-color: #eee;
-  border: 1px solid #dedede;
-  font-size: 14px;
-  text-align: center;
-}
-
-.detail-value {
-  width: 80%;
-  padding: 20px;
-  border: 1px solid #dedede;
-  font-size: 14px;
-}
-
-.option {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.favorite-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  color: rgb(249, 75, 0);
-  border: 2px solid #ffb340;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.favorite-star-icon {
-  margin-right: 5px;
-}
-
-.report-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-
-  padding: 1vh 0;
-  color: black;
-  border: 2px solid #2d2d2d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.report-flag-icon {
-  margin-right: 5px;
-}
-
-
 /* /商品の概要 */
+
+/* タグ */
+.tag-name{
+  font-size: 20px;
+}
+/* /タグ */
+
+.thumbs-up-btn{
+  border: none;
+  background-color: #fff;
+}
+
+
+/* コメント */
 
 .comment-box {
   width: 40vw;
-  background-color: #fff;
-  padding: 20vh 0 0 0;
+  padding: 20vh 40px;
 }
 
-.comment-text {
-  width: 100%;
-  padding: 10px;
-  border: solid 2px #dedede;
+.form-box{
+  padding: 0 20px;
+  display: flex;
+}
+
+.send-comment-text {
+  width: 90%;
+  padding: 7px;
+  border: solid 2px #bf8188;
+  border-radius: 3px;
   resize: none;
-  margin-bottom: 30px;
 }
 
 .comment-warn {
@@ -193,49 +149,15 @@
 }
 
 .comment-btn {
-  line-height: 35px;
-  background-color: lightgray;
+  line-height: 40px;
+  background-color: #44281e;
   color: #fff;
-  width: 50%;
-  min-width: 150px;
+  width: 20%;
+  min-width: 80px;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 3px;
   margin-bottom: 2vh;
-}
-
-.comment-flag {
-  display: flex;
-  justify-content: center;
-}
-
-.comment-flag-icon {
-  margin: 10px 5px 0 0;
-}
-
-.link-boxes{
-  text-align: center;
-  width: 100vw;
-}
-
-.links {
-  justify-content: space-between;
-  width: 50vw;
-
-}
-
-.change-item-btn {
-  font-size: 30px;
-  text-decoration: none;
-  color: #3CCACE;
-}
-
-.another-item {
-  display: block;
-  margin: 30px 0px 8px;
-  color: #3CCACE;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 23px;
+  border: none;
 }
 
 .all-comments-box{
@@ -246,21 +168,34 @@
   max-height: 300px;
   margin-bottom: 20px;
   overflow: scroll;
+  border: 2px solid #bf8188;
+  border-radius: 5px;
+
 }
 
 .comments-title{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .comments_lists{
   font-size: 15px;
+  display: block;
 }
 
-.comments_list{
-  margin-bottom: 25px;
-  border-bottom: 1px solid #3CCACE;
+.comment_info{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #bf8188;
 }
 
-.form-box{
-  padding: 0 20px;
+.comment_user{
+  font-size: 12px;
+  margin: 20px 0 3px 0;
 }
+
+.comments_text{
+  margin-right: 25px;
+  font-weight: bold;
+}
+
+/* /コメント */
