@@ -1,4 +1,4 @@
-<% if current_user.followings.present? %>
+<% if @user.followings.present? %>
   <% follow_users.each do |f|%>
     <% follow_user = User.find(f.id) %>
     <div class="partner-box">
