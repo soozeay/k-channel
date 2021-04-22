@@ -1,7 +1,7 @@
 /* ログイン後の表示 */
 .post-bar{
   height: 8vh;
-  background-color: dimgray;
+  background-color: #fff;
   text-align: center;
   align-items: center;
   display: flex;
@@ -13,12 +13,13 @@
 
 .post-btn{
   text-align: center;
-  background-color:#3ccace;
+  background-color:#a64456;
   font-weight: bold;
   color: #FFF;
   padding: 10px;
   margin: 0 auto;
   border: none;
+  border-radius: 3px;
 }
 
 .notifications-icon{

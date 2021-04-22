@@ -31,7 +31,7 @@
   width: 5vh;
   border: 0;
   cursor: pointer;
-  background-color: #3ccace;
+  background-color: #a64456;
   padding: 6px;
 }
 
@@ -74,6 +74,10 @@
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
+}
+
+.header-icons{
+  margin-right: 20px;
 }
 
 
