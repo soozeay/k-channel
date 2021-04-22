@@ -7,6 +7,7 @@
   padding: 2vh 3vw;
   display: flex;
   flex-direction: column;
+  background-color: #bf8188;
 }
 
 .kch-icon {
@@ -31,7 +32,7 @@
   width: 5vh;
   border: 0;
   cursor: pointer;
-  background-color: #3ccace;
+  background-color: #44281e;
   padding: 6px;
 }
 
@@ -74,6 +75,10 @@
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
+}
+
+.header-icons{
+  margin-right: 20px;
 }
 
 

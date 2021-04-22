@@ -1,18 +1,7 @@
 <div class="post-bar">
   <div class="link">
-    <%= link_to '投稿する', new_article_path, class: "post-btn"%>
-  </div>
-
-  <div class="notifications-icon">
-    <div class="demo">
-      <%= link_to rooms_path do %>
-        <i class="far fa-envelope"></i>
-      <% end %>
-    </div>
-    <div class="demo">
-      <%= link_to notifications_path do %>
-        <i class="far fa-bell fa-3x" style="color: #f0f0f0;" id="notifications"></i>
-      <% end %>
-    </div>
+    <%= link_to new_article_path, class: "post-btn" do%>
+      投稿する <i class="fas fa-pencil-alt"></i>
+    <% end %>
   </div>
 </div>
