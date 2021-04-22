@@ -5,18 +5,26 @@
       <%= link_to user_path(f.id), class: "room" do %>
         <div class="img-box">
           <% if follow_user.avatar.attached? %>
-            <%= image_tag(rails_blob_path(follow_user.avatar), size: "35x35", class: "img-circle") %>
+            <%= image_tag(rails_blob_path(follow_user.avatar), size: "50x50", class: "img-circle") %>
           <% else %>
-            <%= image_tag("default_user.png", size: "35x35", class: "img-circle") %>
+            <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
           <% end %>
         </div>
       <% end %>
-    </div>
-    <div class="follow-user-name">
-      <%= follow_user.nickname + "さん" %>
-    </div>
-    <div class="follow-user-info">
-      <%= follow_user.intro %>
+      <div class="relationship-user-info">
+        <div class="relationship-user-name">
+          <%= link_to user_path(f.id) do%>
+            <%= follow_user.nickname + "さん" %>
+          <% end %>
+        </div>
+        <div class="relationship-user-intro">
+          <% if follow_user.intro.present? %>
+            <%= follow_user.intro %>
+          <% else %>
+            <%= '紹介文はありません' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% else %>
