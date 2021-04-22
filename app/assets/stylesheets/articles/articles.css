@@ -1,0 +1,126 @@
+/* ログイン後の表示 */
+.post-bar{
+  height: 8vh;
+  background-color: dimgray;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+
+.link{
+  margin: 0 auto;
+}
+
+.post-btn{
+  text-align: center;
+  background-color:#3ccace;
+  font-weight: bold;
+  color: #FFF;
+  padding: 10px;
+  margin: 0 auto;
+  border: none;
+}
+
+.notifications-icon{
+  width: 25vw;
+  height: 100%;
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo{
+  margin: 0 auto;
+}
+
+.secound-main{
+  display: flex;
+}
+
+.side-bar{
+  width: 20vw;
+  background-color: blue;
+  padding: 20px;
+}
+
+.main-bar{
+  width: calc(100vw - 20vw);
+  background-color: coral;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.plaza-list{
+  background-color: gold;
+  margin-bottom: 30px;
+}
+
+.plaza-header{
+  font-size: 20px;
+  border-bottom: 1px solid #3ccace;
+  margin-bottom: 5px;
+  background-color: firebrick;
+}
+
+.plaza-name{
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: firebrick;
+}
+
+.article-box{
+  min-height: 40vh;
+  background-color: green;
+  width: 36vh;
+  margin: 20px;
+  padding: 3vh 10px;
+}
+
+.article-title-name{
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.article-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.article-user{
+  font-size: 13px;
+}
+
+.item-img{
+  width: 33vh;
+  height: 33vh;
+}
+
+.check{
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.created-time{
+  font-size: 13px;
+  color: darkgray;
+}
+
+.tags{
+  height: 3vh;
+  margin-bottom: 10px;
+}
+
+.tag{
+  color: darkblue;
+}
+
+
+/* //ログイン後の表示 */
