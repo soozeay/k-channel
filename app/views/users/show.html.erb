@@ -80,12 +80,30 @@
       </div>
     </div>
   </div>
-  <div class="articles-box">
-    <div class="article-index-title">
-      <%= @user.nickname + " さんの投稿一覧" %>
+  <div class="articles-box" id="js-tab">
+    <div class="user-nav-bar">
+      <div class="nav-title">
+        <% if @user == current_user %>
+          <a href="", class="tab-nav-item is-active" data-nav="0"><%= '自分の投稿' %></a>
+        <% else %>
+          <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
+        <% end %>
+        <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
+        <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
+        <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
+      </div>
     </div>
-    <div class="user-articles">
-    <%= render partial: "articles/article", collection: @articles %>
+    <div class="nav-items" data-content="0">
+      <%= render partial: "articles/article", collection: @articles, locals: {article: @article} %>
+    </div>
+    <div class="nav-items" data-content="1">
+      <%= render "follow" %>
+    </div>
+    <div class="nav-items" data-content="2">
+      <%= render "follower" %>
+    </div>
+    <div class="nav-items" data-content="3">
+      <%= render "like" %>
     </div>
   </div>
 </div>

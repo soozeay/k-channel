@@ -1,0 +1,50 @@
+<% if @user.likes.present? %>
+<% like_articles %>
+<% @like_articles.each do |f| %>
+  <% article = Article.find(f.article_id) %>
+  <div class="article-box">
+    <%= link_to article_path(article.id) do %>
+      <% if article.image.present? %>
+        <%= image_tag article.image, class: "item-img" %>
+      <% else %>
+        <%= image_tag("dammy-cover.png", class: "item-img") %> 
+      <% end %>
+    <% end %>
+    <%= link_to article_path(article.id) do %>
+      <div class="article-body">
+        <h3 class="article-title-name">
+          <%= article.title %>
+          <% if article.youtube_url.present? %>
+          <span class="check">動画有</span>
+          <% end %>
+        </h3>
+      </div>
+    <% end %>
+    <div class="tags">
+    <% if @tags.present? %>
+    <ul class="tag">
+        <li class="tag-list">
+          <% article.tags.each do |tag| %>
+            <%= link_to articles_path(tag: tag.name) do%>
+              <span class="badge badge-info">#<%= tag.name %></span>
+            <%end %>
+          <%end%>
+        </li>
+      </ul>
+      <% index +=1 %>
+      <% end %>
+    </div>
+
+    <div class="article-body">
+      <div class="article-user">
+        <%= link_to "by " + article.user.nickname, user_path(article.user_id) %>
+      </div>
+      <div class="created-time">
+        <%= time_ago_in_words(article.created_at) %>前
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <h6>いいねした記事はありません</h6>
+<% end %>
