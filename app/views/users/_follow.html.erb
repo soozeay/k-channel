@@ -3,12 +3,19 @@
     <% follow_user = User.find(f.id) %>
     <div class="partner-box">
       <%= link_to user_path(f.id), class: "room" do %>
-        <div class="img-box">
+        <div class="relation-user-img-box">
           <% if follow_user.avatar.attached? %>
             <%= image_tag(rails_blob_path(follow_user.avatar), size: "50x50", class: "img-circle") %>
           <% else %>
             <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
           <% end %>
+          <div class="relation-user-country">
+            <% if follow_user.country_id == 1 %>
+              <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
+            <% else %>
+              <%= image_tag("country_korea.png", size: "20x20", class: "country-img") %> 
+            <% end %>
+          </div>
         </div>
       <% end %>
       <div class="relationship-user-info">
@@ -19,7 +26,7 @@
         </div>
         <div class="relationship-user-intro">
           <% if follow_user.intro.present? %>
-            <%= follow_user.intro %>
+            <%= follow_user.intro.slice(1..9) + '…' %>
           <% else %>
             <%= '紹介文はありません' %>
           <% end %>
