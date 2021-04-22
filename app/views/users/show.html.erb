@@ -83,7 +83,11 @@
   <div class="articles-box" id="js-tab">
     <div class="user-nav-bar">
       <div class="nav-title">
-        <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
+        <% if @user == current_user %>
+          <a href="", class="tab-nav-item is-active" data-nav="0"><%= '自分の投稿' %></a>
+        <% else %>
+          <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
+        <% end %>
         <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
         <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
         <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
