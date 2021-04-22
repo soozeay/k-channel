@@ -6,7 +6,7 @@
       <li class='input-box'><%= search_form_for(@search, url: articles_path, class: "search-form") do |f| %>
             <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
             <div class="search-button">
-                <%= image_submit_tag("search.png" ,class:"search-icon") %>
+                <i class="fas fa-search" style=" color: #fff"></i>
             </div>
           <% end %>
       </li>
@@ -14,10 +14,10 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li class="header-icons"><%= link_to rooms_path do %>
-          <i class="fas fa-envelope fa-2x" style="color: #a64456"></i>
+          <i class="fas fa-envelope fa-2x" style="color: #44281e"></i>
           <% end %></li>
         <li class="header-icons"><%= link_to notifications_path do %>
-              <i class="fas fa-bell fa-2x" style="color: #a64456" id="notifications"></i>
+              <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
             <% end %></li>
         <li class="header-icons"><%= link_to user_path(current_user), class: "user-nickname"  do%>
               マイページ <i class="fas fa-home"></i>
