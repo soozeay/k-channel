@@ -65,13 +65,15 @@
         <%= @article.trick %>
       </div>
       <div class="like-btn">
-        <% if current_user.already_liked?(@article) %>
-          <%= button_to  article_like_path(@article), method: :delete, class:"thumbs-up-btn", style:"color: black" do %>
-            <i class="fas fa-thumbs-up fa-3x"></i>
-          <% end %>
-        <% else %>
-          <%= button_to article_likes_path(@article), class:"thumbs-up-btn", style:"color: #a64456" do %>
-            <i class="fas fa-thumbs-up fa-3x"></i>
+        <% if @article.user_id != current_user.id %>
+          <% if current_user.already_liked?(@article) %>
+            <%= button_to  article_like_path(@article), method: :delete, class:"thumbs-up-btn", style:"color: black" do %>
+              <i class="fas fa-thumbs-up fa-3x"></i>
+            <% end %>
+          <% else %>
+            <%= button_to article_likes_path(@article), class:"thumbs-up-btn", style:"color: #a64456" do %>
+              <i class="fas fa-thumbs-up fa-3x"></i>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -85,25 +87,28 @@
       コメント一覧
     </h3>
     <div class="comments-index">
+      <% unless @comment.present? %>
+        <%= "コメントはまだありません" %>
+      <% end %>
       <%= render partial:"comments", locals: {comment: @comment} %>
     </div>
-    <ul class="form-box">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <ul class="form-box">
         <li><%= form_with model: [@article, @comment], local: true do |f| %>
             <% f.label :comment, 'コメントの送信' %>
-            <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %></li>
-          <div>
-            <%= f.submit "送信", class: "comment-btn" %>
-          </div>
-    </ul>
-          <p class="comment-warn">
-          相手のことを考え丁寧なコメントを心がけましょう。
-          <br>
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          </p>
+            <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
+        </li>
+        <div>
+          <%= f.submit "送信", class: "comment-btn" %>
+        </div>
         <% end %>
-      <% end %>
-    </div>
+      </ul>
+      <p class="comment-warn">
+      相手のことを考え丁寧なコメントを心がけましょう。
+      <br>
+      不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+    <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>

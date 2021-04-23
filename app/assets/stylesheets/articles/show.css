@@ -180,6 +180,7 @@
 .comments_lists{
   font-size: 15px;
   display: block;
+  min-height: 50px;
 }
 
 .comment_info{
