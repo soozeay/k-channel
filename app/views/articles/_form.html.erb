@@ -28,13 +28,13 @@
     記事タイトル
     <span class="indispensable">必須</span>
   </div>
-  <%= f.text_area :title, class:"articles-title", id:"item-name", placeholder:"タイトル（必須 40文字まで)   例）話題のグルメ日本初上陸！", maxlength:"40" %>
+  <%= f.text_area :title, class:"new-article-title", id:"item-name", placeholder:"タイトル（必須 40文字まで)   例）話題のグルメ日本初上陸！", maxlength:"40" %>
   <div class="articles-explain">
     <div class="weight-bold-text">
       記事本文
       <span class="indispensable">必須</span>
     </div>
-    <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）\n例）先週、新大久保に焼肉屋「Good Calvi」がオープンしました。先行レポートをお届けします…" ,rows:"7" ,maxlength:"1000" %>
+    <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"記事の本文を記述（必須 1,000文字まで）例）先週、新大久保に焼肉屋「Good Calvi」がオープンしました。先行レポートをお届けします…" ,rows:"7" ,maxlength:"1000" %>
   </div>
   <div class="articles-explain">
     <div class="weight-bold-text">
@@ -65,11 +65,13 @@
 
 <%# 下部ボタン %>
   <div class="send-btn-contents">
-    <div class="btn">
-      <%= f.submit "送信する", class:"send-btn" %>
+    <div class="register-btn">
+      <%= f.button :type => "submit", class:"register-red-btn", style:'border-style: none;' do %>
+        送信 <i class="fas fa-paper-plane"></i>
+      <% end %>
     </div>
-    <div class="btn">
-      <%= link_to 'もどる', root_path, class:"back-btn" %>
+    <div class="register-btn">
+      <%= link_to 'もどる', root_path, class:"register-red-btn", style:"background-color: #aaa" %>
     </div>
   </div>
   <%# /下部ボタン %>

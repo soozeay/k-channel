@@ -7,8 +7,6 @@
   justify-content: center;
 }
 
-
-/* form-wrapは商品購入画面でも使用しています */
 .form-wrap {
   width: 50%;
   background-color: white;
@@ -23,9 +21,10 @@
 }
 
 .form-header-text {
-  line-height: 100px;
+  line-height: 80px;
   border-bottom: 1px solid #f5f5f5;
   font-weight: bold;
+  border-bottom: 2px solid #bf8188;
 }
 
 .form-group {
@@ -130,7 +129,6 @@
 
 .form-bottom-text:last-child {
   margin: 0;
-  padding-bottom: 50px;
 }
 
 .form-bottom-text>span {
@@ -139,24 +137,28 @@
 }
 
 .register-btn {
-  width: 50%;
-  margin: 0 auto;
+  width: 20%;
+  margin: 30px auto 0;
+  justify-content: space-around;
 }
 
 .register-red-btn {
   width: 100%;
-  background: #ea352d;
-  border: 1px solid #ea352d;
+  background: #44281e;
+  border: none;
   color: #fff;
-  line-height: 48px;
-  font-size: 14px;
+  line-height: 40px;
+  font-size: 19px;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 5px;
+  margin: 0 auto;
 }
 
 .register-info {
-  margin: 30px 180px 0 0;
+  margin: 30px auto 0;
   color: #0099e8;
-  text-align: right;
+  text-align: center;
   cursor: pointer;
 }
 
