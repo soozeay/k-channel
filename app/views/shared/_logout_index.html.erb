@@ -76,33 +76,3 @@
   </div>
 </div>
 <%# /画面中央の「韓国好きが集まる場所、K.ch」帯部分 %>
-
-<%# トップ記事 %>
-<div class='pickup-articles'>
-  <h2 class='title'>ピックアップコンテンツ</h2>
-  <%= link_to '注目の記事', "#", class: "subtitle" %>
-  <ul class='article-lists'>
-
-    <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-    <%# 商品がある場合は表示されないようにしましょう %>
-    <li class='list'>
-      <%= link_to '#' do %>
-      <div class='aticle-img-content'>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "article-img" %>
-      </div>
-      <div class='article-info'>
-        <h3 class='article-name'>
-          <%= "乞うご期待！" %>
-        </h3>
-          <div class='star-btn'>
-            <%= image_tag "star.png", class:"star-icon" %>
-            <span class='star-count'>0</span>
-          </div>
-      </div>
-      <% end %>
-    </li>
-    <%# //商品がある場合は表示されないようにしましょう %>
-    <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-  </ul>
-</div>
-<%# /トップ記事 %>
