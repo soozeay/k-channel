@@ -110,6 +110,9 @@
 .created-time{
   font-size: 13px;
   color: darkgray;
+  right: 0;
+  width: auto;
+  text-align: end;
 }
 
 .tags{
