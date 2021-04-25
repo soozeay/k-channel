@@ -4,50 +4,6 @@
 * {
   box-sizing: border-box;
 }
-
-.profile-box{
-  display: flex;
-  width: calc(100vw - 20vw);
-  height: 50vh;
-}
-
-.profile-bar{
-  height: 50vh;
-  width: 50%;
-}
-
-.cover-images{
-  height: 50vh;
-  width: 50%;
-  position: relative;
-}
-
-.cover-img{
-  position: absolute;
-  height: 40vh;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-  object-fit:scale-down;
-}
-
-.pofile-image-name{
-  width: 100%;
-  height: 20vh;
-  position: relative;
-  display: flex;
-}
-
-.icon-box{
-  width: 120px;
-  height: 100%;
-  position: relative;
-}
-
 .set-center{
   position: absolute;
   margin: auto;
@@ -57,16 +13,11 @@
   right: 0;
 }
 
-.user-icon{
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
-.coutry-icon{
+.set-bottom{
   position: absolute;
-  right: 0;
   bottom: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
 }
 
 .name-box{
@@ -77,15 +28,22 @@
   align-items: center;
 }
 
-.user-name{
+.user-name-box{
   height: 55%;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: bold;
   width: 60%;
-  padding: auto;
-  border-bottom: 1px solid #3CCACE;
+  border-bottom: 1px solid #bf8188;
   margin: 0 auto 10px;
   align-items: center;
+  position: relative;
+}
+
+.user-name{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .sub-profile{
@@ -99,23 +57,6 @@
   font-size: 13px;
   color: darkgray;
   font-weight: bold;
-}
-
-.user-registration-day{
-  font-size: 13px;
-  color: darkgray;
-  font-weight: bold;
-}
-
-.edit-profile-icon{
-  position: absolute;
-  width: 55%;
-  border: 2px solid #3CCACE;
-  padding: 10px;
-  border-radius: 10px;
-  z-index: 2;
-  font-weight: bold;
-  left: 8vw;
 }
 
 .intro-box{
