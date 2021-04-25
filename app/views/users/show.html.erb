@@ -1,5 +1,18 @@
 <%= render "shared/header" %>
-<%= render "shared/post-bar" %>
+<div class="post-bar">
+  <div class="post-btn">
+    <%= link_to  new_article_path, class: "post-btn" do%>
+      投稿する <i class="fas fa-pencil-alt"></i>
+    <% end %>
+  </div>
+  <div class="edit-bar">
+    <% if @user == current_user %>
+      <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
+        ログアウト <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <%= render "shared/side-bar" %>
 <div class="user-main-page">
   <div class="profile-box">

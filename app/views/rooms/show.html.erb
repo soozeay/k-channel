@@ -1,9 +1,7 @@
 <%= render "shared/header" %>
 <%= render "shared/post-bar" %>
 <%= render "shared/side-bar" %>
-<div class="message-rooms">
-  <%= render "rooms" %>
-</div>
+<%= render "rooms" %>
 <div class="chats">
   <div class="chat">
     <div class="msg_history pt-2" id="msg-history">
@@ -11,32 +9,54 @@
         <% if @messages.present? %>
           <% @messages.each do |m| %>
             <% if m.user.id == current_user.id %> <%# 自分にプロフィールアイコンは表示しない %>
-              <div class="outgoing_msg" >
-                <div class="sent_msg">
-                  <p><%= m.content %></p>
-                  <span class="time_date"><%= time_ago_in_words(m.created_at) %>前</span>
+              <div class="outgoing-msg" >
+                <div class="sent-msg">
+                  <div class="msg-content">
+                    <%= m.content %>
+                  </div>
+                  <div class="created-time">
+                    <%= time_ago_in_words(m.created_at) %>前
+                  </div>
                 </div>
               </div>
             <% else %> <%# トーク相手はプロフィール画像を表示 %>
-              <div class="incoming_msg">
-                <div class="incoming_msg_img"> 
-                  <%= link_to user_path(m.user.id) do %>
-                    <% if m.user.avatar.attached? %>
-                      <%= image_tag(rails_blob_path(m.user.avatar), size: "35x35", class: "img-circle") %>
-                    <% else %>
-                      <%= image_tag("default_user.png", size: "35x35", class: "img-circle") %>
+              <div class="incoming-msg">
+                <div class="img-box"> 
+                  <div class="avatar-img">
+                    <%= link_to user_path(m.user.id) do %>
+                      <% if m.user.avatar.attached? %>
+                        <%= image_tag(rails_blob_path(m.user.avatar), size: "50x50", class: "img-circle") %>
+                      <% else %>
+                        <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
+                      <% end %>
+                      <div class="relation-user-country">
+                        <% if m.user.country_id == 1 %>
+                          <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
+                        <% else %>
+                          <%= image_tag("country_korea.png", size: "20x20", class: "country-img") %> 
+                        <% end %>
+                      </div>
                     <% end %>
-                  <% end %>
-                </div>
-                <div class="received_msg">
-                  <div class="received_withd_msg">
-                    <p><%= m.content %></p>
-                    <span class="time_date"><%= time_ago_in_words(m.created_at) %>前</span>
                   </div>
+                </div>
+                <div class="partner-info">
+                  <div class="partner-name">
+                    <%= m.user.nickname %>
+                  </div>
+                  <div class="received-msg">
+                    <div class="received_withd_msg">
+                      <%= m.content %>
+                    </div>
+                    <div class="created-time">
+                      <%= time_ago_in_words(m.created_at) %>前
+                    </div>
+                  </div> 
                 </div>
               </div>
             <% end %>
           <% end %>
+        <% else %>
+          <%= 'メッセージはありません' %>
         <% end %>
       </div>
     </div>
@@ -45,8 +65,8 @@
     <%= form_with model: @message do |f| %>
       <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= button_tag type: 'submit', class: "msg_send_btn"  do %>
-        <i class="fas fa-comment-alt"></i>
+      <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
+        送信 <i class="fas fa-paper-plane"></i>
       <% end %>
     <% end %>
   </div>

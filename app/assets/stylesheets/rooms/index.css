@@ -1,0 +1,48 @@
+.room-container{
+  margin-left: 30px;
+  width: 30vw;
+  padding: 40px;
+}
+
+.room-header{
+  margin-bottom: 40px;
+  border-bottom: 1px solid #bf8188;
+}
+
+.message-partner-box{
+  width: 100%;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #bf8188;
+}
+
+.room{
+  display: flex;
+}
+
+.img-box{
+  position: relative;
+}
+
+.img-circle{
+  border-radius: 50%;
+}
+
+.partner-info{
+  width: 100%;
+  margin-left: 15px;
+}
+
+.partner-name{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.partner-details{
+  display: flex;
+  justify-content: space-between;
+}
+
+.latest-message{
+  font-size: 14px;
+  color: gray;
+}

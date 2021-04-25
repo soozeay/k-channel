@@ -47,7 +47,7 @@
     <div class="weight-bold-text">
       タグ
     </div>
-    <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"articles-text", data: {role: "tagsinput"}, placeholder:",で区切ります。（5つまで）" %>
+    <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"input-tag-area", data: {role: "tagsinput"}, placeholder:"5つまで入力できます" %>
 </div>
 <%# /記事本文 %>
 
@@ -66,7 +66,7 @@
 <%# 下部ボタン %>
   <div class="send-btn-contents">
     <div class="register-btn">
-      <%= f.button :type => "submit", class:"register-red-btn", style:'border-style: none;' do %>
+      <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
         送信 <i class="fas fa-paper-plane"></i>
       <% end %>
     </div>

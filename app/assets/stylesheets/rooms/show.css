@@ -1,0 +1,82 @@
+.chats{
+  width: 45vw;
+}
+
+.chat{
+  margin: 40px 20px;
+  width: 90%;
+  padding: 30px;
+  border: 2px solid #bf8188;
+  border-radius: 5px;
+  max-height: 70vh;
+  overflow: scroll;
+}
+
+/*  自身の送信メッセージ */
+
+.outgoing-msg{ 
+  margin: 30px 0;
+  height: auto;
+}
+
+.sent-msg {
+  width: 50%;
+  display: flex;
+  border-bottom: 1px solid #bf8188;
+  margin-left: auto;
+  justify-content: space-between;
+}
+
+.msg-content{
+  font-weight: bold;
+  margin-right: 10px;
+  float: right;
+}
+
+/*  /自身の送信メッセージ */
+
+
+/*  受信側 */
+
+.incoming-msg{
+  display: flex;
+  margin: 30px 0;
+  height: auto;
+  width: 50%;
+  border-bottom: 1px solid #bf8188;
+}
+
+.received-msg {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.received_withd_msg {
+  width: 100%;
+}
+
+.avatar-img{
+  position: relative;
+}
+/* /受信側 */
+
+/*  送信コマンド */
+
+.posts{
+  width: 90%;
+  margin: auto;
+}
+
+.form-text-field{
+  width: 60%;
+}
+
+.mini-send-btn{
+  background: #44281e;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 0 auto;
+}
