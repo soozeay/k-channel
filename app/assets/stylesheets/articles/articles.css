@@ -25,17 +25,13 @@
 .notifications-icon{
   width: 25vw;
   height: 100%;
-  background-color: aqua;
   display: flex;
   justify-content: space-between;
 }
 
-.secound-main{
-  display: flex;
-}
-
 .side-bar{
   width: 20vw;
+  height: 100%;
   padding: 20px;
   border: 1px solid #d0bfc7;
 }
