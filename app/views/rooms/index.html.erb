@@ -1,7 +1,11 @@
 <%= render "shared/header" %>
 <%= render "shared/post-bar" %>
-<%= render "shared/side-bar" %>
-<%= render "rooms" %>
-<div class="mesgs pt-5 text-center">
-  <h4>メッセージを始めよう！</h4>
+<div class='main'>
+  <%= render "shared/side-bar" %>
+  <div class="main-bar">
+    <%= render "rooms" %>
+    <div class="mesgs pt-5 text-center">
+      <h4>メッセージを始めよう！</h4>
+    </div>
+  </div>
 </div>

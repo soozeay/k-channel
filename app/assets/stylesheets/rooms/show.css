@@ -76,7 +76,7 @@
 .mini-send-btn{
   background: #44281e;
   border: none;
-  color: #fff;
+  color: #fff !important;
   cursor: pointer;
   border-radius: 3px;
   margin: 0 auto;

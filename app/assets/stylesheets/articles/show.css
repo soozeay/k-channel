@@ -7,7 +7,7 @@
 
 /* 商品の概要 */
 
-.show-containor{
+.show-container{
   display: flex;
   justify-content: space-between;
 }
@@ -77,7 +77,7 @@
 
 .content-header{
   font-size: 20px;
-  border-bottom: 2px solid #3CCACA;
+  border-bottom: 2px solid #bf8188;
 }
 
 .content-area{
@@ -110,9 +110,11 @@
 /* /商品の概要 */
 
 /* タグ */
+
 .tag-name{
   font-size: 20px;
 }
+
 /* /タグ */
 
 .thumbs-up-btn{
@@ -125,7 +127,7 @@
 
 .comment-box {
   width: 40vw;
-  padding: 20vh 40px;
+  padding: 40px;
 }
 
 .form-box{
@@ -161,7 +163,7 @@
 }
 
 .all-comments-box{
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .comments-index{

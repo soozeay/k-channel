@@ -14,118 +14,120 @@
   </div>
 </div>
 
-<%= render "shared/side-bar" %>
+<div class='main'>
+  <%= render "shared/side-bar" %>
 
-<div class="user-main-page">
-  <div class="profile-box">
-    <div class="cover-images">
-      <% if @user.cover.attached? %>
-        <%= image_tag(@user.cover, class: "cover-img") %>
-      <% else %>
-        <%= image_tag("dammy-cover.png", class: "cover-img") %> 
-      <% end %>
-    </div>
-    <div class="profile-bar">
-      <div class="pofile-container">
-        <div class="icon-box">
-          <div class="user-icon-box set-center">
-            <% if @user.avatar.attached? %>
-              <%= image_tag(@user.avatar, size: "100x100", class: "user-icon set-center") %>
-            <% else %>
-              <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
-            <% end %>
-          </div>
-          <div class="coutry-icon">
-            <% if @user.country_id == 1 %>
-              <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
-            <% else %>
-              <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
-            <% end %>
-          </div>
-        </div>
-        <div class="name-box">
-          <div class="user-name-box">
-            <div class="user-name"><%= @user.nickname %></div>
-          </div>
-          <% unless @user.id == current_user.id %>
-            <% if (current_user.following? @user) && (@user.following? current_user) %>
-              <% if @isRoom == true %>
-                <div class="user-show-room">
-                <%= link_to 'チャットへ', room_path(@roomId), class:"mini-send-btn" %>
-                </div>
+  <div class="user-main-page">
+    <div class="profile-box">
+      <div class="cover-images">
+        <% if @user.cover.attached? %>
+          <%= image_tag(@user.cover, class: "cover-img") %>
+        <% else %>
+          <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+        <% end %>
+      </div>
+      <div class="profile-bar">
+        <div class="pofile-container">
+          <div class="icon-box">
+            <div class="user-icon-box set-center">
+              <% if @user.avatar.attached? %>
+                <%= image_tag(@user.avatar, size: "100x100", class: "user-icon set-center") %>
               <% else %>
-                <%= form_with model: @room do |f| %>
-                  <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
+                <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
+              <% end %>
+            </div>
+            <div class="coutry-icon">
+              <% if @user.country_id == 1 %>
+                <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+              <% else %>
+                <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+              <% end %>
+            </div>
+          </div>
+          <div class="name-box">
+            <div class="user-name-box">
+              <div class="user-name"><%= @user.nickname %></div>
+            </div>
+            <% unless @user.id == current_user.id %>
+              <% if (current_user.following? @user) && (@user.following? current_user) %>
+                <% if @isRoom == true %>
+                  <div class="user-show-room">
+                  <%= link_to 'チャットへ', room_path(@roomId), class:"mini-send-btn" %>
+                  </div>
+                <% else %>
+                  <%= form_with model: @room do |f| %>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <% end %>
+                    <%= button_tag type: 'submit', class:"btn btn-primary btn-lg user-show-chat" %>
                   <% end %>
-                  <%= button_tag type: 'submit', class:"btn btn-primary btn-lg user-show-chat" %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-          <div class="sub-profile">
-            <div class="user-age">
-              <%= "#{@user.age} 歳" %>
-              <% if @user.gender_id == 1 %>
-                <i class="fas fa-mars"></i>
-              <% else %>
-                <i class="fas fa-venus"></i>
-              <% end %>
+            <div class="sub-profile">
+              <div class="user-age">
+                <%= "#{@user.age} 歳" %>
+                <% if @user.gender_id == 1 %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-venus"></i>
+                <% end %>
+              </div>
+              <div class="created-time">
+                <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+              </div>
             </div>
-            <div class="created-time">
-              <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+            <% if current_user.id == @user.id %>
+              <div class="edit-profile-icon">
+                <%= link_to edit_user_registration_path(current_user.id), class:"mini-send-btn" do%>
+                  <%= "プロフィールを編集する" %> <i class="fas fa-edit" style="color: #fff;"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="intro-box">
+          <div class="intro-title">
+            自己紹介
+            <div class="user-follow-btn">
+              <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
             </div>
           </div>
-          <% if current_user.id == @user.id %>
-            <div class="edit-profile-icon">
-              <%= link_to edit_user_registration_path(current_user.id), class:"mini-send-btn" do%>
-                <%= "プロフィールを編集する" %> <i class="fas fa-edit" style="color: #fff;"></i>
-              <% end %>
-            </div>
-          <% end %>
+          <div class="intro-text">
+            <% if @user.intro.present? %>
+              <%= @user.intro %>
+            <% else %>
+              自己紹介を追加しましょう！
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="intro-box">
-        <div class="intro-title">
-          自己紹介
-          <div class="user-follow-btn">
-            <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
-          </div>
-        </div>
-        <div class="intro-text">
-          <% if @user.intro.present? %>
-            <%= @user.intro %>
+    </div>
+    <div class="articles-box" id="js-tab">
+      <div class="user-nav-bar">
+        <div class="nav-title">
+          <% if @user == current_user %>
+            <a href="", class="tab-nav-item is-active" data-nav="0"><%= '自分の投稿' %></a>
           <% else %>
-            自己紹介を追加しましょう！
+            <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
           <% end %>
+          <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
+          <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
+          <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="articles-box" id="js-tab">
-    <div class="user-nav-bar">
-      <div class="nav-title">
-        <% if @user == current_user %>
-          <a href="", class="tab-nav-item is-active" data-nav="0"><%= '自分の投稿' %></a>
-        <% else %>
-          <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
-        <% end %>
-        <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
-        <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
-        <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
+      <div class="nav-items" data-content="0">
+        <%= render partial: "articles/article", collection: @articles, locals: {article: @article} %>
       </div>
-    </div>
-    <div class="nav-items" data-content="0">
-      <%= render partial: "articles/article", collection: @articles, locals: {article: @article} %>
-    </div>
-    <div class="nav-items" data-content="1">
-      <%= render "follow" %>
-    </div>
-    <div class="nav-items" data-content="2">
-      <%= render "follower" %>
-    </div>
-    <div class="nav-items" data-content="3">
-      <%= render "like" %>
+      <div class="nav-items" data-content="1">
+        <%= render "follow" %>
+      </div>
+      <div class="nav-items" data-content="2">
+        <%= render "follower" %>
+      </div>
+      <div class="nav-items" data-content="3">
+        <%= render "like" %>
+      </div>
     </div>
   </div>
 </div>
