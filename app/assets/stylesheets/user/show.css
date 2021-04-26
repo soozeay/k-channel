@@ -1,9 +1,68 @@
+.profile-box{
+  display: flex;
+  width: calc(100vw - 20vw);
+  height: 50vh;
+}
 
-/* タブ*/
+.profile-bar{
+  height: 50vh;
+  width: 50%;
+}
+
+.cover-images{
+  height: 50vh;
+  width: 50%;
+  position: relative;
+}
+
+.cover-img{
+  position: absolute;
+  height: 40vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+  object-fit:scale-down;
+}
+
+.pofile-container{
+  width: 80%;
+  height: 20vh;
+  position: relative;
+  display: flex;
+}
+
+.icon-box{
+  width: 120px;
+  height: 100%;
+  position: relative;
+}
+
+.user-icon{
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.coutry-icon{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.edit-profile-icon{
+  color: #fff !important;
+}
+
+/* タブメニュー */
 .user-nav-bar{
   height: 5vh;
   display: flex;
   margin-bottom: 10px;
+  padding: 0 10px;
 }
 
 .nav-title{
@@ -12,34 +71,30 @@
 }
 
 .tab-nav-item{
-  background-color: thistle;
+  background-color: #bf8188;
   border-radius: 3px;
   text-decoration: none;
   font-weight: bold;
   font-size: 19px;
   margin-right: 10px;
   padding: 5px;
+  color: #fff;
 }
 
 .tab-nav-item.is-active{
-  background-color: darkred;
-  color: white;
+  background-color: #44281e;
 }
 
 .nav-items{
-  width: calc(100vw - 80vw);
   height: 100%;
   display: flex;
-}
-
-/* /タブ */
-
-/* フォロー・フォロワー */
-
-.nav-items{
   display: none;
   flex-wrap: wrap;
 }
+
+/* /タブメニュー */
+
+/* フォロー・フォロワー */
 
 .partner-box{
   margin: 0 0 20px 20px;
@@ -51,12 +106,6 @@
 .relation-user-img-box{
   margin-right: 8px;
   position: relative;
-}
-
-.relation-user-country{
- position: absolute;
- right: 0;
- bottom: 0;
 }
 
 .relationship-user-name{

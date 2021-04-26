@@ -70,6 +70,7 @@
 
 .form-text-field{
   width: 60%;
+  padding: 3px;
 }
 
 .mini-send-btn{
@@ -79,4 +80,5 @@
   cursor: pointer;
   border-radius: 3px;
   margin: 0 auto;
+  padding: 5px;
 }
