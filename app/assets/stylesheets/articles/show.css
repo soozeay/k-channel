@@ -7,7 +7,7 @@
 
 /* 商品の概要 */
 
-.show-containor{
+.show-container{
   display: flex;
   justify-content: space-between;
 }
