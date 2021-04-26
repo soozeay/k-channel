@@ -28,8 +28,8 @@
   object-fit:scale-down;
 }
 
-.pofile-image-name{
-  width: 100%;
+.pofile-container{
+  width: 80%;
   height: 20vh;
   position: relative;
   display: flex;
@@ -78,11 +78,11 @@
   font-size: 19px;
   margin-right: 10px;
   padding: 5px;
+  color: #fff;
 }
 
 .tab-nav-item.is-active{
   background-color: #44281e;
-  color: #fff;
 }
 
 .nav-items{

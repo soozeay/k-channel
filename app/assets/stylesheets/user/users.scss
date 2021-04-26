@@ -32,7 +32,7 @@
   height: 55%;
   font-size: 25px;
   font-weight: bold;
-  width: 60%;
+  width: 80%;
   border-bottom: 1px solid #bf8188;
   margin: 0 auto 10px;
   align-items: center;
@@ -109,16 +109,6 @@
 
 /* ユーザー情報の更新ページ */
 
-.edit-nickname{
-  height: 55%;
-  font-size: 35px;
-  font-weight: bold;
-  width: 60%;
-  padding: auto;
-  border-bottom: 1px solid #3CCACE;
-  margin: 0 auto 10px;
-  align-items: center;
-}
 
 .edit-intro{
   height: 120px;
@@ -136,14 +126,7 @@
 
 .actions{
   display: flex;
-}
-
-.e-submit-btn{
-  width: 130px;
-  margin: 0 auto 20px;
-  border: 1px solid #3CCACE;
-  border-radius: 10px;
-  background-color: white;
   font-weight: bold;
 }
+
 /* //ユーザー情報の更新ページ */
