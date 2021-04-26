@@ -4,23 +4,23 @@
   <%= link_to image_tag("furima-logo-color.png", class:"kch-icon"), root_path %>
     <ul class='lists-left'>
       <li class='input-box'><%= search_form_for(@search, url: articles_path, class: "search-form") do |f| %>
-            <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
-            <div class="search-button">
-                <i class="fas fa-search" style=" color: #fff"></i>
-            </div>
-          <% end %>
+        <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
+        <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none; margin: 0;' do %>
+          <i class="fas fa-search" style="color: #fff;"></i>
+        <% end %>
+      <% end %>
       </li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li class="header-icons"><%= link_to rooms_path do %>
-          <i class="fas fa-envelope fa-2x" style="color: #44281e"></i>
+          <i class="fas fa-envelope fa-2x" style="color: #44281e"></i> <%#= メッセージ機能へのリンク %>
           <% end %></li>
-        <li class="header-icons"><%= link_to notifications_path do %>
+        <li class="header-icons"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
               <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
             <% end %></li>
-        <li class="header-icons"><%= link_to user_path(current_user), class: "user-nickname"  do%>
-              マイページ <i class="fas fa-user"></i>
+        <li class="header-icons"><%= link_to user_path(current_user), class: "user-nickname", style: "font-size: 20px; color: #44281e;"  do%>
+              マイページ <i class="fas fa-user fa-2x"></i>
             <% end %></li>
       <% else %>
       <li><%= link_to new_user_session_path, class: "login" do %>
