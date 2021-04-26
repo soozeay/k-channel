@@ -73,3 +73,5 @@ gem 'kaminari'
 gem 'font-awesome-sass'
 
 gem 'jquery-ui-rails'
+
+gem 'rails-i18n'

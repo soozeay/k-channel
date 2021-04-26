@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       @article.create_notification_comment!(current_user, @comment.id)
       redirect_to article_path(@comment.article)
     else
-      render 'article/show'
+      redirect_to article_path(@comment.article)
     end
   end
 
