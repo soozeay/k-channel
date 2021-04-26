@@ -51,7 +51,7 @@
             <% if (current_user.following? @user) && (@user.following? current_user) %>
               <% if @isRoom == true %>
                 <div class="user-show-room">
-                <%= link_to 'チャットへ', room_path(@roomId), class:"btn btn-primary btn-lg" %>
+                <%= link_to 'チャットへ', room_path(@roomId), class:"mini-send-btn" %>
                 </div>
               <% else %>
                 <%= form_with model: @room do |f| %>
