@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        age: 年齢
+        gender_id: 性別
+        country_id: 地域
+        intro: 自己紹介文
+      article:
+        title: タイトル
+        text: 本文
+        plaza_id: 記事のカテゴリー
