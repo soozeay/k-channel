@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   # 記事の投稿について
   validates :title, presence:true
   has_one_attached :image
-  validates :youtube_url, format: { with: /\A(https\:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)+[\S]{11}\z/ }, allow_blank: true
+  validates :youtube_url, format: { with: /\A(https\:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)+[\S]{11}\z/ }
   has_rich_text :text
   acts_as_taggable
 
