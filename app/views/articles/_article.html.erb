@@ -10,7 +10,7 @@
   <%= link_to article_path(article.id) do %>
     <div class="article-body">
       <h3 class="article-title-name">
-        <%= article.title %>
+        <%= article.title.truncate(18) %>
         <% if article.youtube_url.present? %>
         <span class="check">動画有</span>
         <% end %>
