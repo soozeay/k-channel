@@ -1,10 +1,9 @@
-<%= render "shared/header" %>
-<%= render "shared/post-bar" %>
-<div class='main'>
-  <% unless user_signed_in? %>
-    <%= render "shared/logout_index" %>
-    <%= render "shared/footer" %>
-  <% else %>
+<% unless user_signed_in? %>
+  <%= render "shared/logout_index" %>
+<% else %>
+  <%= render "shared/header" %>
+  <%= render "shared/post-bar" %>
+  <div class='main'>
     <%= render "shared/side-bar" %>
     <div class="main-bar">
       <% if @search_articles_result.present? %>
@@ -13,5 +12,5 @@
         <%= render partial:"article", collection: @articles, locals: {article: @article} %>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

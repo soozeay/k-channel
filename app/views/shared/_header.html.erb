@@ -19,7 +19,7 @@
         <li class="header-icons"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
               <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
             <% end %></li>
-        <li class="header-icons"><%= link_to user_path(current_user), class: "user-nickname", style: "font-size: 20px; color: #44281e;"  do%>
+        <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do%>
               マイページ <i class="fas fa-user fa-2x"></i>
             <% end %></li>
       <% else %>
