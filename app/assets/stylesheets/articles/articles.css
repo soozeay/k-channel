@@ -15,7 +15,7 @@
   text-align: center;
   background-color:#44281e;
   font-weight: bold;
-  color: #FFF;
+  color: #FFF !important;
   padding: 10px;
   margin: 0 auto;
   border: none;
