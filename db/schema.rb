@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_04_19_075534) do
     t.text "trick"
     t.integer "plaza_id", null: false
     t.bigint "user_id", null: false
-    t.string "youtube_url"
+    t.string "youtube_url", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
