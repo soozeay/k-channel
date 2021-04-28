@@ -2,7 +2,6 @@
 <div class='main'>
   <% unless user_signed_in? %>
     <%= render "shared/logout_index" %>
-    <%= render "shared/footer" %>
   <% else %>
   <%= render "shared/post-bar" %>
   <%= render "shared/side-bar" %>
