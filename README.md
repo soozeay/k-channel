@@ -60,23 +60,40 @@ Password: aaaa1111
 |2|マイページのSPA化|自身の投稿記事一覧・フォローしているユーザー・フォローされているユーザー・いいねした記事の4機能をページ遷移せずタブで選択し閲覧できる様にする|マイページに遷移すると画面中央部にタブが４つ表示されている|閲覧したい箇所のボタンを押すと、その情報の表示に切替る（画面遷移はしない）。|6時間|
 
 
-* Ruby version
+# 実装した機能について
+## 記事投稿機能
+![ace55a3c9e92063a3a125e27caed4959](https://user-images.githubusercontent.com/80019801/116359850-3ffc4900-a83a-11eb-9c5c-5135bd93b18f.gif)
+このように、画像だけでなくYoutubeのURLを添付することもできます。また、Action textを用いて記事の本文をアレンジすることができます。
+動画と画像を両方添付した場合、画像はサムネイルとして活用され、記事本文には表示されません。
 
-* System dependencies
+## 記事一覧表示機能
+![13d596b4556afdd6d61a712527f7e9fe](https://user-images.githubusercontent.com/80019801/116361811-5905f980-a83c-11eb-9049-3808d14763d2.gif)
+このようにトップページに投稿記事一覧が表示されます。表示されるのは①自身の投稿、②フォローしたユーザーの投稿に限られます。画面左のバーから地域別・カテゴリ別に記事を絞り、フォローしていないユーザーの投稿を閲覧することも可能です
 
-* Configuration
+## タグ検索機能
+このようにタグをクリックするとタグ検索ができます。また、画面上部のフォームに入力して検索することも可能です。
 
-* Database creation
+## 記事検索機能
+ヘッダーにある検索フォームをクリックすると、ユーザー名とタグ、記事のタイトルを元に複合検索ができます。
 
-* Database initialization
+## 記事詳細機能
+このように記事は詳細表示されます。いいねボタンを押下することも可能です。
+また、右側にコメント欄を設けており、質問や間違いの指摘も可能です。
 
-* How to run the test suite
+# ユーザーページ
+投稿に紐づくユーザーをクリックするとユーザーページに遷移します。そこでは、そのユーザーが投稿した記事一覧とフォローユーザー一覧とフォロワー一覧、いいねした記事の一覧がタブで表示切り替えをすることが可能です。フォローする・フォロー解除するというボタンも設置されています。相互フォローとなった場合は「チャットへ」のボタンが表示され、DMでのやりとりが可能です
 
-* Services (job queues, cache servers, search engines, etc.)
+## マイページ
+ヘッダーのアバター画像をクリックすると、マイページへ遷移することができます。ユーザーの編集のリンクが存在します。ここからカバー画像やアバターの設定、自己紹介文の入力ができる様になります。
 
-* Deployment instructions
+# 通知機能
+ヘッダーのベルマークをクリックすれば、通知一覧に遷移できます。
+通知が届くアクションは「フォローされた」「記事にいいねされた」「記事にコメントが付いた」の３点です
 
-* ...
+
+# テーブル設計
+## ER図
+![er-kchannel](https://user-images.githubusercontent.com/80019801/116357560-8ef4af00-a837-11eb-82ea-eacb56700029.png)
 
 
 ## users テーブル
@@ -88,38 +105,47 @@ Password: aaaa1111
 | age                | integer |                           |
 | country_id         | integer | null: false               |
 | gender_id          | integer | null: false               |
+| intro              | string  |                           |
+
+avatar,coverはActive Storageを使用
 
 ### Association
-- has_many: plazas, through: plaza_users
-- has_many: articles
-- has_many: comments
-
-
-## plazas テーブル
-| Column             | Type    | Options                   |
-| ------------------ | ------- | ------------------------- |
-| name               | string  | null: false               |
-
-### Association
-- has_many: users, through: plaza_users
-- has_many: articles
-- has_many: comments
+- belongs_to :gender
+- belongs_to :country
+- has_many: articles, dependent: :destroy
+- has_many: comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :liked_articles, through: :likes, source: :article
+- has_many :relationships
+- has_many :followings, through: :relationships, source: :follow
+- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+- has_many :followers, through: :reverse_of_relationships, source: :user
+- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+- has_many :messages, dependent: :destroy
+- has_many :entries, dependent: :destroy
+- has_many :rooms, through: :entries
 
 
 ## articlesテーブル
 | Column      | Type       | Options                       |
 | ----------- | ---------- | ------------------------------|
 | title       | string     | null: false                   |
-| text        | text       | null: false                   |
-| ingredients | text       | null: false                   |
-| trick       | text       | null: false                   |
+| youtube_url | string     | default: ""                   |
+| trick       | text       |                               |
 | plaza_id    | integer    | null:  false                  |
 | user        | references | null: false foreign_key: true |
+
+text（本文）はAction Textを使用
+image（サムネイル）はActive Storageを使用
 
 ### Association
 - belongs_to: user
 - belongs_to: plaza
-- has_many: comments
+- has_many: comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :liked_users, through: :likes, source: :user
+- has_many :notifications, dependent: :destroy
 
 
 ## comments テーブル
@@ -131,5 +157,77 @@ Password: aaaa1111
 
 ### Association
 - belongs_to: user
-- belongs_to: plaza
 - belongs_to: article
+- has_many :notifications, dependent: :destroy
+
+
+## likes テーブル
+
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| article | references | foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :article
+
+
+## notifications テーブル
+| Column  | Type       | Options                     |
+| ------- | ---------- | --------------------------- |
+| visitor | references | null: false                 |
+| visited | references | null: false                 |
+| article | references |                             |
+| comment | references |                             |
+| action  | string     | default: "", null: false    |
+| checked | boolean    | default: false, null: false |
+
+
+### Association
+- belongs_to :article, optional: true
+- belongs_to :comment, optional: true
+- belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
+- belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
+
+
+## relationships テーブル
+| Column  | Type       | Options                           |
+| ------- | ---------- | --------------------------------- |
+| user    | references | foreign_key: true                 |
+| follow  | references | foreign_key: { to_table: :users } |
+
+### Association
+- belongs_to :user
+- belongs_to :follow, class_name: 'User'
+
+
+## rooms テーブル
+| Column  | Type   | Options |
+| ------- | ------ | ------- |
+| name    | string |         |
+
+### Association
+- has_many :messages, dependent: :destroy
+- has_many :entries, dependent: :destroy
+- has_many :users, through: :entries
+
+## entries テーブル
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| room    | references | foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :room
+
+## messages テーブル
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| room    | references | foreign_key: true |
+| content | text       | null: false       |
+
+## タグについて
+タグに関してはgemの"acts-as-tagable-on"を使用。
