@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: kch_35018_production
-  username: kch_35018
-  password: <%= ENV['kch_35018_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
