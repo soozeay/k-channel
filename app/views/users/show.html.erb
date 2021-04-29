@@ -5,13 +5,13 @@
       投稿する <i class="fas fa-pencil-alt"></i>
     <% end %>
   </div>
-  <div class="post-btn">
-    <% if @user == current_user %>
+  <% if @user == current_user %>
+    <div class="post-btn">
       <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
         ログアウト <i class="fas fa-sign-out-alt"></i>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 <div class='main'>
