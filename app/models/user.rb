@@ -40,6 +40,13 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
 
+  # ゲストログインユーザーの設定
+  def self.guest
+    find_or_create_by!(nickname: 'ゲスト', email: 'guest@example.com', age: 22, gender_id: 1, country_id: 1) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
