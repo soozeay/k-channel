@@ -10,11 +10,6 @@ class ArticlesController < ApplicationController
       @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
       @articles_all =Article.includes(:user,:taggings,:likes)
 
-      # タグのリンクをクリックした際の表示
-      if @tag = params[:tag]
-        @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
-      end
-
       # トップページの表示切替
       if params[:country_id].present? && params[:plaza_id].present? # 地域別且プラザを選択した場合
         @users = User.where(country_id: params[:country_id])
@@ -30,6 +25,9 @@ class ArticlesController < ApplicationController
           @follow_users = @user.followings
           @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).order("created_at DESC").page(params[:page]).per(10)
         end
+      end
+      if @tag = params[:tag]
+        @articles = Article.tagged_with(params[:tag]).order('created_at DESC')
       end
     end
   end
