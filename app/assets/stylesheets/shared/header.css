@@ -85,17 +85,17 @@
 
 .logout {
   text-decoration: none;
-  color: #fff;
+  color: #fff !important;
 }
 
 .login {
   text-decoration: none;
   line-height: 32px;
   margin-right: 3vw;
-  color: #fff;
+  color: #fff !important;
 }
 
 .sign-up {
   text-decoration: none;
-  color: #fff;
+  color: #fff !important;
 }
