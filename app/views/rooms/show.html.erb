@@ -67,7 +67,7 @@
         <%= form_with model: @message do |f| %>
           <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
           <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
+          <%= button_tag type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
             送信 <i class="fas fa-paper-plane"></i>
           <% end %>
         <% end %>
