@@ -236,7 +236,7 @@ image（サムネイル）はActive Storageを使用
 | ------- | ---------- | ----------------- |
 | user    | references | foreign_key: true |
 | room    | references | foreign_key: true |
-| content | text       | null: false       |
+| message | text       | null: false       |
 
 ## タグについて
 タグに関してはgemの"acts-as-tagable-on"を使用。
