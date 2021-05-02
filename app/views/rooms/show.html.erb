@@ -6,15 +6,15 @@
     <%= render "rooms" %>
     <div class="chats">
       <div class="chat">
-        <div class="msg_history pt-2" id="msg-history">
-          <div id= "messages">
+        <div class="msg_history pt-2" id="js-msg-history">
+          <div id= "js-messages">
             <% if @messages.present? %>
               <% @messages.each do |m| %>
                 <% if m.user.id == current_user.id %> <%# 自分にプロフィールアイコンは表示しない %>
                   <div class="outgoing-msg" >
                     <div class="sent-msg">
                       <div class="msg-content">
-                        <%= m.content %>
+                        <%= m.message %>
                       </div>
                       <div class="created-time">
                         <%= time_ago_in_words(m.created_at) %>前
@@ -31,7 +31,7 @@
                           <% else %>
                             <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
                           <% end %>
-                          <div class="coutry-icon">
+                          <div class="country-icon">
                             <% if m.user.country_id == 1 %>
                               <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
                             <% else %>
@@ -47,7 +47,7 @@
                       </div>
                       <div class="received-msg">
                         <div class="received_withd_msg">
-                          <%= m.content %>
+                          <%= m.message %>
                         </div>
                         <div class="created-time">
                           <%= time_ago_in_words(m.created_at) %>前
@@ -64,8 +64,8 @@
         </div>
       </div>
       <div class="posts">
-        <%= form_with model: @message do |f| %>
-          <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+        <%= form_with model: @message, id:"js-dm-form" do |f| %>
+          <%= f.text_field :message, placeholder: "メッセージを入力して下さい", id: "js-input-msg", size: 70, class:"form-text-field" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <%= button_tag type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
             送信 <i class="fas fa-paper-plane"></i>

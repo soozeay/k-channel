@@ -7,7 +7,7 @@ module RoomsHelper
     # メッセージの有無を判定
     if message.present?
       # メッセージがあれば内容を表示
-      tag.p message.content.to_s, class: 'dm_list__content__link__box__message'
+      tag.p message.message.to_s, class: 'dm_list__content__link__box__message'
     else
       # メッセージがなければ[ まだメッセージはありません ]を表示
       tag.p '[ まだメッセージはありません ]', class: 'dm_list__content__link__box__message'
