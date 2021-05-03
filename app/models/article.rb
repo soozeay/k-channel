@@ -3,11 +3,13 @@ class Article < ApplicationRecord
   belongs_to :user
 
   # 記事の投稿について
-  validates :title, presence:true
+  validates :title, presence:true, length:{ maximum: 40 }
+  validates :trick, length:{ maximum: 1000 }
   has_one_attached :image
   validates :youtube_url, format: { with: /\A(https\:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)+[\S]{11}\z/ }, allow_blank: true
   has_rich_text :text
   acts_as_taggable
+  validate :tag_list_tag_validation
 
   # コメント機能
   has_many :comments, dependent: :destroy
@@ -22,6 +24,13 @@ class Article < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   validates :plaza_id, presence: true, numericality: { other_than: 0 }
   belongs_to :plaza
+
+  # タグは5つまでに制限
+  def tag_list_tag_validation
+    tag_validation = tag_list
+    tag_validation.split(',')
+    errors.add(:tag_list, 'は５個までです') if tag_validation.length > 5
+  end
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
