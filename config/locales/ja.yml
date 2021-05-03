@@ -13,3 +13,5 @@ ja:
         text: 本文
         tag_list: タグ
         plaza_id: 記事のカテゴリー
+      message:
+        message: メッセージ
