@@ -62,8 +62,6 @@ RSpec.describe Article, type: :model do
         @article.valid?
         expect(@article.errors.full_messages).to include("記事のカテゴリーは0以外の値にしてください")
       end
-
     end
-  
   end
 end
