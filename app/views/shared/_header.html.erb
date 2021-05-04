@@ -22,13 +22,6 @@
         <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do%>
               マイページ <i class="fas fa-user fa-2x"></i>
             <% end %></li>
-      <% else %>
-      <li><%= link_to new_user_session_path, class: "login" do %>
-          ログイン <i class="fas fa-sign-in-alt" ></i>
-        <% end %></li>
-      <li><%= link_to new_user_registration_path, class: "sign-up" do %>
-          新規登録 <i class="fas fa-user-plus"></i>
-          <% end %></li>
       <% end %>
     </ul>
   </div>
