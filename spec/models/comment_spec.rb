@@ -5,7 +5,7 @@ RSpec.describe Comment, type: :model do
     @user = FactoryBot.create(:user)
     @article = FactoryBot.create(:article)
     @comment_user = FactoryBot.create(:user)
-    @comment = Comment.new(user_id: @comment_user.id, article_id: @article.id, comment: Faker::Lorem.characters(number: 10))
+    @comment = FactoryBot.build(:comment, user_id: @comment_user.id, article_id: @article.id)
   end
 
   describe '記事へのコメント機能' do
