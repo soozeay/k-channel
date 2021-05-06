@@ -7,7 +7,7 @@
   </div>
   <% if @user == current_user %>
     <div class="post-btn">
-      <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
+      <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn sign-out" do %>
         ログアウト <i class="fas fa-sign-out-alt"></i>
       <% end %>
     </div>
