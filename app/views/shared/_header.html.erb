@@ -16,7 +16,7 @@
         <li class="header-icons"><%= link_to rooms_path do %>
           <i class="fas fa-envelope fa-2x" style="color: #44281e"></i> <%#= メッセージ機能へのリンク %>
           <% end %></li>
-        <li class="header-icons"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
+        <li class="header-icons notification-icon"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
               <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
             <% end %></li>
         <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do%>
