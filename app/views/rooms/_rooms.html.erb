@@ -32,14 +32,22 @@
           <div class="partner-name">
             <%= user.nickname %>
           </div>
-          <div class="partner-details">
-            <div class="latest-message">
-              <%= most_new_message_preview(room) %>
-            </div>
-            <div class="created-time">
-              <%= message_time(room) + '前'%>
-            </div>
-          </div> 
+          <% if room.messages.present? %>
+            <div class="partner-details">
+              <div class="latest-message">
+                <%= most_new_message_preview(room) %>
+              </div>
+              <div class="created-time">
+                <%= message_time(room) + '前'%>
+              </div>
+            </div> 
+          <% else %>
+            <div class="partner-details">
+              <div class="latest-message">
+                <p><%= "トークがありません" %></p>
+              </div>
+            </div> 
+          <% end %>
         </div>
       <% end %>
     </div>

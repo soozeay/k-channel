@@ -55,12 +55,12 @@
                   <%= link_to 'チャットへ', room_path(@roomId), class:"mini-send-btn" %>
                   </div>
                 <% else %>
-                  <%= form_with model: @room do |f| %>
-                    <%= fields_for @entry do |e| %>
-                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <%= form_with model: @room, local: true do |f| %>
+                      <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, value: @user.id %>
+                      <% end %>
+                      <%= f.submit "チャットを始める", class:"mini-send-btn user-show-chat" %>
                     <% end %>
-                    <%= button_tag type: 'submit', class:"btn btn-primary btn-lg user-show-chat" %>
-                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
