@@ -16,6 +16,11 @@
     <% end %>
   </div>
 </div>
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
 
 <%# 記事本文 %>
 <div class="show-container">
