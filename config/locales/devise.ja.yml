@@ -113,7 +113,7 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ""
-      signed_in: ""
+      signed_in: "ログインに成功しました"
       signed_out: ""
     shared:
       links:
