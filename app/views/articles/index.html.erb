@@ -3,6 +3,11 @@
 <% else %>
   <%= render "shared/header" %>
   <%= render "shared/post-bar" %>
+  <div class="flash-notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
+    <% end %>
+  </div>
   <div class='main'>
     <%= render "shared/side-bar" %>
     <div class="main-bar">
