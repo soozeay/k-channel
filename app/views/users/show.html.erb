@@ -95,7 +95,7 @@
           </div>
           <div class="intro-text">
             <% if @user.intro.present? %>
-              <%= @user.intro %>
+              <%= safe_join(@user.intro.split("\n"),tag(:br)) %>
             <% else %>
               自己紹介を追加しましょう！
             <% end %>
