@@ -32,3 +32,10 @@ require("@rails/actiontext")
 //= require activestorage
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+  setTimeout("$('.notice').fadeOut('slow')", 2000);
+});
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 2000);
+});
