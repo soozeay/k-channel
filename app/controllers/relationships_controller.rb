@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     following = current_user.follow(@user)
     if following.save
       @user.create_notification_follow!(current_user)
-      redirect_to @user
+      redirect_to @user, notice: 'フォローに成功しました'
     else
       redirect_to @user
     end
@@ -14,11 +14,9 @@ class RelationshipsController < ApplicationController
   def destroy
     following = current_user.unfollow(@user)
     if following.destroy
-      flash[:success] = 'ユーザーのフォローを解除しました'
-      redirect_to @user
+      redirect_to @user, notice: 'フォローを解除しました'
     else
-      flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_to @user
+      redirect_to @user, alert: 'フォローを解除しました'
     end
   end
 

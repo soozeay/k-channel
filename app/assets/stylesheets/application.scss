@@ -24,3 +24,18 @@
  *= require_tree ./staff
  *= require 'jquery-ui/autocomplete'
  */
+
+ .flash-notifications {
+  font-weight: bold;
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: orangered;
+  }
+
+  }
