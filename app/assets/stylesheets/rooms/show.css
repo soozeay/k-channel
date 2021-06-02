@@ -1,10 +1,10 @@
 .chats{
-  width: 45vw;
+  width: 50vw;
 }
 
 .chat{
-  margin: 40px 20px;
-  width: 90%;
+  margin: 40px 15px;
+  width: 100%;
   padding: 30px;
   border: 2px solid #bf8188;
   border-radius: 5px;
@@ -31,6 +31,7 @@
   font-weight: bold;
   margin-right: 10px;
   float: right;
+  width: 80%;
 }
 
 /*  /自身の送信メッセージ */
@@ -47,13 +48,13 @@
 }
 
 .received-msg {
-  width: 92%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .received_withd_msg {
-  width: 100%;
+  width: 80%;
 }
 
 .avatar-img{
