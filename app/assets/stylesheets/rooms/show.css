@@ -15,7 +15,7 @@
 /*  自身の送信メッセージ */
 
 .outgoing-msg{ 
-  margin: 30px 0;
+  margin-top: 40px;
   height: auto;
 }
 
@@ -31,9 +31,12 @@
   font-weight: bold;
   margin-right: 10px;
   float: right;
-  width: 80%;
+  width: 70%;
 }
 
+.set-right{
+  float: right;
+}
 /*  /自身の送信メッセージ */
 
 
@@ -41,7 +44,7 @@
 
 .incoming-msg{
   display: flex;
-  margin: 30px 0;
+  margin-top: 40px;
   height: auto;
   width: 50%;
   border-bottom: 1px solid #bf8188;
@@ -54,11 +57,37 @@
 }
 
 .received_withd_msg {
-  width: 80%;
+  width: 70%;
 }
 
 .avatar-img{
   position: relative;
+}
+
+.between-space{
+  margin-left: 10px;
+}
+
+.balloon-top {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em auto;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+
+.balloon-top:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #e0edff;
 }
 /* /受信側 */
 
