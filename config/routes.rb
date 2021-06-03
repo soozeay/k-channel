@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: :index
-  resources :messages, only: :create
+  resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create, :show, :index]
 
   # ゲストログイン機能
