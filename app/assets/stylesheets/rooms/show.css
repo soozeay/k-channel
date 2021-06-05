@@ -31,7 +31,16 @@
   font-weight: bold;
   margin-right: 10px;
   float: right;
-  width: 70%;
+  width: 65%;
+}
+
+.msg-content > p {
+  color: darkred;
+}
+
+.msg-content > p > span {
+  text-decoration: line-through;
+  color: darkred;
 }
 
 .set-right{
@@ -57,7 +66,7 @@
 }
 
 .received_withd_msg {
-  width: 70%;
+  width: 65%;
 }
 
 .avatar-img{
@@ -73,11 +82,12 @@
   display: inline-block;
   margin: 1.5em auto;
   padding: 7px 10px;
-  min-width: 120px;
+  min-width: 100px;
   max-width: 100%;
   color: #555;
   font-size: 16px;
   background: #e0edff;
+  text-align: center;
 }
 
 .balloon-top:before {
@@ -101,6 +111,7 @@
 .form-text-field{
   width: 60%;
   padding: 3px;
+  max-height: 200px;
 }
 
 .mini-send-btn{

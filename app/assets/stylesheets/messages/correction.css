@@ -1,0 +1,42 @@
+.correct-msg-box{
+  background-color: #f5f5f5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 500px;
+  height: 100vh;
+}
+
+.correct-msg-main{
+  background-color: #FFF;
+  width: 70vw;
+  height: 75%;
+  min-width: 450px;
+  padding: 10vh 10vw;
+}
+
+.target-msg{
+  margin: 40px 0;
+  text-align: center;
+}
+
+.target-msg > span{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.correct-form{
+  align-items: center;
+}
+
+.correct-text-field{
+  margin: 0 auto;
+  width: 60%;
+}
+
+.input-form{
+  width: 100%;
+  padding: 5px;
+  max-height: 200px;
+}
