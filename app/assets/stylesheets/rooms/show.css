@@ -77,31 +77,6 @@
 .between-space{
   margin-left: 10px;
 }
-
-.balloon-top {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em auto;
-  padding-top: 15px;
-  min-width: 100px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: #e0edff;
-  text-align: center;
-  align-items: center;
-  font-weight: bold;
-}
-
-.balloon-top:before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-bottom: 15px solid #e0edff;
-}
 /* /受信側 */
 
 /*  送信コマンド */
