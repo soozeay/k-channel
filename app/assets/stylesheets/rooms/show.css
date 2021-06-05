@@ -67,6 +67,7 @@
 
 .received_withd_msg {
   width: 65%;
+  font-weight: bold;
 }
 
 .avatar-img{
@@ -81,13 +82,15 @@
   position: relative;
   display: inline-block;
   margin: 1.5em auto;
-  padding: 7px 10px;
+  padding-top: 15px;
   min-width: 100px;
   max-width: 100%;
   color: #555;
   font-size: 16px;
   background: #e0edff;
   text-align: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .balloon-top:before {
