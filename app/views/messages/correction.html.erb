@@ -1,0 +1,30 @@
+<div class="correct-msg-box">
+  <header class="article-header">
+    <%= link_to image_tag('kch-logo-color' , size: '185x50'), root_path %>
+  </header>
+  <div class="correct-msg-main">
+    <h4 class="article-title">メッセージの添削フォーム</h4>
+    <div class="target-msg">
+      対象のメッセージ：「 <span><%= @target_msg.message %></span> 」
+    </div>
+    <div class="correct-form">
+      <%= form_with url: correct_message_path(@target_msg.id), id:"js-dm-form", local: true do |f| %>
+        <div class="correct-text-field">
+          <%= f.text_area :message, placeholder: "メッセージを入力して下さい", id: "js-input-msg", class: "input-form" %>
+        </div>
+        <%= f.hidden_field :target_message, value: @target_msg.message %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <div class="send-btn-contents">
+          <div class="register-btn">
+            <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %> 
+              送信 <i class="fas fa-paper-plane"></i>
+            <% end %>
+          </div>
+          <div class="register-btn">
+            <%= link_to 'もどる', room_path(@target_msg.room.id), class:"register-red-btn", style:"background-color: #aaa" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
