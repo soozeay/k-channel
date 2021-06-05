@@ -1,10 +1,10 @@
 .chats{
-  width: 45vw;
+  width: 50vw;
 }
 
 .chat{
-  margin: 40px 20px;
-  width: 90%;
+  margin: 40px 15px;
+  width: 100%;
   padding: 30px;
   border: 2px solid #bf8188;
   border-radius: 5px;
@@ -15,7 +15,7 @@
 /*  自身の送信メッセージ */
 
 .outgoing-msg{ 
-  margin: 30px 0;
+  margin-top: 40px;
   height: auto;
 }
 
@@ -31,8 +31,21 @@
   font-weight: bold;
   margin-right: 10px;
   float: right;
+  width: 65%;
 }
 
+.msg-content > p {
+  color: darkred;
+}
+
+.msg-content > p > span {
+  text-decoration: line-through;
+  color: darkred;
+}
+
+.set-right{
+  float: right;
+}
 /*  /自身の送信メッセージ */
 
 
@@ -40,24 +53,29 @@
 
 .incoming-msg{
   display: flex;
-  margin: 30px 0;
+  margin-top: 40px;
   height: auto;
   width: 50%;
   border-bottom: 1px solid #bf8188;
 }
 
 .received-msg {
-  width: 92%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .received_withd_msg {
-  width: 100%;
+  width: 65%;
+  font-weight: bold;
 }
 
 .avatar-img{
   position: relative;
+}
+
+.between-space{
+  margin-left: 10px;
 }
 /* /受信側 */
 
@@ -71,6 +89,7 @@
 .form-text-field{
   width: 60%;
   padding: 3px;
+  max-height: 200px;
 }
 
 .mini-send-btn{

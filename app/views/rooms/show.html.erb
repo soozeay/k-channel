@@ -1,5 +1,10 @@
 <%= render "shared/header" %>
 <%= render "shared/post-bar" %>
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
 <div class='main'>
   <%= render "shared/side-bar" %>
   <div class="main-bar">
@@ -14,10 +19,17 @@
                   <div class="outgoing-msg" >
                     <div class="sent-msg">
                       <div class="msg-content">
-                        <%= m.message %>
+                        <% if m.target_message.present? %>
+                          <p>× <span><%= m.target_message %></span></p>
+                          ○
+                        <% end %>
+                          <%= m.message %>
                       </div>
                       <div class="created-time">
                         <%= time_ago_in_words(m.created_at) %>前
+                        <%= link_to message_path(m.id), method: :delete, data: { confirm: '取り消しますか？' } do %>
+                          <i class="far fa-trash-alt between-space" ></i>
+                        <% end %>
                       </div>
                     </div>
                   </div>
@@ -51,6 +63,9 @@
                         </div>
                         <div class="created-time">
                           <%= time_ago_in_words(m.created_at) %>前
+                          <%= link_to correction_message_path(m.id) do %>
+                            <i class="fas fa-spell-check between-space" style="color: #ea352d"></i>
+                          <% end %>
                         </div>
                       </div> 
                     </div>
@@ -64,7 +79,7 @@
         </div>
       </div>
       <div class="posts">
-        <%= form_with model: @message, id:"js-dm-form" do |f| %>
+        <%= form_with model: @message do |f| %>
           <%= f.text_field :message, placeholder: "メッセージを入力して下さい", id: "js-input-msg", size: 70, class:"form-text-field" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 

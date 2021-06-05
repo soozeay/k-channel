@@ -105,11 +105,12 @@
 }
 
 .created-time{
-  font-size: 13px;
+  font-size: 12px;
   color: darkgray;
   right: 0;
   width: auto;
-  text-align: end;
+  flex-direction: column;
+  margin-top: auto;
 }
 
 .tags{
