@@ -16,7 +16,8 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "../../javascript/stylesheets/tagsinput";
+@import '~bootstrap/scss/bootstrap';
+@import 'tagsinput';
 
 /*
  *= require jquery-ui
