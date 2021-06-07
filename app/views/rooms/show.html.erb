@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="posts">
-        <%= form_with model: @message, local: true do |f| %>
+        <%= form_with model: @message do |f| %>
           <%= f.text_field :message, placeholder: "メッセージを入力して下さい", id: "js-input-msg", size: 70, class:"form-text-field" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
