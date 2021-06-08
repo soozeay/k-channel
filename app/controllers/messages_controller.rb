@@ -6,8 +6,7 @@ class MessagesController < ApplicationController
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.create(message_params)
       @room = @message.room
-      redirect_to  room_path(@message.room_id)
-      ActionCable.server.broadcast 'room_channel', message: @message, room_id: @room.id, user_image: current_user.avatar
+      ActionCable.server.broadcast 'room_channel', message: @message, room_id: @room.id, user_image: current_user.avatar, user_id: @message.user_id, nickname: @message.user.nickname
     else
       redirect_back(fallback_location: root_path)
     end
