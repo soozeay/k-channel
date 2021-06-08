@@ -39,15 +39,15 @@
                       <div class="avatar-img">
                         <%= link_to user_path(m.user.id) do %>
                           <% if m.user.avatar.attached? %>
-                            <%= image_tag(rails_blob_path(m.user.avatar), size: "50x50", class: "img-circle") %>
+                            <%= image_tag(rails_blob_path(m.user.avatar), size: "50x50", class: "img-circle", id:"js-user-icon") %>
                           <% else %>
-                            <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
+                            <%= image_tag("default_user.png", size: "50x50", class: "img-circle", id:"js-default-icon") %>
                           <% end %>
                           <div class="country-icon">
                             <% if m.user.country_id == 1 %>
-                              <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
+                              <%= image_tag("country_japan.png", size: "20x20", class: "country-img", id:"js-japan-icon") %>
                             <% else %>
-                              <%= image_tag("country_korea.png", size: "20x20", class: "country-img") %> 
+                              <%= image_tag("country_korea.png", size: "20x20", class: "country-img", id:"js-korea-icon") %> 
                             <% end %>
                           </div>
                         <% end %>
@@ -86,6 +86,7 @@
             送信 <i class="fas fa-paper-plane"></i>
           <% end %>
         <% end %>
+        <div> <input type="hidden" id="current_user", value = <%= current_user.id %>> </div>
       </div>
     </div>
   </div>
