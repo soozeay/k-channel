@@ -10,8 +10,26 @@ import consumer from "./consumer"
     },
 
     received(data) {
-    const current_user = $("#current_user_id").val();
-    if (data.message.user == current_user){
+    const current_user = $("#current_user").val();
+    const $userIcon = document.getElementById('js-user-icon');
+    const $defaultIcon = document.getElementById('js-default-icon');
+    const $japanIcon = document.getElementById('js-japan-icon');
+    const $koreaIcon = document.getElementById('js-korea-icon');
+    function icon(){
+      if( $userIcon === null ){
+        return $defaultIcon
+      } else {
+        return $userIcon
+      };
+    }
+    function country_icon(){
+      if( $japanIcon === null ){
+        return $koreaIcon
+      } else {
+        return $japanIcon
+      };
+    }
+    if (data.message.user_id == current_user){
       const html =
       `<div class="outgoing-msg" >
         <div class="sent-msg">
@@ -34,12 +52,15 @@ import consumer from "./consumer"
         `<div class="incoming-msg">
           <div class="img-box">
             <div class="avatar-img">
-              <img src= ${data.user_image}  size= "50x50"  class= "img-circle">
+              <img src= "${icon()["src"]}" width="50" height="50" class="img-circle">
+              <div class="country-icon">
+                <img src= "${country_icon()["src"]}" width="20" height="20" class="country-img">
+              </div>
             </div>
           </div>
           <div class="partner-info">
             <div class="partner-name">
-              ${data.user.nickname}
+              ${data.user_image.record.nickname}
             </div>
             <div class="received-msg">
               <div class="received_withd_msg">
