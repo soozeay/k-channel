@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
+  before_action :set_locale
 
   private
   
@@ -15,6 +16,14 @@ class ApplicationController < ActionController::Base
     if params[:q].present? #paramsのnil対策
       @search_articles_result = Article.by_any_texts(params[:q][:title_or_user_nickname_cont_all])
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
   
 end

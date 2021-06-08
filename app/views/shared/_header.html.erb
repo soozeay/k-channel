@@ -13,6 +13,13 @@
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
+        <li>
+          <% if I18n.locale.to_s == "ko" %>
+            <%= link_to('日本語', locale: 'ja') %>
+          <% else %>
+            <%= link_to('한국어', locale: 'ko') %>
+          <% end %>
+       </li>
         <li class="header-icons message-icon"><%= link_to rooms_path do %>
           <i class="fas fa-envelope fa-2x" style="color: #44281e"></i> <%#= メッセージ機能へのリンク %>
           <% end %></li>
