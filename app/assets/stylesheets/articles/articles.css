@@ -45,9 +45,12 @@
 
 .plaza-list{
   margin-bottom: 30px;
-  border: 2px solid #bf8188;
   border-radius: 3px;
   padding: 10px;
+}
+
+.js-category-bar{
+  float: right;
 }
 
 .plaza-header{
@@ -70,6 +73,10 @@
   width: 36vh;
   margin: 20px;
   padding: 2vh 10px;
+}
+
+.like-counter{
+  float: right;
 }
 
 .article-title-name{

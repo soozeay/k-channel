@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("../preview")
 require("../tab")
+require("../accordion")
 require("jquery")
 require('tagsinput')
 import 'bootstrap';

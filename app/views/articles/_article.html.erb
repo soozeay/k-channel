@@ -1,5 +1,6 @@
 <div class="article-box">
   <span class="badge badge-secondary"><%= article.plaza.name %></span>
+  <span class="like-counter"><i class="far fa-thumbs-up"></i>:<%= article.likes.count %></span>
   <%= link_to article_path(article.id) do %>
     <% if article.image.present? %>
       <%= image_tag article.image, class: "item-img" %>
