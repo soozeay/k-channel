@@ -1,32 +1,37 @@
 <div class="side-bar">
-  <ul class= "plaza-list">
-    <h2 class="plaza-header">広場一覧</h2>
-    <li class="plaza-name"><%= link_to 'エンタメ', articles_path(plaza_id: 1) %></li>
-    <li class="plaza-name"><%= link_to 'コスメ', articles_path(plaza_id: 2) %></li>
-    <li class="plaza-name"><%= link_to '語学', articles_path(plaza_id: 3) %></li>
-    <li class="plaza-name"><%= link_to 'グルメ情報', articles_path(plaza_id: 4) %></li>
-    <li class="plaza-name"><%= link_to '日記', articles_path(plaza_id: 5) %></li>
-    <li class="plaza-name"><%= link_to 'その他', articles_path(plaza_id: 6) %></li>
-  </ul>
-  <ul class="change-index">
-    <ul class="plaza-list">
-      <p class="plaza-header"><%= link_to '日本ユーザーさんの投稿', articles_path(country_id: 1) %></p>
-      <li class="plaza-name"><%= link_to 'エンタメ', articles_path(country_id: 1, plaza_id: 1) %></li>
-      <li class="plaza-name"><%= link_to 'コスメ', articles_path(country_id: 1, plaza_id: 2) %></li>
-      <li class="plaza-name"><%= link_to '語学', articles_path(country_id: 1, plaza_id: 3) %></li>
-      <li class="plaza-name"><%= link_to 'グルメ情報', articles_path(country_id: 1, plaza_id: 4) %></li>
-      <li class="plaza-name"><%= link_to '日記', articles_path(country_id: 1, plaza_id: 5) %></li>
-      <li class="plaza-name"><%= link_to 'その他', articles_path(country_id: 1, plaza_id: 6) %></li>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header">カテゴリー一覧</p>
+      <li class="plaza-name", style="display: none;"><%= link_to 'エンタメ', articles_path(plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'コスメ', articles_path(plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '語学', articles_path(plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(plaza_id: 6) %></li>
     </ul>
-    <ul class="plaza-list">
-      <p class="plaza-header"><%= link_to '韓国ユーザーさんの投稿', articles_path(country_id: 2) %></p>
-      <li class="plaza-name"><%= link_to 'エンタメ', articles_path(country_id: 2, plaza_id: 1) %></li>
-      <li class="plaza-name"><%= link_to 'コスメ', articles_path(country_id: 2, plaza_id: 2) %></li>
-      <li class="plaza-name"><%= link_to '語学', articles_path(country_id: 2, plaza_id: 3) %></li>
-      <li class="plaza-name"><%= link_to 'グルメ情報', articles_path(country_id: 2, plaza_id: 4) %></li>
-      <li class="plaza-name"><%= link_to '日記', articles_path(country_id: 2, plaza_id: 5) %></li>
-      <li class="plaza-name"><%= link_to 'その他', articles_path(country_id: 2, plaza_id: 6) %></li>
+  </div>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '日本ユーザー', articles_path(country_id: 1) %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to 'エンタメ', articles_path(country_id: 1, plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'コスメ', articles_path(country_id: 1, plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '語学', articles_path(country_id: 1, plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(country_id: 1, plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(country_id: 1, plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(country_id: 1, plaza_id: 6) %></li>
     </ul>
+  </div>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '韓国ユーザー', articles_path(country_id: 2) %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to 'エンタメ', articles_path(country_id: 2, plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'コスメ', articles_path(country_id: 2, plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '語学', articles_path(country_id: 2, plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(country_id: 2, plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(country_id: 2, plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(country_id: 2, plaza_id: 6) %></li>
+    </ul>
+  </div>
   <ul class="premier-list">
     <h2 class="plaza-header">プレミアム会員サービス</h2>
     <li class="plaza-name">人気順検索</li>

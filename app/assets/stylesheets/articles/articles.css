@@ -50,6 +50,10 @@
   padding: 10px;
 }
 
+.js-category-bar{
+  float: right;
+}
+
 .plaza-header{
   font-size: 18px;
   font-weight: bold;
