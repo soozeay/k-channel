@@ -72,6 +72,10 @@
   padding: 2vh 10px;
 }
 
+.like-counter{
+  float: right;
+}
+
 .article-title-name{
   font-size: 22px;
   font-weight: bold;
