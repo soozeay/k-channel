@@ -69,7 +69,6 @@
   align-items: flex-end;
 }
 
-
 .user-nickname {
   text-decoration: none;
   margin-right: 3vw;
@@ -98,4 +97,98 @@
 .sign-up {
   text-decoration: none;
   color: #fff !important;
+}
+
+@media screen and (max-width:767px) {
+
+  .nav {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1vh 0;
+    align-items: center;
+    height: 10vh;
+  }
+  
+
+  .top-page-header {
+    width: 100%;
+    padding: 2vh 3vw 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #bf8188;
+  }
+
+  .kch-icon {
+    width: 25vw;
+    margin-right: 7vw;
+  }
+
+  .lists-left {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: auto 0;
+  }
+
+  .search-form {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  .search-form > .input-box {
+    width: 100%;
+    height: 5vh;
+    padding-left: 10px;
+  }
+
+  .lists-right{
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .user-nickname {
+    text-decoration: none;
+    margin-right: 2vw;
+    font-weight: bold;
+    color: #44281e;
+    font-size: 16px;
+  }
+  
+  .font-awesome-envelope:before {
+    content:"\f0e0";
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    font-style: none !important;
+  }
+
+  .font-awesome-envelope:before > i {
+    font-style: none !important;
+  }
+
+
+  .font-awesome-bell:before{
+    content:"\f0f3";
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+  }
+
+  .font-awesome-user:before{
+    content:"\f007";
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+  }
+
+  .fa-envelope,
+  .fa-bell,
+  .fa-user {
+    display: none !important;
+  }
+  
+
 }
