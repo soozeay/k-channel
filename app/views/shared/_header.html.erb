@@ -1,7 +1,7 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='nav'>
-  <%= link_to image_tag("kch-logo-color", class:"kch-icon"), root_path %>
+    <%= link_to image_tag("kch-logo-color", class:"kch-icon"), root_path %>
     <ul class='lists-left'>
       <li class='input-box'><%= search_form_for(@search, url: articles_path, class: "search-form") do |f| %>
         <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
@@ -21,13 +21,15 @@
           <% end %>
        </li>
         <li class="header-icons message-icon"><%= link_to rooms_path do %>
-          <i class="fas fa-envelope fa-2x" style="color: #44281e"></i> <%#= メッセージ機能へのリンク %>
+          <i class="fas fa-envelope fa-2x envelope" style="color: #44281e"></i>
+          <i class="font-awesome-envelope"></i>
           <% end %></li>
         <li class="header-icons notification-icon"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
               <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
+              <i class="font-awesome-bell"></i>
             <% end %></li>
         <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do%>
-              マイページ <i class="fas fa-user fa-2x"></i>
+              マイページ <i class="fas fa-user fa-2x"></i><i class="font-awesome-user"></i>
             <% end %></li>
       <% end %>
     </ul>
