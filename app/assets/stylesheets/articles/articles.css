@@ -133,21 +133,11 @@
 
   .post-bar{
     height: 40px;
-    background-color: #bf8188;
-    text-align: center;
-    align-items: center;
-    display: flex;
   }
 
   .post-btn{
-    text-align: center;
-    background-color:#44281e;
-    font-weight: bold;
     color: #FFF !important;
     padding: 6px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 3px;
   }
 
   .sp-main{
@@ -222,6 +212,11 @@
     width: 36vh;
     margin: 20px;
     padding: 2vh 10px;
+  }
+
+  .user-icon{
+    width: 50px;
+    height: 50px;
   }
 
 }
