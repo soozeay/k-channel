@@ -1,11 +1,10 @@
 <%# app/assets/stylesheets/articles/new.css %>
-
-<div class="article-contents">
-  <header class="article-header">
-    <%= link_to image_tag('kch-logo-color' , size: '185x50'), root_path %>
-  </header>
-  <div class="article-main">
-    <h4 class="article-title">投稿記事を編集する</h4>
-    <%= render "form" %>
+<%= render "shared/second-header"%>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h4 class='form-header-text'>
+      投稿記事を編集する
+    </h4>
   </div>
+  <%= render "form" %>
 </div>
