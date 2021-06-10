@@ -20,7 +20,9 @@
 </div>
 
 <div class='main'>
-  <%= render "shared/side-bar" %>
+  <div class="pc-size">
+    <%= render "shared/side-bar" %>
+  </div>
 
   <div class="user-main-page">
     <div class="profile-box">
@@ -32,7 +34,7 @@
         <% end %>
       </div>
       <div class="profile-bar">
-        <div class="pofile-container">
+        <div class="profile-container">
           <div class="icon-box">
             <div class="user-icon-box set-center">
               <% if @user.avatar.attached? %>
@@ -69,8 +71,8 @@
                 <% end %>
               <% end %>
             <% end %>
-            <div class="sub-profile">
-              <div class="user-age">
+            <div class="sub-profile pc-size">
+              <div class="user-age pc-size">
                 <%= "#{@user.age} 歳" %>
                 <% if @user.gender_id == 1 %>
                   <i class="fas fa-mars"></i>
@@ -78,15 +80,19 @@
                   <i class="fas fa-venus"></i>
                 <% end %>
               </div>
-              <div class="created-time">
+              <div class="created-time pc-size">
                 <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
               </div>
             </div>
             <% if current_user.id == @user.id %>
               <div class="edit-profile-icon">
                 <%= link_to edit_user_registration_path(current_user.id), class:"mini-send-btn" do%>
-                  <%= "プロフィールを編集する" %> <i class="fas fa-edit" style="color: #fff;"></i>
+                  <%= "プロフィールの編集" %> <i class="fas fa-edit" style="color: #fff;"></i>
                 <% end %>
+              </div>
+            <% else %>
+              <div class="user-follow-btn">
+                <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
               </div>
             <% end %>
           </div>
@@ -94,9 +100,6 @@
         <div class="intro-box">
           <div class="intro-title">
             自己紹介
-            <div class="user-follow-btn">
-              <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
-            </div>
           </div>
           <div class="intro-text">
             <% if @user.intro.present? %>
@@ -111,11 +114,7 @@
     <div class="articles-box" id="js-tab">
       <div class="user-nav-bar">
         <div class="nav-title">
-          <% if @user == current_user %>
-            <a href="", class="tab-nav-item is-active" data-nav="0"><%= '自分の投稿' %></a>
-          <% else %>
-            <a href="", class="tab-nav-item is-active" data-nav="0"><%= @user.nickname + " さんの投稿" %></a>
-          <% end %>
+            <a href="", class="tab-nav-item is-active" data-nav="0"><%= '投稿' %></a>
           <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
           <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
           <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
