@@ -7,11 +7,17 @@
   </div>
   <div class="edit-bar">
     <% if current_user.id == @article.user_id %>
-      <%= link_to edit_article_path, class: "edit-btn" do%>
+      <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
         編集する <i class="fas fa-spell-check"></i>
       <% end %>
-      <%= link_to article_path, method: :delete, class:"destroy-btn" do %>
+      <%= link_to edit_article_path, class: "sp-size" do%>
+        <i class="fas fa-spell-check"></i>
+      <% end %>
+      <%= link_to article_path, method: :delete, class:"destroy-btn pc-size" do %>
         削除する <i class="fas fa-trash-alt"></i>
+      <% end %>
+      <%= link_to article_path, method: :delete, class:"sp-size" do %>
+        <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
   </div>
@@ -44,16 +50,15 @@
     </div>
     <div class="tag-area">
       <% if @tags.present? %>
-      <ul class="article-tag">
-        <li class="tag-name">
-          <% @article.tags.each do |tag| %>
-          <%= link_to articles_path(tag: tag.name) do%>
-            <span class="badge badge-info">#<%= tag.name %></span>
-          <%end %>
-          <%end%>
-        </li>
-      </ul>
-      <% else %> #タグはついていません
+        <ul class="article-tag">
+          <li class="tag-name">
+            <% @article.tags.each do |tag| %>
+            <%= link_to articles_path(tag: tag.name) do%>
+              <span class="badge badge-info">#<%= tag.name %></span>
+            <%end %>
+            <%end%>
+          </li>
+        </ul>
       <% end %>
     </div>
     <div class="article-desc">
@@ -88,9 +93,8 @@
   <%# /記事本文 %>
   
   <div class="comment-box">
-    <h3 class="comments-title">
-      コメント一覧
-    </h3>
+    <h3 class="comments-title pc-size">コメント一覧</h3>
+    <h4 class="comments-title sp-size">コメント一覧</h4>
     <div class="comments-index">
       <% unless @comment.present? %>
         <%= "コメントはまだありません" %>
