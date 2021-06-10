@@ -17,7 +17,7 @@
     YouTubeの動画投稿
   </div>
   <div class="click-upload">
-    <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "YouTubeのURLを入力してください" %>
+    <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "例）https://www.youtube.com/watch?v=lA7g0q2woEc" %>
   </div>
 </div>
 <%# /画像・動画の投稿 %>
@@ -41,26 +41,23 @@
     </div>
     <%= f.text_area :trick, class:"articles-text articles-trick", id:"item-trick", placeholder:"コツやポイントを書きましょう（必須 1,000文字まで）\n例）休日は3時間待ちです、平日のランチを狙いましょう！！" ,rows:"7" ,maxlength:"1000" %>
   </div>
-</div>
-<div class="articles-explain">
-    <div class="weight-bold-text">
-      タグ
+  <div class="articles-explain">
+      <div class="weight-bold-text">
+        タグ
+      </div>
+      <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"input-tag-area", data: {role: "tagsinput"}, placeholder:"5つまで入力できます" %>
+  </div>
+  <div class="choice-plaza">
+    <div class="form">
+      <div class="weight-bold-text">
+        投稿記事のカテゴリー
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
     </div>
-    <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"input-tag-area", data: {role: "tagsinput"}, placeholder:"5つまで入力できます" %>
-</div>
-<%# /記事本文 %>
-
-<%# プラザ選択 %>
-<div class="choice-plaza">
-  <div class="form">
-    <div class="weight-bold-text">
-      投稿記事のカテゴリー
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
   </div>
 </div>
-<%# /プラザ選択 %>
+<%# /記事本文 %>
 
 <%# 下部ボタン %>
   <div class="send-btn-contents">
