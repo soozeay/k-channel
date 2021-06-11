@@ -40,3 +40,32 @@
   padding: 5px;
   max-height: 200px;
 }
+
+@media screen and (max-width:767px) {
+
+  .correct-msg-box{
+    background-color: #fff;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 2vh 3vw;
+  }
+
+  .correct-msg-main{
+    background-color: #FFF;
+    width: 70vw;
+    height: 75%;
+    min-width: 450px;
+    padding: 0;
+  }
+
+  .target-msg {
+    margin: 0 0 40px 0;
+  }
+
+  .input-form{
+    margin-bottom: 20px;
+  }
+
+}
