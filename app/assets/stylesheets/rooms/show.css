@@ -83,13 +83,13 @@
 
 .posts{
   width: 90%;
-  margin: auto;
 }
 
 .form-text-field{
   width: 60%;
   padding: 3px;
   max-height: 200px;
+  vertical-align: top;
 }
 
 .mini-send-btn{
@@ -101,4 +101,48 @@
   border-radius: 3px;
   margin: 0 auto;
   padding: 5px;
+}
+
+@media screen and (max-width:767px) {
+
+  .chats{
+    width: 100%;
+    padding: 2vh 3vw
+  }
+  
+  .chat{
+    margin: 0;
+    padding: 10px;
+  }
+
+  .outgoing-msg{ 
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .sent-msg {
+    width: 70%;
+  }
+
+  .incoming-msg{
+    margin-top: 0;
+    margin-bottom: 40px;
+    width: 70%;
+  }
+
+  .received-msg > .created-time{
+    font-size: 10px;
+  }
+
+  .posts{
+    width: 100%;
+    margin-top: 20px;
+    vertical-align: top;
+    height: auto;
+  }
+
+  .form-text-field{
+    width: 80%;
+    height: 35px;
+  }
 }
