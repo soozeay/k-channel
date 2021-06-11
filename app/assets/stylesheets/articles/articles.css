@@ -191,9 +191,6 @@
 
   .main-bar{
     width: 100%;
-    flex-wrap: wrap;
-    overflow: scroll;
-    z-index: 1;
     justify-content: center;
     background-color: #fff;
   }
