@@ -13,7 +13,7 @@
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li>
+        <li class="header-icons locale-icon">
           <% if I18n.locale.to_s == "ko" %>
             <%= link_to('日本語', locale: 'ja') %>
           <% else %>

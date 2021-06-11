@@ -1,3 +1,8 @@
+.room-main{
+  margin: 0 auto;
+  display: flex;
+}
+
 .room-container{
   margin-left: 30px;
   width: 25vw;

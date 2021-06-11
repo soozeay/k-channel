@@ -4,6 +4,7 @@
 
 .top-page-header {
   width: 100vw;
+  height: 13vh;
   padding: 2vh 3vw;
   display: flex;
   flex-direction: column;

@@ -13,9 +13,9 @@ a:hover img{
 }
 
 .main {
-  background: #f8f8f8;
+  background: #fff;
   display: flex;
-  height: 1000px;
+  height: 100%;
 }
 
 
@@ -56,11 +56,11 @@ a:hover img{
 .send-btn{
   background-color: #44281e;
   color: #fff !important;
-  width: 50%;
+  width: 75%;
   border-radius: 5px;
   margin:  0 auto;
   text-align: center;
-  font-size: 26px;
+  font-size: 23px;
   font-weight: bold;
 }
 
@@ -85,9 +85,6 @@ a:hover img{
     width: 100%;
     height: 100%;
     display: block;
-  }
-
-  .sp-main{
   }
 
   .img-container{
@@ -127,17 +124,6 @@ a:hover img{
     width: 80%;
     padding: 5vh 5vw;
     margin: 0 auto;
-  }
-
-  .send-btn{
-    background-color: #44281e;
-    color: #fff !important;
-    width: 90%;
-    border-radius: 5px;
-    margin:  0 auto;
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
   }
 
   .store-btn {
