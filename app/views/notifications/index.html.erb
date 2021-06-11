@@ -1,15 +1,19 @@
 <%= render "shared/header" %>
-<%= render "shared/post-bar" %>
+<div class="pc-size">
+  <%= render "shared/post-bar" %>
+</div>
 <div class="main">
-  <%= render "shared/side-bar" %>
-    <div class="notifications-container">
-      <div class="notifications-list">
-        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-        <% if notifications.exists? %>
-          <%= render notifications %>
-        <% else %>
-          <p>通知はありません</p>
-        <% end %>
-       </div>
-    </div>
+  <div class="pc-size">
+    <%= render "shared/side-bar" %>
+  </div>
+  <div class="notifications-container">
+    <div class="notifications-list">
+      <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+      <% if notifications.exists? %>
+        <%= render notifications %>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
+      </div>
+  </div>
 </div>

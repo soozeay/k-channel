@@ -33,3 +33,15 @@
   font-size: 13px;
   
 }
+
+@media screen and (max-width:767px) {
+
+  .notifications-container{
+    width: 100%;
+    padding: 2vh 3vw;
+  }
+
+  .notifications-list{
+    width: 100%;
+  }
+}

@@ -46,3 +46,12 @@
   font-size: 14px;
   color: gray;
 }
+
+@media screen and (max-width:767px) {
+
+  .room-container{
+    margin-left: 0;
+    width: 100%;
+    padding: 2vh 3vw;
+  }
+}

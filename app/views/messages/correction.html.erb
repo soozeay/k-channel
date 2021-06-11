@@ -1,9 +1,14 @@
+<%= render "shared/second-header"%>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h4 class='form-header-text'>
+      メッセージの添削フォーム
+    </h4>
+  </div>
+</div>
 <div class="correct-msg-box">
-  <header class="article-header">
-    <%= link_to image_tag('kch-logo-color' , size: '185x50'), root_path %>
-  </header>
   <div class="correct-msg-main">
-    <h4 class="article-title">メッセージの添削フォーム</h4>
     <div class="target-msg">
       対象のメッセージ：「 <span><%= @target_msg.message %></span> 」
     </div>
@@ -28,3 +33,4 @@
     </div>
   </div>
 </div>
+
