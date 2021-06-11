@@ -13,9 +13,10 @@
     <% end %>
   </div>
 </div>
-<div class='main'>
-  <%= render "shared/side-bar" %>
-
+<div class="main sp-hidden">
+  <div class="pc-size">
+    <%= render "shared/side-bar" %>
+  </div>
   <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
   <div class="user-main-page">
     <div class="profile-box">
@@ -33,7 +34,7 @@
         <% end %>
       </div>
       <div class="profile-bar">
-        <div class="pofile-container">
+        <div class="profile-container">
           <div class="icon-box">
             <div class="user-icon-box set-center">
               <% if @user.avatar.attached? %>
@@ -57,11 +58,11 @@
           <div class="name-box">
               <div class="user-name-box">
                 <%= f.label :nickname do %>
-                  <%= f.text_field :nickname, class:"user-name", style: "border: none" %>
+                  <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none" %>
                 <% end %>
               </div>
-            <div class="sub-profile">
-              <div class="user-age">
+            <div class="sub-profile pc-size">
+              <div class="user-age pc-size">
                 <%= "#{@user.age} 歳" %>
                 <% if @user.gender_id == 1 %>
                   <i class="fas fa-mars"></i>
@@ -69,7 +70,7 @@
                   <i class="fas fa-venus"></i>
                 <% end %>
               </div>
-              <div class="created-time">
+              <div class="created-time pc-size">
                 <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
               </div>
             </div>
@@ -99,7 +100,7 @@
     <div class="field-e-user">
       <div class='field-label'>
         <%= f.label :password, 'パスワード'%>
-        <span class="check">変更したい場合のみ入力してください</span>
+        <span class="check">変更時のみ入力</span>
       </div>
       <div class='field-input'>
         <%= f.password_field :password %>
@@ -108,7 +109,7 @@
     <div class="field-e-user">
       <div class='field-label'>
         <%= f.label :password_confirmation, 'パスワード再確認'%>
-        <span class="check">変更したい場合のみ入力してください</span>
+        <span class="check">変更時のみ入力</span>
       </div>
       <div class='field-input'>
         <%= f.password_field :password_confirmation %>
