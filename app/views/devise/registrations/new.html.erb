@@ -1,82 +1,87 @@
-<%= render "shared/second-header"%>
+<% if I18n.locale.to_s == "ja"%>
+  <%= render "shared/second-header"%>
+  <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+    <div class='form-wrap'>
+      <div class='form-header'>
+        <h4 class='form-header-text'>
+            無料会員登録フォーム
+        </h4>
+      </div>
 
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
 
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h4 class='form-header-text'>
-      無料会員登録フォーム
-    </h4>
-  </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+              名前<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.text_area :nickname, class:"input-default", id:"name", placeholder:"例) たろう（40字以内）", maxlength:"40" %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+              メールアドレス<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+            パスワード<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+        <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+            パスワード(確認)<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+            年齢（満年齢）
+          </label>
+        </div>
+        <%= f.text_area :age, class:"input-default", id:"age", placeholder:"例) 26（半角数字のみ）" %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+            性別<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender-status"}) %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">
+            地域<span class="indispensable">必須</span>
+          </label>
+        </div>
+        <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class:"select-box", id:"country-status"}) %>
+      </div>
 
-  <%= render 'shared/error_messages', model: f.object %>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">
-        名前<span class="indispensable">必須</span>
-      </label>
+      <div class="form-group">
+        <h2 class='form-bottom-text'>
+          「会員登録」のボタンを押すことにより、
+          <span>利用規約</span>
+          <br>に同意したものとみなします
+        </h2>
+      </div>
+      <div class='register-btn'>
+        <%= f.submit "会員登録" ,class:"register-red-btn" %>
+      </div>
+      <p class="register-info">本人情報の登録について</p>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"name", placeholder:"例) たろう（40字以内）", maxlength:"40" %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">
-        メールアドレス<span class="indispensable">必須</span>
-      </label>
-    </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード
-        <span class="indispensable">必須</span>
-      </label>
-    </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
-    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">
-        パスワード(確認)<span class="indispensable">必須</span>
-      </label>
-    </div>
-    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">年齢（満年齢）</label>
-    </div>
-    <%= f.text_area :age, class:"input-default", id:"age", placeholder:"例) 26（半角数字のみ）" %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">
-        性別<span class="indispensable">必須</span>
-      </label>
-    </div>
-    <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender-status"}) %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">
-        地域<span class="indispensable">必須</span>
-      </label>
-    </div>
-    <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class:"select-box", id:"country-status"}) %>
-  </div>
-
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
-  <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"register-red-btn" %>
-  </div>
-  <p class="register-info">本人情報の登録について</p>
-</div>
+  <% end %>
+<% else %>
+  <%# 韓国語は下記のビューを表示する %>
+  <%= render "ko/devise/registrations/new" %>
 <% end %>

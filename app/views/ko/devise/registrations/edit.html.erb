@@ -1,0 +1,125 @@
+<%= render "shared/header" %>
+<div class="post-bar">
+  <div class="post-btn">
+    <%= link_to  new_article_path, class: "post-btn" do%>
+      投稿する <i class="fas fa-pencil-alt"></i>
+    <% end %>
+  </div>
+  <div class="post-btn">
+    <% if @user == current_user %>
+      <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
+        ログアウト <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="main sp-hidden">
+  <div class="pc-size">
+    <%= render "shared/side-bar" %>
+  </div>
+  <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
+  <div class="user-main-page">
+    <div class="profile-box">
+      <div class="cover-images">
+        <div class="edit-icon">
+          <%= f.label :cover do %>
+            <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
+            <%= f.file_field :cover, style:"display:none;" %>
+          <% end %>
+        </div>
+        <% if @user.cover.attached? %>
+          <%= image_tag(@user.cover, class: "cover-img")%>
+        <% else %>
+          <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+        <% end %>
+      </div>
+      <div class="profile-bar">
+        <div class="profile-container">
+          <div class="icon-box">
+            <div class="user-icon-box set-center">
+              <% if @user.avatar.attached? %>
+                <%= image_tag @user.avatar, size: "100x100", class:"user-icon set-center" %>
+              <% else %>
+                <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
+              <% end %>
+              <%= f.label :avatar do %>
+                <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
+                <%= f.file_field :avatar, style:"display:none;" %>
+              <% end %>
+            </div>
+            <div class="country-icon">
+              <% if @user.country_id == 1 %>
+                <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+              <% else %>
+                <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+              <% end %>
+            </div>
+          </div>
+          <div class="name-box">
+              <div class="user-name-box">
+                <%= f.label :nickname do %>
+                  <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none" %>
+                <% end %>
+              </div>
+            <div class="sub-profile pc-size">
+              <div class="user-age pc-size">
+                <%= "#{@user.age} 歳" %>
+                <% if @user.gender_id == 1 %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-venus"></i>
+                <% end %>
+              </div>
+              <div class="created-time pc-size">
+                <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="intro-box">
+          <div class="intro-title">
+            自己紹介（200字以内）
+          </div>
+            <%= f.label :intro do %>
+              <%= f.text_area :intro, class:"edit-intro", :placeholder => "こんにちは！  どうぞよろしくお願いします！ 等を200字以内で入力ください" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="other-info-box">
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :email, 'メールアドレス'%>
+      </div>
+      <div class='field-input'>
+        <%= f.email_field :email %>
+      </div>
+    </div>
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :password, 'パスワード'%>
+        <span class="check">変更時のみ入力</span>
+      </div>
+      <div class='field-input'>
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <div class="field-e-user">
+      <div class='field-label'>
+        <%= f.label :password_confirmation, 'パスワード再確認'%>
+        <span class="check">変更時のみ入力</span>
+      </div>
+      <div class='field-input'>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+  </div>
+  <div class='actions'>
+    <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
+      保存する <i class="far fa-save"></i>
+    <% end %>
+  </div>
+  <% end %>
+</div>

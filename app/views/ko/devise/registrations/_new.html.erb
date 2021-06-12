@@ -1,0 +1,79 @@
+<%= render "shared/second-header"%>
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h4 class='form-header-text'>
+        무료회원등록 폼
+      </h4>
+    </div>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          이름<span class="indispensable">필수</span>
+        </label>
+      </div>
+        <%= f.text_area :nickname, class:"input-default", id:"name", placeholder:"[예]서준（40글자이내）", maxlength:"40" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          메일 주소<span class="indispensable">필수</span>
+        </label>
+      </div>
+        <%= f.email_field :email, class:"input-default", id:"email", placeholder:"[예] aaaa@example.com", autofocus: true %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          비밀번호<span class="indispensable">필수</span>
+        </label>
+      </div>
+      <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6문자이상의 반각영숫자" %>
+      <p class='info-text'>※영문과 숫자의 양쪽을 포함시켜서 설정해 주세요</p>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          비밀번호(확인)<span class="indispensable">필수</span>
+        </label>
+      </div>
+      <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"같은 비밀번호를 입력해 주세요 " %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          나이
+        </label>
+      </div>
+      <%= f.text_area :age, class:"input-default", id:"age", placeholder:"[예] 26（반각영, 숫자를 입력해주세요.）" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          성별<span class="indispensable">필수</span>
+        </label>
+      </div>
+      <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender-status"}) %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">
+          출신<span class="indispensable">필수</span>
+        </label>
+      </div>
+      <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class:"select-box", id:"country-status"}) %>
+    </div>
+    <div class="form-group">
+      <h2 class='form-bottom-text'>
+        회원 등록의 버튼을 누르는 것으로,
+        <span>이용 규약</span>
+        <br>에 동의한 것으로 간주합니다
+      </h2>
+    </div>
+    <div class='register-btn'>
+      <%= f.submit "회원 등록" ,class:"register-red-btn" %>
+    </div>
+    <p class="register-info">본인 정보의 등록에 대해서</p>
+  </div>
+<% end %>
