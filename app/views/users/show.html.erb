@@ -1,10 +1,6 @@
 <% if I18n.locale.to_s == "ja"%>
   <%= render "shared/header" %>
-<% else %>
-  <%= render "ko/shared/header" %>
-<% end %>
-<div class="post-bar">
-  <% if I18n.locale.to_s == "ja"%>
+  <div class="post-bar">
     <div class="post-btn">
       <%= link_to  new_article_path, class: "post-btn" do%>
         投稿する <i class="fas fa-pencil-alt"></i>
@@ -17,71 +13,47 @@
         <% end %>
       </div>
     <% end %>
-  <% else %>
-    <div class="post-btn">
-      <%= link_to  new_article_path, class: "post-btn" do%>
-        올리다 <i class="fas fa-pencil-alt"></i>
-      <% end %>
-    </div>
-    <% if @user == current_user %>
-      <div class="post-btn">
-        <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn sign-out" do %>
-          로그 아웃 <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      </div>
+  </div>
+  <div class="flash-notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
     <% end %>
-  <% end %>
-</div>
-
-<div class="flash-notifications">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: key) %>
-  <% end %>
-</div>
-
-<div class='main'>
-  <% if I18n.locale.to_s == "ja"%>
+  </div>
+  <div class='main'>
     <div class="pc-size">
       <%= render "shared/side-bar" %>
     </div>
-  <% else %>
-    <div class="pc-size">
-      <%= render "ko/shared/side-bar" %>
-    </div>
-  <% end %>
-  <div class="user-main-page">
-    <div class="profile-box">
-      <div class="cover-images">
-        <% if @user.cover.attached? %>
-          <%= image_tag(@user.cover, class: "cover-img") %>
-        <% else %>
-          <%= image_tag("dammy-cover.png", class: "cover-img") %> 
-        <% end %>
-      </div>
-      <div class="profile-bar">
-        <div class="profile-container">
-          <div class="icon-box">
-            <div class="user-icon-box set-center">
-              <% if @user.avatar.attached? %>
-                <%= image_tag(@user.avatar, size: "100x100", class: "user-icon set-center") %>
-              <% else %>
-                <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
-              <% end %>
+    <div class="user-main-page">
+      <div class="profile-box">
+        <div class="cover-images">
+          <% if @user.cover.attached? %>
+            <%= image_tag(@user.cover, class: "cover-img") %>
+          <% else %>
+            <%= image_tag("dammy-cover.png", class: "cover-img") %> 
+          <% end %>
+        </div>
+        <div class="profile-bar">
+          <div class="profile-container">
+            <div class="icon-box">
+              <div class="user-icon-box set-center">
+                <% if @user.avatar.attached? %>
+                  <%= image_tag(@user.avatar, size: "100x100", class: "user-icon set-center") %>
+                <% else %>
+                  <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
+                <% end %>
+              </div>
+              <div class="country-icon">
+                <% if @user.country_id == 1 %>
+                  <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+                <% else %>
+                  <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+                <% end %>
+              </div>
             </div>
-            <div class="country-icon">
-              <% if @user.country_id == 1 %>
-                <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
-              <% else %>
-                <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
-              <% end %>
-            </div>
-          </div>
-          <div class="name-box">
-            <div class="user-name-box">
-              <div class="user-name"><%= @user.nickname %></div>
-            </div>
-            <%# 言語切替（デフォルトは日本語） %>
-            <% if I18n.locale.to_s == "ja"%>
+            <div class="name-box">
+              <div class="user-name-box">
+                <div class="user-name"><%= @user.nickname %></div>
+              </div>
               <% unless @user.id == current_user.id %>
                 <% if (current_user.following? @user) && (@user.following? current_user) %>
                   <% if @isRoom == true %>
@@ -122,53 +94,8 @@
                   <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
                 </div>
               <% end %>
-            <%# else 韓国語切替 %>
-            <% else %>
-              <% unless @user.id == current_user.id %>
-                <% if (current_user.following? @user) && (@user.following? current_user) %>
-                  <% if @isRoom == true %>
-                    <div class="user-show-room">
-                    <%= link_to '채팅 신청', room_path(@roomId), class:"mini-send-btn" %>
-                    </div>
-                  <% else %>
-                      <%= form_with model: @room, local: true do |f| %>
-                        <%= fields_for @entry do |e| %>
-                          <%= e.hidden_field :user_id, value: @user.id %>
-                        <% end %>
-                        <%= f.submit "채팅을 시작한다", class:"mini-send-btn user-show-chat" %>
-                      <% end %>
-                  <% end %>
-                <% end %>
-              <% end %>
-              <div class="sub-profile pc-size">
-                <div class="user-age pc-size">
-                  <%= "#{@user.age} 살" %>
-                  <% if @user.gender_id == 1 %>
-                    <i class="fas fa-mars"></i>
-                  <% else %>
-                    <i class="fas fa-venus"></i>
-                  <% end %>
-                </div>
-                <div class="created-time pc-size">
-                  <%= "등록일：" + time_ago_in_words(@user.created_at) + "전" %>
-                </div>
-              </div>
-              <% if current_user.id == @user.id %>
-                <div class="edit-profile-icon">
-                  <%= link_to edit_user_registration_path(locale: I18n.locale, user_id: current_user.id), class:"mini-send-btn" do%>
-                    <%= "프로필 수정" %> <i class="fas fa-edit" style="color: #fff;"></i>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class="user-follow-btn">
-                  <%= render "ko/relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
-                </div>
-              <% end %>
-            <% end %>
-            <%# /言語切替 %>
+            </div>
           </div>
-        </div>
-        <% if I18n.locale.to_s == "ja"%>
           <div class="intro-box">
             <div class="intro-title">
               自己紹介
@@ -181,23 +108,8 @@
               <% end %>
             </div>
           </div>
-        <% else %>
-          <div class="intro-box">
-            <div class="intro-title">
-              자기 소개
-            </div>
-            <div class="intro-text">
-              <% if @user.intro.present? %>
-                <%= safe_join(@user.intro.split("\n"),tag(:br)) %>
-              <% else %>
-                자기 소개를 추가합시다!
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+        </div>
       </div>
-    </div>
-    <% if I18n.locale.to_s == "ja"%>
       <div class="articles-box" id="js-tab">
         <div class="user-nav-bar">
           <div class="nav-title">
@@ -220,29 +132,8 @@
           <%= render "like" %>
         </div>
       </div>
-    <% else %>
-      <div class="articles-box" id="js-tab">
-        <div class="user-nav-bar">
-          <div class="nav-title">
-              <a href="", class="tab-nav-item is-active" data-nav="0"><%= '투고' %></a>
-            <a href="", class="tab-nav-item" data-nav="1"><%= "팔로우" %></a>
-            <a href="", class="tab-nav-item" data-nav="2"><%= "팔로워" %></a>
-            <a href="", class="tab-nav-item" data-nav="3"><%= "좋아요" %></a>
-          </div>
-        </div>
-        <div class="nav-items" data-content="0">
-          <%= render partial: "ko/articles/article", collection: @articles, locals: {article: @article} %>
-        </div>
-        <div class="nav-items" data-content="1">
-          <%= render "ko/users/follow" %>
-        </div>
-        <div class="nav-items" data-content="2">
-          <%= render "ko/users/follower" %>
-        </div>
-        <div class="nav-items" data-content="3">
-          <%= render "ko/users/like" %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "ko/users/show" %>
+<% end %>
