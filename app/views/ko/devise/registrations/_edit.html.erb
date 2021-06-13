@@ -1,21 +1,21 @@
-<%= render "shared/header" %>
+<%= render "ko/shared/header" %>
 <div class="post-bar">
   <div class="post-btn">
     <%= link_to  new_article_path, class: "post-btn" do%>
-      投稿する <i class="fas fa-pencil-alt"></i>
+      올리다 <i class="fas fa-pencil-alt"></i>
     <% end %>
   </div>
   <div class="post-btn">
     <% if @user == current_user %>
       <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
-        ログアウト <i class="fas fa-sign-out-alt"></i>
+        로그 아웃 <i class="fas fa-sign-out-alt"></i>
       <% end %>
     <% end %>
   </div>
 </div>
 <div class="main sp-hidden">
   <div class="pc-size">
-    <%= render "shared/side-bar" %>
+    <%= render "ko/shared/side-bar" %>
   </div>
   <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
   <div class="user-main-page">
@@ -63,7 +63,7 @@
               </div>
             <div class="sub-profile pc-size">
               <div class="user-age pc-size">
-                <%= "#{@user.age} 歳" %>
+                <%= "#{@user.age} 살" %>
                 <% if @user.gender_id == 1 %>
                   <i class="fas fa-mars"></i>
                 <% else %>
@@ -71,17 +71,17 @@
                 <% end %>
               </div>
               <div class="created-time pc-size">
-                <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
+                <%= "등록일：" + time_ago_in_words(@user.created_at) + "전" %>
               </div>
             </div>
           </div>
         </div>
         <div class="intro-box">
           <div class="intro-title">
-            自己紹介（200字以内）
+            자기 소개（200글자이내）
           </div>
             <%= f.label :intro do %>
-              <%= f.text_area :intro, class:"edit-intro", :placeholder => "こんにちは！  どうぞよろしくお願いします！ 等を200字以内で入力ください" %>
+              <%= f.text_area :intro, class:"edit-intro", :placeholder => "200글자이내 [예] 처음뵙겠습니다" %>
             <% end %>
         </div>
       </div>
@@ -91,7 +91,7 @@
   <div class="other-info-box">
     <div class="field-e-user">
       <div class='field-label'>
-        <%= f.label :email, 'メールアドレス'%>
+        <%= f.label :email, '메일 주소'%>
       </div>
       <div class='field-input'>
         <%= f.email_field :email %>
@@ -99,8 +99,8 @@
     </div>
     <div class="field-e-user">
       <div class='field-label'>
-        <%= f.label :password, 'パスワード'%>
-        <span class="check">変更時のみ入力</span>
+        <%= f.label :password, '비밀번호'%>
+        <span class="check">변경시만 입력</span>
       </div>
       <div class='field-input'>
         <%= f.password_field :password %>
@@ -108,8 +108,8 @@
     </div>
     <div class="field-e-user">
       <div class='field-label'>
-        <%= f.label :password_confirmation, 'パスワード再確認'%>
-        <span class="check">変更時のみ入力</span>
+        <%= f.label :password_confirmation, '비밀번호 재확인'%>
+        <span class="check">변경시만 입력</span>
       </div>
       <div class='field-input'>
         <%= f.password_field :password_confirmation %>
@@ -118,7 +118,7 @@
   </div>
   <div class='actions'>
     <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
-      保存する <i class="far fa-save"></i>
+      보존한다 <i class="far fa-save"></i>
     <% end %>
   </div>
   <% end %>
