@@ -1,10 +1,20 @@
 <%= render "shared/second-header"%>
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h4 class='form-header-text'>
-      記事の投稿フォーム
-    </h4>
+<% if I18n.locale.to_s == "ja"%>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h4 class='form-header-text'>
+        記事の投稿フォーム
+      </h4>
+    </div>
+    <%= render "form" %>
   </div>
-  <%= render "form" %>
-</div>
-
+<% else %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h4 class='form-header-text'>
+        투고 폼
+      </h4>
+    </div>
+    <%= render "ko/articles/form" %>
+  </div>
+<% end %>
