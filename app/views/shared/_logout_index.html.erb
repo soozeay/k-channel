@@ -1,62 +1,50 @@
-<div class="main sp-main" style="height: 100vh; background-color: #d0bfc7;">
-  <div class="img-container">
-    <div class="title-container">
-      <div class="app-title">
-        <p>Kchannel<p>
-      </div>
-      <div class="sub-title">
-        <h4 class='service-title'>
-          <% if I18n.locale.to_s == "ja"%>
+<% if I18n.locale.to_s == "ja"%>
+  <div class="main sp-main" style="height: 100vh; background-color: #d0bfc7;">
+    <div class="img-container">
+      <div class="title-container">
+        <div class="app-title">
+          <p>Kchannel<p>
+        </div>
+        <div class="sub-title">
+          <h4 class='service-title'>
             あなたとワタシを繋ぐ場所
-          <% else %>
-            당신과 【와타시】를 매어놓는 장소 
-          <% end %>
-          </h4>
-      </div>
-      <div class="top-img-box">
-        <%= image_tag("top-icon.png", class: "item-img") %> 
+            </h4>
+        </div>
+        <div class="top-img-box">
+          <%= image_tag("top-icon.png", class: "item-img") %> 
+        </div>
       </div>
     </div>
-  </div>
-  <div class="info-container">
-    <div class="login-container">
-      <div class="login-box">
-        <div class="send-btn">
-          <%= link_to new_user_session_path, class:"login drop-shadow", style:"margin-right: 0;" do %>
-            <% if I18n.locale.to_s == "ja"%>
+    <div class="info-container">
+      <div class="login-container">
+        <div class="login-box">
+          <div class="send-btn">
+            <%= link_to new_user_session_path, class:"login drop-shadow", style:"margin-right: 0;" do %>
               ログイン <i class="fas fa-sign-in-alt" ></i>
-            <% else %>
-              로그인 <i class="fas fa-sign-in-alt" ></i>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-      <div class="login-box">
-        <div class="send-btn">
-          <%= link_to new_user_registration_path, class:"sign-up drop-shadow" do %>
-            <% if I18n.locale.to_s == "ja"%>
+        <div class="login-box">
+          <div class="send-btn">
+            <%= link_to new_user_registration_path, class:"sign-up drop-shadow" do %>
               新規登録 <i class="fas fa-user-plus"></i>
-            <% else %>
-              신규등록 <i class="fas fa-user-plus"></i>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-      <div class="login-box">
-        <div class="send-btn">
-          <%= link_to users_guest_sign_in_path, method: :post, class:"login drop-shadow", style:"margin-right: 0;" do %>
-            <% if I18n.locale.to_s == "ja"%>
+        <div class="login-box">
+          <div class="send-btn">
+            <%= link_to users_guest_sign_in_path, method: :post, class:"login drop-shadow", style:"margin-right: 0;" do %>
               ゲスト <i class="fas fa-sign-in-alt" ></i>
-            <% else %>
-              개발자 <i class="fas fa-sign-in-alt" ></i>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-      <div class='store-btn'>
-        <%= link_to('日本語', locale: 'ja') %>
-        <%= link_to('한국어', locale: 'ko') %>
+        <div class='store-btn'>
+          <%= link_to('日本語', locale: 'ja') %>
+          <%= link_to('한국어', locale: 'ko') %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <%= render "ko/shared/logout_index" %>
+<% end %>
