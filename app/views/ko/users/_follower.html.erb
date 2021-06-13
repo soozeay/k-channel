@@ -1,0 +1,39 @@
+<% if current_user.followers.present? %>
+  <% follower_users.each do |f|%>
+    <% follower_user = User.find(f.id) %>
+    <div class="partner-box">
+      <%= link_to user_path(f.id), class: "room" do %>
+        <div class="relation-user-img-box">
+          <% if follower_user.avatar.attached? %>
+            <%= image_tag(rails_blob_path(follower_user.avatar), size: "50x50", class: "img-circle") %>
+          <% else %>
+            <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
+          <% end %>
+          <div class="country-icon">
+          <% if follower_user.country_id == 1 %>
+              <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
+            <% else %>
+              <%= image_tag("country_korea.png", size: "20x20", class: "country-img") %> 
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="relationship-user-info">
+        <div class="relationship-user-name">
+          <%= link_to user_path(f.id) do%>
+            <%= follower_user.nickname + "씨" %>
+          <% end %>
+        </div>
+        <div class="relationship-user-intro">
+          <% if follower_user.intro.present? %>
+            <%= follower_user.intro %>
+          <% else %>
+            <%= '소개문은 없습니다' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <%= '팔로워는 없습니다' %>
+<% end %>
