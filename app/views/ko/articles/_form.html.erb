@@ -1,0 +1,74 @@
+<%= form_with model:@article, local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
+
+<%# 画像・動画の投稿 %>
+<div class="img-upload">
+  <div class="weight-bold-text">
+    이미지 또는 썸네일
+  </div>
+  <div class="click-upload">
+    <p>클릭하고 업 로드</p>
+    <%= f.file_field :image, id:"article-image" %>
+  </div>
+  <div id="image-preview"></div>
+</div>
+<div class="img-upload">
+  <div class="weight-bold-text">
+    유튜브의 URL
+  </div>
+  <div class="click-upload">
+    <%= f.text_field :youtube_url, class:"youtube-upload", placeholder: "例）https://www.youtube.com/watch?v=lA7g0q2woEc" %>
+  </div>
+</div>
+<%# /画像・動画の投稿 %>
+
+<%# 記事本文 %>
+<div class="new-articles">
+  <div class="weight-bold-text">
+    제목
+    <span class="indispensable">필수</span>
+  </div>
+  <%= f.text_area :title, class:"new-article-title", id:"item-name", placeholder:"40글자이내 [예]그 드라마가 드디어 엔딩!", maxlength:"40" %>
+  <div class="articles-explain">
+    <div class="weight-bold-text">
+      본문
+    </div>
+    <%= f.rich_text_area :text, class:"articles-text", id:"item-info", placeholder:"1,000글자이내 [예]대인기의 드라마, '○○'가 다음 주 엔딩을 맞이합니다." ,rows:"7" ,maxlength:"1000" %>
+  </div>
+  <div class="articles-explain">
+    <div class="weight-bold-text">
+      팁
+    </div>
+    <%= f.text_area :trick, class:"articles-text articles-trick", id:"item-trick", placeholder:"1,000글자이내\n[예] 히트작을 연발하는'△△'가 각본을 맡고 있는 곳도 포인트입니다." ,rows:"7" ,maxlength:"1000" %>
+  </div>
+  <div class="articles-explain">
+    <div class="weight-bold-text">
+      해시 태그
+    </div>
+    <%= f.text_field :tag_list, value: @article.tag_list.join(','), class:"input-tag-area", data: {role: "tagsinput"}, placeholder:"5개까지" %>
+  </div>
+  <div class="choice-plaza">
+    <div class="form">
+      <div class="weight-bold-text">
+        카테고리
+        <span class="indispensable">필수</span>
+      </div>
+      <%= f.collection_select(:plaza_id, Plaza.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    </div>
+  </div>
+</div>
+<%# /記事本文 %>
+
+<%# 下部ボタン %>
+  <div class="send-btn-contents">
+    <div class="register-btn">
+      <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
+        전송 <i class="fas fa-paper-plane"></i>
+      <% end %>
+    </div>
+    <div class="register-btn">
+      <%= link_to '이전', root_path, class:"register-red-btn", style:"background-color: #aaa" %>
+    </div>
+  </div>
+  <%# /下部ボタン %>
+<% end %>
