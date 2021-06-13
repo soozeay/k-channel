@@ -1,21 +1,37 @@
 <% unless user_signed_in? %>
   <%= render "shared/logout_index" %>
 <% else %>
-  <%= render "shared/header" %>
-  <%= render "shared/post-bar" %>
+  <% if I18n.locale.to_s == "ja"%>
+    <%= render "shared/header" %>
+    <%= render "shared/post-bar" %>
+  <% else %>
+    <%= render "ko/shared/header" %>
+    <%= render "ko/shared/post-bar" %>
+  <% end %>
   <div class="flash-notifications">
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: key) %>
     <% end %>
   </div>
   <div class='main'>
-    <%= render "shared/side-bar" %>
-    <div class="main-bar">
+    <% if I18n.locale.to_s == "ja"%>
+      <%= render "shared/side-bar" %>
+      <div class="main-bar">
       <% if @search_articles_result.present? %>
         <%= render partial:"article", collection: @search_articles_result, locals: {article: @article} %>
       <% else %>
         <%= render partial:"article", collection: @articles, locals: {article: @article} %>
       <% end %>
     </div>
+    <% else %>
+      <%= render "ko/shared/side-bar" %>
+      <div class="main-bar">
+      <% if @search_articles_result.present? %>
+        <%= render partial:"ko/articles/article", collection: @search_articles_result, locals: {article: @article} %>
+      <% else %>
+        <%= render partial:"ko/articles/article", collection: @articles, locals: {article: @article} %>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 <% end %>
