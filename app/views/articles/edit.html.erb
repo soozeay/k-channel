@@ -1,10 +1,21 @@
 <%# app/assets/stylesheets/articles/new.css %>
 <%= render "shared/second-header"%>
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h4 class='form-header-text'>
-      投稿記事を編集する
-    </h4>
+<% if I18n.locale.to_s == "ja"%>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h4 class='form-header-text'>
+        投稿記事を編集する
+      </h4>
+    </div>
+    <%= render "form" %>
   </div>
-  <%= render "form" %>
-</div>
+<% else %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h4 class='form-header-text'>
+        투고 기사를 편집한다
+      </h4>
+    </div>
+    <%= render "ko/articles/form" %>
+  </div>
+<% end %>
