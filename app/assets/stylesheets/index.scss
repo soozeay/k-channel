@@ -72,7 +72,8 @@ a:hover img{
   display: flex;
   margin: 24px auto 0;
   justify-content: space-between;
-  width: 80%
+  width: 30%;
+  font-weight: bold;
 }
 
 .app-link-btn {
@@ -129,8 +130,8 @@ a:hover img{
   .store-btn {
     display: flex;
     margin: 24px auto 0;
-    justify-content: center;
-    width: 100%
+    justify-content: space-between;
+    width: 50%
   }
 
   .app-link-btn {
