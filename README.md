@@ -44,6 +44,10 @@ DM機能内で相手メッセージの添削ができます。
 ## レスポンシブ対応 ※NEW
 スマホに対応しました。
 
+## いいねランキング機能 ※NEW
+いいねの多いTOP10を合計、国別にそれぞれ閲覧することができます。
+下記の詳細説明欄から操作方法をご確認ください。
+
 # 目指した課題解決
 このアプリケーションは、以下2つの課題を解決する為に作成しました
 ```
@@ -124,6 +128,13 @@ https://docs.google.com/presentation/d/1JJVIfmAm8BPgtj0__QY0KKyYuCUGVRTdGEM2VzE8
 ![deb292f434050b8dcf951bf11b1df937](https://user-images.githubusercontent.com/80019801/121843096-9ce58d00-cd1c-11eb-9b44-0b86de448f69.gif)
 このように、画面上の言語切替ボタンをクリックすると表示言語を切り替えることができます。
 デフォルトは日本語に設定されています。
+
+## いいねランキング表示機能
+![3f42f9004d55360a1fbc4de726df8169](https://user-images.githubusercontent.com/80019801/121870391-f8744280-cd3d-11eb-80f3-f415541dbf36.gif)
+![79a9247954c037b8f8e6541e02d0be8c](https://user-images.githubusercontent.com/80019801/121870595-2c4f6800-cd3e-11eb-9239-7d343ca2608c.gif)
+![92c45422814fc3dbdb741ee1c39a45ec](https://user-images.githubusercontent.com/80019801/121870753-5143db00-cd3e-11eb-9290-58bd7b091f39.gif)
+このように、画面のサイドバーから「いいねランキング」を表示することができます。
+全ての中からのランキング、国別のランキングを閲覧することが可能です。
 
 
 
