@@ -37,6 +37,13 @@ http://54.238.82.200/
 ## 添削機能 ※NEW
 DM機能内で相手メッセージの添削ができます。
 
+## 言語切替機能 ※NEW
+日本語・韓国語の表示切替をボタンクリックできるようになりました。
+ログアウト後の画面、各ページのヘッダーに設置されています。
+
+## レスポンシブ対応 ※NEW
+スマホに対応しました。
+
 # 目指した課題解決
 このアプリケーションは、以下2つの課題を解決する為に作成しました
 ```
@@ -111,6 +118,12 @@ https://docs.google.com/presentation/d/1JJVIfmAm8BPgtj0__QY0KKyYuCUGVRTdGEM2VzE8
 ![9ff67b70cbd919324e1d986573318d18](https://user-images.githubusercontent.com/80019801/120970891-fb53be00-c7a6-11eb-95d4-b24a91c83443.gif)
 このように、対象のメッセージから「添削」のボタンをクリックすると、相手メッセージの間違いを指摘することができます。
 添削元は文字色を赤くし、取り消し線を入れています。
+
+## 言語切替機能
+![5490c9499afd5c1feb1042e9b99c9ec0](https://user-images.githubusercontent.com/80019801/121842984-5b54e200-cd1c-11eb-94b4-319b9a875772.gif)
+![deb292f434050b8dcf951bf11b1df937](https://user-images.githubusercontent.com/80019801/121843096-9ce58d00-cd1c-11eb-9b44-0b86de448f69.gif)
+このように、画面上の言語切替ボタンをクリックすると表示言語を切り替えることができます。
+デフォルトは日本語に設定されています。
 
 
 
@@ -227,7 +240,7 @@ image（サムネイル）はActive Storageを使用
 
 
 ## rooms テーブル
-※IDしかございません
+idのみ
 
 ### Association
 - has_many :messages, dependent: :destroy
@@ -245,11 +258,12 @@ image（サムネイル）はActive Storageを使用
 - belongs_to :room
 
 ## messages テーブル
-| Column  | Type       | Options           |
-| ------- | ---------- | ----------------- |
-| user    | references | foreign_key: true |
-| room    | references | foreign_key: true |
-| message | text       | null: false       |
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| user           | references | foreign_key: true |
+| room           | references | foreign_key: true |
+| message        | text       | null: false       |
+| target_message | text       |                   |
 
 ## タグについて
 タグに関してはgemの"acts-as-tagable-on"を使用。
