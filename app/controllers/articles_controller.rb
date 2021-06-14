@@ -40,7 +40,11 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     if @article.valid?
       @article.save
-      return redirect_to root_path, notice: '記事を投稿しました'
+      if I18n.locale.to_s == "ja"
+        redirect_to root_path, notice: '記事を投稿しました'
+      else
+        redirect_to root_path, notice: '투고했습니다'
+      end
     else
       render :new
     end
@@ -58,7 +62,11 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to article_path, notice: '記事の編集が完了しました'
+      if I18n.locale.to_s == "ja"
+        redirect_to article_path, notice: '記事の編集が完了しました'
+      else
+        redirect_to article_path, notice: '편집했습니다'
+      end
     else
       render :edit
     end
@@ -66,7 +74,11 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to root_path, notice: '記事を削除しました'
+    if I18n.locale.to_s == "ja"
+      redirect_to root_path, notice: '記事を削除しました'
+    else
+      redirect_to root_path, notice: '삭제했습니다'
+    end
   end
 
   private

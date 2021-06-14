@@ -14,7 +14,11 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    redirect_to room_path(@message.room.id), notice: 'メッセージを取り消しました'
+    if I18n.locale.to_s == "ja"
+      redirect_to room_path(@message.room.id), notice: 'メッセージを取り消しました'
+    else
+      redirect_to room_path(@message.room.id), notice: '메시지를 취소했습니다'
+    end
   end
 
   def correction

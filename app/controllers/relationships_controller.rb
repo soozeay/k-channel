@@ -5,7 +5,11 @@ class RelationshipsController < ApplicationController
     following = current_user.follow(@user)
     if following.save
       @user.create_notification_follow!(current_user)
-      redirect_to @user, notice: 'フォローに成功しました'
+      if I18n.locale.to_s == "ja"
+        redirect_to @user, notice: 'フォローに成功しました'
+      else
+        redirect_to @user, notice: '팔로우 했습니다'
+      end
     else
       redirect_to @user
     end
@@ -14,9 +18,13 @@ class RelationshipsController < ApplicationController
   def destroy
     following = current_user.unfollow(@user)
     if following.destroy
-      redirect_to @user, notice: 'フォローを解除しました'
+      if I18n.locale.to_s == "ja"
+        redirect_to @user, notice: 'フォローを解除しました'
+      else
+        redirect_to @user, notice: '팔로우를 해제했습니다'
+      end
     else
-      redirect_to @user, alert: 'フォローを解除しました'
+      redirect_to @user
     end
   end
 
