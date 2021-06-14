@@ -16,6 +16,8 @@ class ArticlesController < ApplicationController
         @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id]).order('created_at DESC')
       elsif params[:plaza_id].present? # プラザのみ選択した場合
         @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
+      elsif params[:like].present? # いいね人気順表示を選択した場合
+        @articles = Article.where(id: Like.group(:article_id).order('count(article_id) DESC').limit(10).pluck(:article_id))
       else # 地域別で全ての投稿を表示したい場合
         @users = User.where(country_id: params[:country_id])
         @articles = Article.where(user_id: @users.ids).order('created_at DESC')
@@ -83,7 +85,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :trick, :plaza_id, :image, :youtube_url, :tag_list).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text, :trick, :plaza_id, :image, :youtube_url, :tag_list, :like).merge(user_id: current_user.id)
   end
 
   def set_item
