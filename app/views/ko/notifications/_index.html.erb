@@ -1,0 +1,19 @@
+<%= render "ko/shared/header" %>
+<div class="pc-size">
+  <%= render "ko/shared/post-bar" %>
+</div>
+<div class="main">
+  <div class="pc-size">
+    <%= render "ko/shared/side-bar" %>
+  </div>
+  <div class="notifications-container">
+    <div class="notifications-list">
+      <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+      <% if notifications.exists? %>
+        <%= render partial:"ko/notifications/notification", collection: notifications, locals: {notification: notifications} %>
+      <% else %>
+        <p>알림이 없습니다</p>
+      <% end %>
+      </div>
+  </div>
+</div>

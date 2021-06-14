@@ -1,12 +1,12 @@
-<%= render "shared/header" %>
-<div class="pc-size">
-  <%= render "shared/post-bar" %>
-</div>
-<div class="main">
+<% if I18n.locale.to_s == "ja"%>
+  <%= render "shared/header" %>
   <div class="pc-size">
-    <%= render "shared/side-bar" %>
+    <%= render "shared/post-bar" %>
   </div>
-  <% if I18n.locale.to_s == "ja"%>
+  <div class="main">
+    <div class="pc-size">
+      <%= render "shared/side-bar" %>
+    </div>
     <div class="notifications-container">
       <div class="notifications-list">
         <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
@@ -17,16 +17,7 @@
         <% end %>
         </div>
     </div>
-  <% else %>
-    <div class="notifications-container">
-      <div class="notifications-list">
-        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-        <% if notifications.exists? %>
-          <%= render partial:"ko/notifications/notification", collection: notifications, locals: {notification: notifications} %>
-        <% else %>
-          <p>알림이 없습니다</p>
-        <% end %>
-        </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <%= render "ko/notifications/index" %>
+<% end %>
