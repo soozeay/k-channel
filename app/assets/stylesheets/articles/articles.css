@@ -68,6 +68,10 @@
   border-bottom: 1px solid #bf8188;;
 }
 
+.like-ranking{
+  font-weight: bold;
+}
+
 
 .article-box{
   height: 450px;

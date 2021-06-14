@@ -8,6 +8,7 @@
       <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'いいね TOP10', articles_path(like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <div class="category-list", id="js-accordion-nav">
@@ -19,6 +20,7 @@
       <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(country_id: 1, plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(country_id: 1, plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(country_id: 1, plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'いいね TOP10', articles_path(country_id: 1,like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <div class="category-list", id="js-accordion-nav">
@@ -30,11 +32,11 @@
       <li class="plaza-name", style="display: none;"><%= link_to 'グルメ情報', articles_path(country_id: 2, plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '日記', articles_path(country_id: 2, plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to 'その他', articles_path(country_id: 2, plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to 'いいね TOP10', articles_path(country_id: 2,like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <ul class="premier-list">
     <h2 class="plaza-header">プレミアム会員サービス</h2>
-    <li class="plaza-name">人気順検索</li>
     <li class="plaza-name">解析</li>
   </ul>
 </div>

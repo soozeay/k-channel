@@ -8,6 +8,7 @@
       <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '좋아요 TOP10', articles_path(like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <div class="category-list", id="js-accordion-nav">
@@ -19,6 +20,7 @@
       <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(country_id: 2, plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(country_id: 2, plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(country_id: 2, plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '좋아요 TOP10', articles_path(country_id: 2,like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <div class="category-list", id="js-accordion-nav">
@@ -30,11 +32,11 @@
       <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(country_id: 1, plaza_id: 4) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(country_id: 1, plaza_id: 5) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(country_id: 1, plaza_id: 6) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '좋아요 TOP10', articles_path(country_id: 1,like: 1), class:"like-ranking" %></li>
     </ul>
   </div>
   <ul class="premier-list">
     <h2 class="plaza-header">프리미엄 회원 서비스</h2>
-    <li class="plaza-name">인기 순서 표시</li>
     <li class="plaza-name">해석</li>
   </ul>
 </div>
