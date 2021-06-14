@@ -98,7 +98,7 @@
       <% unless @comment.present? %>
         <%= "코멘트는 아직 없습니다" %>
       <% end %>
-      <%= render partial:"comments", locals: {comment: @comment} %>
+      <%= render partial:"ko/articles/comments", locals: {comment: @comment} %>
     </div>
     <% if user_signed_in? %>
       <ul class="form-box">

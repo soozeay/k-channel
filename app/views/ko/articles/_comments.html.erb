@@ -1,0 +1,17 @@
+<div class="all-comments-box">
+  <div class="comments_lists">
+    <% @comments.each do |comment| %>
+      <div class="comment_user">
+        <%= link_to '送信者：' + comment.user.nickname, user_path(comment.user.id) %>
+      </div>
+      <div class="comment_info">
+        <div class="comments_text">
+          <%= comment.comment %>
+        </div>
+        <div class="created-time">
+          <%= time_ago_in_words(comment.created_at) %>전
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
