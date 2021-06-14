@@ -1,0 +1,21 @@
+<% unless user_signed_in? %>
+  <%= render "ko/shared/logout_index" %>
+<% else %>
+  <%= render "ko/shared/header" %>
+  <%= render "ko/shared/post-bar" %>
+  <div class="flash-notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
+    <% end %>
+  </div>
+  <div class='main'>
+    <%= render "ko/shared/side-bar" %>
+    <div class="main-bar">
+      <% if @search_articles_result.present? %>
+        <%= render partial:"ko/articles/article", collection: @search_articles_result, locals: {article: @article} %>
+      <% else %>
+        <%= render partial:"ko/articles/article", collection: @articles, locals: {article: @article} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

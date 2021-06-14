@@ -4,7 +4,11 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.create(article_id: params[:article_id])
     redirect_back(fallback_location: root_path)
-    flash[:notice] = 'この記事にいいねしました'
+    if I18n.locale.to_s == "ja"
+      flash[:notice] = 'この記事にいいねしました'
+    else
+      flash[:notice] = '좋아요 했습니다'
+    end
     @artile = Article.find(params[:article_id])
     @article.create_notification_like!(current_user)
   end
@@ -13,7 +17,11 @@ class LikesController < ApplicationController
     @like = Like.find_by(article_id: params[:article_id], user_id: current_user.id)
     @like.destroy
     redirect_back(fallback_location: root_path)
-    flash[:notice] = 'この記事のいいねを解除しました'
+    if I18n.locale.to_s == "ja"
+      flash[:notice] = 'この記事のいいねを解除しました'
+    else
+      flash[:notice] = '좋아요 취소했습니다'
+    end
   end
 
   private

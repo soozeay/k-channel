@@ -1,0 +1,66 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="notifications-box">
+  <div class="icon-box">
+    <div class="user-icon-box set-center">
+      <%= link_to user_path(visitor) do %>
+        <% if visitor.avatar.attached? %>
+          <%= image_tag(visitor.avatar, size: "65x65", class: "user-icon set-center") %>
+        <% else %>
+          <%= image_tag("default_user.png", size: "65x65", class: "user-icon set-center") %> 
+        <% end %>
+      <% end %>
+    </div>
+    <div class="country-icon">
+      <% if visitor.country_id == 1 %>
+        <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+      <% else %>
+        <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+      <% end %>
+    </div>
+  </div>
+  <div class="notification-text-box">
+    <span class="partner-name">
+      <%= link_to user_path(visitor) do %>
+        <%= visitor.nickname %>
+      <% end %>
+     </span>
+    씨가
+    <% case notification.action 
+      when 'follow' then %>
+      <%= '당신을 팔로우했습니다' %>
+      <div class= "notifications-info">
+        <div class="concerned-item"></div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "전"%>
+        </div>
+      </div>
+    <% when 'like' then %>
+      <%= link_to '당신의 투고', notification.article %>
+      <%= '당신의 투고에 좋구나 했습니다' %>
+      <div class= "notifications-info">
+        <div class="concerned-item">
+          <i class="fas fa-heart" style="color:red;"></i>
+          <%= notification.article.title%>
+        </div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "전"%>
+        </div>
+      </div>
+    <% when 'comment' then %>
+      <% if notification.article.user_id == visited.id %>
+        <%= link_to "당신의 투고", notification.article %>
+      <% end %>
+      <%= '당신의 투고에 코멘트했습니다' %>
+      <div class= "notifications-info">
+        <div class="concerned-item">
+          <i class="fas fa-comments" style="color:#44281e;"></i>
+          <%= Comment.find_by(id: notification.comment_id)&.comment %>
+        </div>
+        <div class="created-time">
+          <%= time_ago_in_words(notification.created_at) + "전"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,122 +1,126 @@
-<%= render "shared/header" %>
-<div class="post-bar">
-  <div class="post-btn">
-    <%= link_to  new_article_path, class: "post-btn" do%>
-      投稿する <i class="fas fa-pencil-alt"></i>
+<% if I18n.locale.to_s == "ja"%>
+  <%= render "shared/header" %>
+  <div class="post-bar">
+    <div class="post-btn">
+      <%= link_to  new_article_path, class: "post-btn" do%>
+        投稿する <i class="fas fa-pencil-alt"></i>
+      <% end %>
+    </div>
+    <div class="edit-bar">
+      <% if current_user.id == @article.user_id %>
+        <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
+          編集する <i class="fas fa-spell-check"></i>
+        <% end %>
+        <%= link_to edit_article_path, class: "sp-size" do%>
+          <i class="fas fa-spell-check"></i>
+        <% end %>
+        <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '記事を削除しますか？' } do %>
+          削除する <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <%= link_to article_path, method: :delete, class:"sp-size" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="flash-notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
     <% end %>
   </div>
-  <div class="edit-bar">
-    <% if current_user.id == @article.user_id %>
-      <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
-        編集する <i class="fas fa-spell-check"></i>
-      <% end %>
-      <%= link_to edit_article_path, class: "sp-size" do%>
-        <i class="fas fa-spell-check"></i>
-      <% end %>
-      <%= link_to article_path, method: :delete, class:"destroy-btn pc-size" do %>
-        削除する <i class="fas fa-trash-alt"></i>
-      <% end %>
-      <%= link_to article_path, method: :delete, class:"sp-size" do %>
-        <i class="fas fa-trash-alt"></i>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-<div class="flash-notifications">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: key) %>
-  <% end %>
-</div>
 
-<%# 記事本文 %>
-<div class="show-container">
-  <div class="article-show">
-    <div class="article-upper-content">
-      <div class="title-box">
-        <h2 class="name"><%= @article.title %></h2>
-        <div class="contributor"> by <%= link_to @article.user.nickname, user_path(@article.user_id), class: "nickname-link" %></div>
-      </div>
-      <% if @article.youtube_url.present? %>
-        <div class="item-img-content">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @article.youtube_url[32..42]%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <%# 記事本文 %>
+  <div class="show-container">
+    <div class="article-show">
+      <div class="article-upper-content">
+        <div class="title-box">
+          <h2 class="name"><%= @article.title %></h2>
+          <div class="contributor"> by <%= link_to @article.user.nickname, user_path(@article.user_id), class: "nickname-link" %></div>
         </div>
-      <% elsif @article.image.present? %>
-        <div class="item-img-content">
-          <%= image_tag @article.image ,class:"article-box-img" %>
+        <% if @article.youtube_url.present? %>
+          <div class="item-img-content">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @article.youtube_url[32..42]%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% elsif @article.image.present? %>
+          <div class="item-img-content">
+            <%= image_tag @article.image ,class:"article-box-img" %>
+          </div>
+        <% else %>
+          <%= image_tag("dammy-cover.png", class: "article-box-img") %> 
+        <% end %>
+      </div>
+      <div class="tag-area">
+        <% if @tags.present? %>
+          <ul class="article-tag">
+            <li class="tag-name">
+              <% @article.tags.each do |tag| %>
+                <%= link_to articles_path(tag: tag.name) do%>
+                  <span class="badge badge-info">#<%= tag.name %></span>
+                <%end %>
+              <%end%>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+      <div class="article-desc">
+        <div class="content-header">
+          投稿記事本文
         </div>
-      <% else %>
-        <%= image_tag("dammy-cover.png", class: "article-box-img") %> 
-      <% end %>
-    </div>
-    <div class="tag-area">
-      <% if @tags.present? %>
-        <ul class="article-tag">
-          <li class="tag-name">
-            <% @article.tags.each do |tag| %>
-            <%= link_to articles_path(tag: tag.name) do%>
-              <span class="badge badge-info">#<%= tag.name %></span>
-            <%end %>
-            <%end%>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-    <div class="article-desc">
-      <div class="content-header">
-        投稿記事本文
-      </div>
-      <div class="content-area">
-        <%= @article.text %>
-      </div>
-      <div class="content-header">
-        コツ・ポイント等
-      </div>
-      <div class="content-area">
-        <%= @article.trick %>
-      </div>
-      <div class="like-btn">
-        <% if @article.user_id != current_user.id %>
-          <% if current_user.already_liked?(@article) %>
-            <%= button_to  article_like_path(@article), method: :delete, class:"thumbs-up-btn", style:"color: black" do %>
-              <i class="fas fa-thumbs-up fa-3x"></i>
-            <% end %>
-          <% else %>
-            <%= button_to article_likes_path(@article), class:"thumbs-up-btn", style:"color: #a64456" do %>
-              <i class="fas fa-thumbs-up fa-3x"></i>
+        <div class="content-area">
+          <%= @article.text %>
+        </div>
+        <div class="content-header">
+          コツ・ポイント等
+        </div>
+        <div class="content-area">
+          <%= @article.trick %>
+        </div>
+        <div class="like-btn">
+          <% if @article.user_id != current_user.id %>
+            <% if current_user.already_liked?(@article) %>
+              <%= button_to  article_like_path(@article), method: :delete, class:"thumbs-up-btn", style:"color: black" do %>
+                <i class="fas fa-thumbs-up fa-3x"></i>
+              <% end %>
+            <% else %>
+              <%= button_to article_likes_path(@article), class:"thumbs-up-btn", style:"color: #a64456" do %>
+                <i class="fas fa-thumbs-up fa-3x"></i>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%# /記事本文 %>
-  
-  <div class="comment-box">
-    <h3 class="comments-title pc-size">コメント一覧</h3>
-    <h4 class="comments-title sp-size">コメント一覧</h4>
-    <div class="comments-index">
-      <% unless @comment.present? %>
-        <%= "コメントはまだありません" %>
-      <% end %>
-      <%= render partial:"comments", locals: {comment: @comment} %>
-    </div>
-    <% if user_signed_in? %>
-      <ul class="form-box">
-        <li><%= form_with model: [@article, @comment], local: true do |f| %>
-            <% f.label :comment, 'コメントの送信' %>
-            <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
-        </li>
-        <div>
-          <%= f.submit "送信", class: "comment-btn" %>
-        </div>
+    <%# /記事本文 %>
+    
+    <div class="comment-box">
+      <h3 class="comments-title pc-size">コメント一覧</h3>
+      <h4 class="comments-title sp-size">コメント一覧</h4>
+      <div class="comments-index">
+        <% unless @comment.present? %>
+          <%= "コメントはまだありません" %>
         <% end %>
-      </ul>
-      <p class="comment-warn">
-      相手のことを考え丁寧なコメントを心がけましょう。
-      <br>
-      不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-    <% end %>
+        <%= render partial:"comments", locals: {comment: @comment} %>
+      </div>
+      <% if user_signed_in? %>
+        <ul class="form-box">
+          <li><%= form_with model: [@article, @comment], local: true do |f| %>
+              <% f.label :comment, 'コメントの送信' %>
+              <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
+          </li>
+          <div>
+            <%= f.submit "送信", class: "comment-btn" %>
+          </div>
+          <% end %>
+        </ul>
+        <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "ko/articles/show" %>
+<% end %>

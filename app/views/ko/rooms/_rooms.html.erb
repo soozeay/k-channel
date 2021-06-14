@@ -1,0 +1,60 @@
+<div class="room-container">
+  <div class="room-header">
+    <div class="header-message">
+      <h4 style="font-weight: bold; color: #44281e;">메시지 일람</h4>
+    </div>
+  </div>
+  <% @rooms.each do |room| %>
+    <% if room.entries[0].user_id == current_user.id %>
+      <% user = User.find(room.entries[1].user_id) %>
+    <% else %>
+      <% user = User.find(room.entries[0].user_id) %>
+    <% end %>
+    <div class="message-partner-box">
+      <%= link_to room_path(room), class: "room" do %>
+        <div class="img-box">
+          <div class="avatar-img">
+            <% if user.avatar.attached? %>
+              <%= image_tag(rails_blob_path(user.avatar), size: "50x50", class: "img-circle") %>
+            <% else %>
+              <%= image_tag("default_user.png", size: "50x50", class: "img-circle") %>
+            <% end %>
+            <div class="country-icon">
+              <% if user.country_id == 1 %>
+                <%= image_tag("country_japan.png", size: "20x20", class: "country-img") %>
+              <% else %>
+                <%= image_tag("country_korea.png", size: "20x20", class: "country-img") %> 
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="partner-info">
+          <div class="partner-name">
+            <%= user.nickname %>
+          </div>
+          <% if room.messages.present? %>
+            <div class="partner-details">
+              <div class="latest-message">
+                <%= most_new_message_preview(room) %>
+              </div>
+              <div class="created-time">
+                <%= message_time(room) + '전'%>
+              </div>
+            </div> 
+          <% else %>
+            <div class="partner-details">
+              <div class="latest-message">
+                <p><%= "토크가 아직 없습니다" %></p>
+              </div>
+            </div> 
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="left-button">
+    <%= link_to root_path do %>
+      톱 페이지로 돌아온다 <i class="fas fa-home"></i>
+    <% end %>
+  </div>
+</div>

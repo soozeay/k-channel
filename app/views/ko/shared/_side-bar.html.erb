@@ -1,0 +1,40 @@
+<div class="side-bar">
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header">카테고리 일람</p>
+      <li class="plaza-name", style="display: none;"><%= link_to '연예정보', articles_path(plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '코스메틱', articles_path(plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '어학', articles_path(plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(plaza_id: 6) %></li>
+    </ul>
+  </div>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '한국 유저', articles_path(country_id: 2) %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to '연예정보', articles_path(country_id: 2, plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '코스메틱', articles_path(country_id: 2, plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '어학', articles_path(country_id: 2, plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(country_id: 2, plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(country_id: 2, plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(country_id: 2, plaza_id: 6) %></li>
+    </ul>
+  </div>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '일본 유저', articles_path(country_id: 1) %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to '연예정보', articles_path(country_id: 1, plaza_id: 1) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '코스메틱', articles_path(country_id: 1, plaza_id: 2) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '어학', articles_path(country_id: 1, plaza_id: 3) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '맛집', articles_path(country_id: 1, plaza_id: 4) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '일기', articles_path(country_id: 1, plaza_id: 5) %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '기타', articles_path(country_id: 1, plaza_id: 6) %></li>
+    </ul>
+  </div>
+  <ul class="premier-list">
+    <h2 class="plaza-header">프리미엄 회원 서비스</h2>
+    <li class="plaza-name">인기 순서 표시</li>
+    <li class="plaza-name">해석</li>
+  </ul>
+</div>

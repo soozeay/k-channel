@@ -1,12 +1,16 @@
-<%= render "shared/header" %>
-<div class="pc-size">
-  <%= render "shared/post-bar" %>
-</div>
-<div class='main'>
-  <div class="room-main">
-    <%= render "rooms" %>
-    <div class="mesgs pt-5 text-center pc-size">
-      <h4>メッセージを始めよう！</h4>
+<% if I18n.locale.to_s == "ja"%>
+  <%= render "shared/header" %>
+  <div class="pc-size">
+    <%= render "shared/post-bar" %>
+  </div>
+  <div class='main'>
+    <div class="room-main">
+      <%= render "rooms" %>
+      <div class="mesgs pt-5 text-center pc-size">
+        <h4>メッセージを始めよう！</h4>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <%= render "ko/rooms/index" %>
+<% end %>

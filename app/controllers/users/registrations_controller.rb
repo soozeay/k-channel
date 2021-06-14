@@ -17,7 +17,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def ensure_normal_user
     if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+      if I18n.locale.to_s == "ja"
+        redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+      else
+        redirect_to root_path, alert: '게스트 유저는 삭제할 수 없습니다.'
+      end
     end
   end
 end
