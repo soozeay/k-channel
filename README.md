@@ -130,7 +130,7 @@ https://docs.google.com/presentation/d/1JJVIfmAm8BPgtj0__QY0KKyYuCUGVRTdGEM2VzE8
 
 # テーブル設計
 ## ER図
-![er-kchannel](https://user-images.githubusercontent.com/80019801/116357560-8ef4af00-a837-11eb-82ea-eacb56700029.png)
+![er-kchannel](https://user-images.githubusercontent.com/80019801/121843374-10879a00-cd1d-11eb-81bb-cc35e152bcf4.png)
 
 
 ## users テーブル
