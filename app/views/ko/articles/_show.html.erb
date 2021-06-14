@@ -13,7 +13,7 @@
       <%= link_to edit_article_path, class: "sp-size" do%>
         <i class="fas fa-spell-check"></i>
       <% end %>
-      <%= link_to article_path, method: :delete, class:"destroy-btn pc-size" do %>
+      <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '삭제합니까?' } do %>
         삭제하다 <i class="fas fa-trash-alt"></i>
       <% end %>
       <%= link_to article_path, method: :delete, class:"sp-size" do %>
