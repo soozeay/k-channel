@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   scope "(:locale)" do
     devise_for :users, controllers: {
       registrations: "users/registrations",
