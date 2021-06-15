@@ -23,14 +23,21 @@
         <li class="header-icons message-icon"><%= link_to rooms_path do %>
           <i class="fas fa-envelope fa-2x envelope" style="color: #44281e"></i>
           <i class="font-awesome-envelope"></i>
-          <% end %></li>
+          <% end %>
+        </li>
         <li class="header-icons notification-icon"><%= link_to notifications_path do %> <%#= 通知機能へのリンク %>
-              <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
-              <i class="font-awesome-bell"></i>
-            <% end %></li>
-        <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do%>
-              マイページ <i class="fas fa-user fa-2x"></i><i class="font-awesome-user"></i>
-            <% end %></li>
+          <i class="fas fa-bell fa-2x" style="color: #44281e" id="notifications"></i>
+          <i class="font-awesome-bell"></i>
+          <% end %>
+        </li>
+        <li class="header-icons"><%= link_to user_path(current_user), class:"user-nickname" do %>
+          マイページ <i class="fas fa-user fa-2x"></i><i class="font-awesome-user"></i>
+          <% end %>
+        </li>
+        <li class="header-icons"><%= link_to new_contact_path(locale: I18n.locale, user_id: current_user.id), class:"contact-form" do %>
+          <i class="fas fa-mail-bulk"></i>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
