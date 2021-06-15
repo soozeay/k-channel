@@ -32,7 +32,6 @@ Rails.application.routes.draw do
       post 'users/guest_sign_in', to: 'users/sessions#new_guest'
     end
 
-    resources :contacts
-    mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+    resources :contacts, only: [:new, :create]
   end
 end
