@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :contacts
   scope "(:locale)" do
     devise_for :users, controllers: {
       registrations: "users/registrations",
@@ -32,5 +31,8 @@ Rails.application.routes.draw do
     devise_scope :user do
       post 'users/guest_sign_in', to: 'users/sessions#new_guest'
     end
+
+    resources :contacts
+    mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   end
 end
