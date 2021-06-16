@@ -1,0 +1,33 @@
+<%= render "shared/second-header"%>
+<%= form_with model: @user, url: user_password_path, method: :patch, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h4 class='form-header-text'>
+      비밀번호 재설정
+    </h4>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">새로운 비밀번호<span class="indispensable">필수</span></label>
+    </div>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6문자이상의 반각영숫자" %>
+    <p class='info-text'>※영문과 숫자의 양쪽을 포함시켜서 설정해 주세요</p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">비밀번호(확인)<span class="indispensable">필수</span></label>
+    </div>
+    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"같은 비밀번호를 입력해 주세요" %>
+  </div>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="form-group">
+    <h2 class='form-bottom-text'>
+      괜찮으시면 이하의 버튼을 눌러 주세요
+    </h2>
+  </div>
+  <div class='register-btn'>
+    <%= f.submit "전송" ,class:"register-red-btn" %>
+  </div>
+</div>
+<% end %>
