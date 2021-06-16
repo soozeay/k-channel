@@ -61,8 +61,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "kvch_production"
 
   config.action_mailer.raise_delivery_errors = true
-  host = 'http://54.238.82.200/'
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'http://54.238.82.200/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
