@@ -30,6 +30,11 @@
       <div class='register-btn'>
         <%= f.submit "ログイン" ,class:"register-red-btn" %>
       </div>
+      <div class="form-group">
+        <div class='reset-password'>
+        <%=  link_to 'パスワードをお忘れの方はこちら', new_user_password_path %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% else %>
