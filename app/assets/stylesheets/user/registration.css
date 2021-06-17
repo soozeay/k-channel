@@ -154,6 +154,7 @@
   cursor: pointer;
   border-radius: 5px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .register-info {
