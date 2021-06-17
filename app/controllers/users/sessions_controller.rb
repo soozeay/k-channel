@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-
   def new_guest
     user = User.guest
     sign_in user
-    if I18n.locale.to_s == "ja"
+    if I18n.locale.to_s == 'ja'
       redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
     else
       redirect_to root_path, notice: '게스트 유저로서 로그인했습니다.'
     end
   end
-  
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

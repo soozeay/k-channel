@@ -19,5 +19,4 @@ module RoomsHelper
     message = message[0]
     time_ago_in_words(message.created_at.to_s)
   end
-  
 end

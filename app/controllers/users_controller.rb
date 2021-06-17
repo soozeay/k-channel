@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :move_to_index, only: [:edit, :update]
 
-
   def show
     @articles = @user.articles.order('created_at DESC')
     @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -11,7 +10,7 @@ class UsersController < ApplicationController
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @isRoom = true
             @roomId = cu.room_id
           end
@@ -25,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end

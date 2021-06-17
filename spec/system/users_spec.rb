@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     @new_user = FactoryBot.build(:user)
     @user = FactoryBot.create(:user)
   end
 
   def basic_pass(path)
-    username = ENV["BASIC_AUTH_USER"]
-    password = ENV["BASIC_AUTH_PASSWORD"]
+    username = ENV['BASIC_AUTH_USER']
+    password = ENV['BASIC_AUTH_PASSWORD']
     visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
   end
 
@@ -30,7 +30,7 @@ RSpec.describe "Users", type: :system do
       select '男性', from: 'gender-status'
       select '日本', from: 'country-status'
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(1)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # カーソルを合わせるとマイページが表示されることを確認する
@@ -57,7 +57,7 @@ RSpec.describe "Users", type: :system do
       select '男性', from: 'gender-status'
       select '日本', from: 'country-status'
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(current_path).to eq user_registration_path
     end

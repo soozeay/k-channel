@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 def basic_pass(path)
-  username = ENV["BASIC_AUTH_USER"]
-  password = ENV["BASIC_AUTH_PASSWORD"]
+  username = ENV['BASIC_AUTH_USER']
+  password = ENV['BASIC_AUTH_PASSWORD']
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
 end
 
@@ -17,15 +17,15 @@ end
 
 def sign_out
   # ページヘッダーからマイページへのリンクを特定する
-  expect(page).to have_selector(".user-nickname")
+  expect(page).to have_selector('.user-nickname')
   find('.user-nickname').click
   # サインアウトする
-  expect(page).to have_selector(".sign-out")
+  expect(page).to have_selector('.sign-out')
   find('.sign-out').click
   expect(current_path).to eq root_path
 end
 
-RSpec.describe "Messages", type: :system do
+RSpec.describe 'Messages', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @another_user = FactoryBot.create(:user)
@@ -42,9 +42,9 @@ RSpec.describe "Messages", type: :system do
       # @userの詳細ページへ遷移する
       visit user_path(@user)
       # @userをフォローするボタンがあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # @userをフォロー、Relationshipカウントが1上がることを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       # @another_userはマイページに戻り、ログアウトする
       sign_out
       # @userでログインする
@@ -58,9 +58,9 @@ RSpec.describe "Messages", type: :system do
       visit user_path(@another_user)
       expect(current_path).to eq user_path(@another_user)
       # 「フォローする」のボタンがあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # @another_userをフォローする ページは遷移していないことを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       expect(current_path).to eq user_path(@another_user)
       # ページに「チャットを始める」のボタンが出現していることを確認する
       expect(page).to have_selector('.user-show-chat')
@@ -71,7 +71,7 @@ RSpec.describe "Messages", type: :system do
       expect(page).to have_selector('.form-text-field')
       # メッセージフォームに入力し、送信する。Messageカウントが1上がることを確認する
       fill_in 'メッセージを入力して下さい', with: @message.message
-      expect{find('.posts').find('button[name="button"]').click}.to change { Message.count }.by(1)
+      expect { find('.posts').find('button[name="button"]').click }.to change { Message.count }.by(1)
       # このページに@message.messageが存在していることを確認
       expect(page).to have_content(@message.message)
       # サインアウトする（@another_userでメッセージの存在を確認していく）
@@ -98,9 +98,9 @@ RSpec.describe "Messages", type: :system do
       # @userの詳細ページへ遷移する
       visit user_path(@user)
       # @userをフォローするボタンがあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # @userをフォロー、Relationshipカウントが1上がることを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       # @another_userはマイページに戻り、ログアウトする
       sign_out
       # @userでログインする
@@ -132,9 +132,9 @@ RSpec.describe "Messages", type: :system do
       # @userの詳細ページへ遷移する
       visit user_path(@user)
       # @userをフォローするボタンがあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # @userをフォロー、Relationshipカウントが1上がることを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       # @another_userはマイページに戻り、ログアウトする
       sign_out
       # @userでログインする
@@ -148,9 +148,9 @@ RSpec.describe "Messages", type: :system do
       visit user_path(@another_user)
       expect(current_path).to eq user_path(@another_user)
       # 「フォローする」のボタンがあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # @another_userをフォローする ページは遷移していないことを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       expect(current_path).to eq user_path(@another_user)
       # ページに「チャットを始める」のボタンが出現していることを確認する
       expect(page).to have_selector('.user-show-chat')
@@ -161,7 +161,7 @@ RSpec.describe "Messages", type: :system do
       expect(page).to have_selector('.form-text-field')
       # メッセージフォームに''を入力し、送信する。Messageカウントは上がらないことを確認する
       fill_in 'メッセージを入力して下さい', with: ''
-      expect{find('.posts').find('button[name="button"]').click}.to change { Message.count }.by(0)
+      expect { find('.posts').find('button[name="button"]').click }.to change { Message.count }.by(0)
       # このページに@message.messageが存在していることを確認
       expect(page).to have_no_content(@message.message)
       # サインアウトする（@another_userでメッセージの存在を確認していく）

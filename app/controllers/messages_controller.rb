@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.create(message_params)
       @room = @message.room
-      ActionCable.server.broadcast 'room_channel', message: @message, room_id: @room.id, user_image: current_user.avatar, user_id: @message.user_id, nickname: @message.user.nickname
+      ActionCable.server.broadcast 'room_channel', message: @message, room_id: @room.id, user_image: current_user.avatar,
+                                                   user_id: @message.user_id, nickname: @message.user.nickname
     else
       redirect_back(fallback_location: root_path)
     end
@@ -14,7 +15,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    if I18n.locale.to_s == "ja"
+    if I18n.locale.to_s == 'ja'
       redirect_to room_path(@message.room.id), notice: 'メッセージを取り消しました'
     else
       redirect_to room_path(@message.room.id), notice: '메시지를 취소했습니다'
@@ -47,5 +48,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:user_id, :message, :room_id).merge(user_id: current_user.id)
   end
-  
 end

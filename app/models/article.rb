@@ -1,12 +1,12 @@
 class Article < ApplicationRecord
-  
   belongs_to :user
 
   # 記事の投稿について
-  validates :title, presence:true, length:{ maximum: 40 }
-  validates :trick, length:{ maximum: 1000 }
+  validates :title, presence: true, length: { maximum: 40 }
+  validates :trick, length: { maximum: 1000 }
   has_one_attached :image
-  validates :youtube_url, format: { with: /\A(https\:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)+[\S]{11}\z/ }, allow_blank: true
+  validates :youtube_url, format: { with: %r{\A(https://)?(www\.)?(youtube\.com/watch\?v=|youtu\.be/)+\S{11}\z} },
+                          allow_blank: true
   has_rich_text :text
   acts_as_taggable
   validate :tag_list_tag_validation
@@ -34,7 +34,8 @@ class Article < ApplicationRecord
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and article_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and article_id = ? and action = ? ', current_user.id, user_id,
+                               id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -43,9 +44,7 @@ class Article < ApplicationRecord
         action: 'like'
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
+      notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
     end
   end
@@ -69,24 +68,22 @@ class Article < ApplicationRecord
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
 
-  scope :by_any_texts, -> (string){
+  scope :by_any_texts, lambda { |string|
     words = string.split(/[\p{blank}\s]+/)
     searchs = search(title_or_user_nickname_cont_all: words).result(distinct: true)
     search_tag = Article.by_any_tag(words)
     search_result = (searchs + search_tag).uniq
   }
 
-  scope :by_any_tag, -> (words){
+  scope :by_any_tag, lambda { |words|
     article_tag = Article.tagged_with(words, named_like_any: true)
   }
-  
-  def self.ransackable_scopes(auth_object = nil)
+
+  def self.ransackable_scopes(_auth_object = nil)
     %i[text_or_user_name_cont_all]
   end
 end

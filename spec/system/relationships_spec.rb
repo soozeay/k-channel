@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 def basic_pass(path)
-  username = ENV["BASIC_AUTH_USER"]
-  password = ENV["BASIC_AUTH_PASSWORD"]
+  username = ENV['BASIC_AUTH_USER']
+  password = ENV['BASIC_AUTH_PASSWORD']
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
 end
 
@@ -15,7 +15,7 @@ def sign_in(user)
   find('input[name="commit"]').click
 end
 
-RSpec.describe "Relationships", type: :system do
+RSpec.describe 'Relationships', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @another_user = FactoryBot.create(:user)
@@ -28,9 +28,9 @@ RSpec.describe "Relationships", type: :system do
       # @another_userのページに遷移する
       visit user_path(@another_user)
       # フォローのボタンが画面にあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # フォローボタンをクリックするとRelationshipモデルのカウントが1上がることを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
     end
     it '上記で一度フォローしたユーザーは、同ページで同じボタンをクリックするとフォローを外せる' do
       # ログインし、root_pathにいることを確認する
@@ -38,11 +38,11 @@ RSpec.describe "Relationships", type: :system do
       # @another_userのページに遷移する
       visit user_path(@another_user)
       # フォローのボタンが画面にあることを確認する
-      expect(page).to have_selector(".follow-btn")
+      expect(page).to have_selector('.follow-btn')
       # フォローボタンをクリックするとRelationshipモデルのカウントが1上がることを確認する
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(1)
       # 再度フォローボタンをクリックするとフォロー解除となり、モデルのカウントが１つ減る
-      expect{find('.follow-btn').click}.to change { Relationship.count }.by(-1)
+      expect { find('.follow-btn').click }.to change { Relationship.count }.by(-1)
     end
   end
   context 'フォローできない場合' do
@@ -52,7 +52,7 @@ RSpec.describe "Relationships", type: :system do
       # @userのページに遷移する
       visit user_path(@user)
       # フォローのボタンが画面にないことを確認する
-      expect(page).to have_no_selector(".follow-btn")
+      expect(page).to have_no_selector('.follow-btn')
     end
     it 'ログインしていないとフォローできない' do
       basic_pass root_path

@@ -16,17 +16,17 @@ RSpec.describe Message, type: :model do
       it 'メッセージが空では投稿できない' do
         @message.message = ''
         @message.valid?
-        expect(@message.errors.full_messages).to include("メッセージを入力してください")
+        expect(@message.errors.full_messages).to include('メッセージを入力してください')
       end
       it 'ユーザー情報が空では投稿できない' do
         @message.user = nil
         @message.valid?
-        expect(@message.errors.full_messages).to include("Userを入力してください")
+        expect(@message.errors.full_messages).to include('Userを入力してください')
       end
       it 'Room情報が空では投稿できない' do
         @message.room = nil
         @message.valid?
-        expect(@message.errors.full_messages).to include("Roomを入力してください")
+        expect(@message.errors.full_messages).to include('Roomを入力してください')
       end
     end
   end

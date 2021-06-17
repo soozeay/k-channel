@@ -6,7 +6,8 @@ RSpec.describe Notification, type: :model do
     @visitor = FactoryBot.create(:user)
     @visited = FactoryBot.create(:user)
     @article = FactoryBot.create(:article)
-    @notification = FactoryBot.build(:notification, visitor_id: @visitor.id, visited_id: @visited.id, article_id: @article.id, action: 'like')
+    @notification = FactoryBot.build(:notification, visitor_id: @visitor.id, visited_id: @visited.id, article_id: @article.id,
+                                                    action: 'like')
     sleep(0.1)
   end
 

@@ -5,15 +5,15 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   private
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :age, :gender_id, :country_id, :intro])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :intro, :cover, :avatar,])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :intro, :cover, :avatar])
   end
 
   def set_search
     @search = Article.ransack(params[:q])
-    if params[:q].present? #paramsのnil対策
+    if params[:q].present? # paramsのnil対策
       @search_articles_result = Article.by_any_texts(params[:q][:title_or_user_nickname_cont_all])
     end
   end
@@ -25,5 +25,4 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
-  
 end
