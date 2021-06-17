@@ -93,7 +93,7 @@
   text-align: center;
   background-color: #ea352d;
   font-weight: bold;
-  color: #FFF;
+  color: #FFF !important;
   padding: 10px;
   margin-right: 40px;
   border-radius: 3px;
@@ -131,8 +131,11 @@
 }
 
 .form-box{
-  padding: 0 20px;
   display: flex;
+}
+
+.comment-form {
+  width: 80%;
 }
 
 .send-comment-text {
@@ -157,9 +160,11 @@
   width: 20%;
   min-width: 80px;
   font-size: 18px;
+  font-weight: bold;
   border-radius: 3px;
   margin-bottom: 2vh;
   border: none;
+  text-align: center;
 }
 
 .all-comments-box{
@@ -277,13 +282,16 @@
   }
 
   .form-box{
-    padding: 0;
     display: flex;
   }
 
   .comment-box {
     width: 100%;
     padding: 0 3vw;
+  }
+
+  .comment-form {
+    width: 100%;
   }
 
   .comments-title{
