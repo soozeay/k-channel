@@ -30,6 +30,14 @@
   align-items: center;
 }
 
+.edit-page > .name-box{
+  height: 100px;
+  width: 80%;
+  position: relative;
+  text-align: left;
+  align-items: center;
+}
+
 .user-name-box{
   height: 55%;
   font-size: 25px;
@@ -46,6 +54,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  width: 100%;
 }
 
 .sub-profile{
@@ -112,6 +121,10 @@
 /* ユーザー情報の更新ページ */
 
 
+.form-intro-label{
+  width: 100%;
+}
+
 .edit-intro{
   padding: 10px;
   height: 120px;
@@ -125,7 +138,27 @@
 
 .field-e-user{
   width: 50%;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
+}
+
+.edit-user-name{
+  padding: 0 10px;
+}
+
+.field-label{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.field-input{
+  display: flex;
+}
+
+.field-input > .input-box{
+  border:1px solid black;
+  padding: 0 10px;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .actions{
@@ -171,10 +204,6 @@
     margin-bottom: 0;
   }
 
-  .edit-user-name{
-    padding: 0 20px;
-  }
-
   .intro-text{
     padding: 2vh 2vw;
     font-size: 14px;
@@ -193,5 +222,13 @@
   .field-e-user{
     width: 90%;
     margin-bottom: 20px;
+  }
+
+  .field-label{
+    width: 80%;
+  }
+
+  .field-input > .input-box{
+    width: 80%;
   }
 }
