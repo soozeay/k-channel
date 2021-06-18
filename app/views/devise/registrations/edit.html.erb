@@ -18,7 +18,7 @@
     <div class="pc-size">
       <%= render "shared/side-bar" %>
     </div>
-    <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
+    <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "edit-user-form", local: true do |f|%>
     <div class="user-main-page">
       <div class="profile-box">
         <div class="cover-images">
@@ -35,7 +35,7 @@
           <% end %>
         </div>
         <div class="profile-bar">
-          <div class="profile-container">
+          <div class="profile-container edit-page">
             <div class="icon-box">
               <div class="user-icon-box set-center">
                 <% if @user.avatar.attached? %>
@@ -59,7 +59,7 @@
             <div class="name-box">
                 <div class="user-name-box">
                   <%= f.label :nickname do %>
-                    <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none" %>
+                    <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none", autofocus: true %>
                   <% end %>
                 </div>
               <div class="sub-profile pc-size">
@@ -81,9 +81,9 @@
             <div class="intro-title">
               自己紹介（200字以内）
             </div>
-              <%= f.label :intro do %>
-                <%= f.text_area :intro, class:"edit-intro", :placeholder => "こんにちは！  どうぞよろしくお願いします！ 等を200字以内で入力ください" %>
-              <% end %>
+            <%= f.label :intro, class: "form-intro-label" do %>
+              <%= f.text_area :intro, class:"edit-intro", :placeholder => "こんにちは！  どうぞよろしくお願いします！ 等を200字以内で入力ください" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
           <%= f.label :email, 'メールアドレス'%>
         </div>
         <div class='field-input'>
-          <%= f.email_field :email %>
+          <%= f.email_field :email, class:'input-box' %>
         </div>
       </div>
       <div class="field-e-user">
@@ -104,7 +104,7 @@
           <span class="check">変更時のみ入力</span>
         </div>
         <div class='field-input'>
-          <%= f.password_field :password %>
+          <%= f.password_field :password, class:'input-box' %>
         </div>
       </div>
       <div class="field-e-user">
@@ -113,7 +113,7 @@
           <span class="check">変更時のみ入力</span>
         </div>
         <div class='field-input'>
-          <%= f.password_field :password_confirmation %>
+          <%= f.password_field :password_confirmation, class:'input-box' %>
         </div>
       </div>
     </div>

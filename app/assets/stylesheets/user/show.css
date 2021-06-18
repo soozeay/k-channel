@@ -96,7 +96,7 @@
 /* フォロー・フォロワー */
 
 .partner-box{
-  margin: 0 0 20px 20px;
+  margin: 20px 0 20px 20px;
   width: 20vw;
   display: flex;
   border: 1px solid #ccc;

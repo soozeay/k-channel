@@ -27,6 +27,8 @@
   width: 20vw;
   height: 5vh;
   padding-left: 10px;
+  background-color: #fff;
+  border: 1px solid black;
 }
 
 .search-button {

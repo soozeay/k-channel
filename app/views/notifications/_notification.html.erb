@@ -36,12 +36,12 @@
         </div>
       </div>
     <% when 'like' then %>
-      <%= link_to 'あなたの投稿', notification.article %>
+      <span class="partner-name"><%= link_to 'あなたの投稿', notification.article %></span>
       <%= 'にいいねしました' %>
       <div class= "notifications-info">
         <div class="concerned-item">
           <i class="fas fa-heart" style="color:red;"></i>
-          <%= notification.article.title%>
+          <%= notification.article.title.truncate(14)%>
         </div>
         <div class="created-time">
           <%= time_ago_in_words(notification.created_at) + "前"%>

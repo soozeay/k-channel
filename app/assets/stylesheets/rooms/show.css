@@ -85,10 +85,11 @@
   width: 90%;
   padding: 0 30px;
   margin-bottom: 20px;
+
 }
 
 .form-text-field{
-  width: 60%;
+  width: 75%;
   padding: 3px;
   max-height: 200px;
   vertical-align: top;
@@ -141,6 +142,7 @@
     margin-top: 20px;
     vertical-align: top;
     height: auto;
+    padding: 0;
   }
 
   .form-text-field{
