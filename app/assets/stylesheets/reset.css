@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@soozeay 
-nicolas-cusan
-/
-destyle.css
-17
-533333
-Code
-Issues
-3
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-destyle.css/destyle.css
-@nicolas-cusan
-nicolas-cusan Fix border issues for hr and remuve redundant border rules
-Latest commit e9f8128 on 16 Oct 2020
- History
- 1 contributor
-489 lines (390 sloc)  7.27 KB
-  
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 
 /* Reset box-model and set borders */
@@ -519,15 +487,3 @@ template {
 [hidden] {
   display: none;
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
