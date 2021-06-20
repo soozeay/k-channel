@@ -7,25 +7,25 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @tags = Article.tag_counts_on(:tags)
       @page = Article.all.page(params[:page])
-      @articles_all = Article.includes(:user, :taggings, :likes)
+      @articles_all = Article.includes(:user, :taggings, :likes).with_attached_image
 
       # トップページの表示切替
       if params[:country_id].present? && params[:plaza_id].present? # 地域別且プラザを選択した場合
         @users = User.where(country_id: params[:country_id])
-        @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id])
+        @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id]).with_attached_image
       elsif params[:plaza_id].present? # プラザのみ選択した場合
-        @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user)
+        @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).with_attached_image
       elsif params[:country_id].present? && params[:like].present? # いいね人気順表示、且つ地域別に切り替える
         @users = User.where(country_id: params[:country_id])
         articles = Article.where(user_id: @users.ids).unscope(:order)
         like_ranks = Like.group(:article_id).order('count(article_id) DESC').limit(10).pluck(:article_id)
-        @articles = articles.where(id: like_ranks).order("FIELD(id, #{like_ranks.join(',')})")
+        @articles = articles.where(id: like_ranks).order("FIELD(id, #{like_ranks.join(',')})").with_attached_image
       elsif params[:like].present? # いいね人気順表示のみ
         like_ranks = Like.group(:article_id).order('count(article_id) DESC').limit(10).pluck(:article_id)
-        @articles = Article.where(id: like_ranks).unscope(:order).order("FIELD(id, #{like_ranks.join(',')})")
+        @articles = Article.where(id: like_ranks).unscope(:order).order("FIELD(id, #{like_ranks.join(',')})").with_attached_image
       else # 地域別で全ての投稿を表示したい場合
         @users = User.where(country_id: params[:country_id])
-        @articles = Article.where(user_id: @users.ids)
+        @articles = Article.where(user_id: @users.ids).with_attached_image
         if @users == []
           # トップページはフォーローユーザーと自身の投稿を表示
           @user = User.find(current_user.id)
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
           @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).page(params[:page]).per(10)
         end
       end
-      @articles = Article.tagged_with(params[:tag]) if @tag = params[:tag]
+      @articles = Article.tagged_with(params[:tag]).with_attached_image if @tag = params[:tag]
     end
   end
 
