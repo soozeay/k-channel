@@ -6,11 +6,7 @@
     </div>
   </div>
   <% @rooms.each do |room| %>
-    <% if room.entries[0].user_id == current_user.id %>
-      <% user = User.find(room.entries[1].user_id) %>
-    <% else %>
-      <% user = User.find(room.entries[0].user_id) %>
-    <% end %>
+    <% user = find_partner_info(room, current_user) %>
     <div class="message-partner-box">
       <%= link_to room_path(room), class: "room" do %>
         <div class="img-box">

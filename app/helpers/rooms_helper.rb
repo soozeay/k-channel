@@ -1,4 +1,13 @@
 module RoomsHelper
+
+  def find_partner_info(room, current_user)
+    if room.entries[0].user_id == current_user.id
+      user = User.find(room.entries[1].user_id)
+    else
+      user = User.find(room.entries[0].user_id)
+    end
+  end
+
   def most_new_message_preview(room)
     # 最新メッセージのデータを取得する
     message = room.messages.order(updated_at: :desc).limit(1)
