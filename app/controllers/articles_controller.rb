@@ -17,12 +17,12 @@ class ArticlesController < ApplicationController
         @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user)
       elsif params[:country_id].present? && params[:like].present? # いいね人気順表示、且つ地域別に切り替える
         @users = User.where(country_id: params[:country_id])
-        articles = Article.where(user_id: @users.ids)
+        articles = Article.where(user_id: @users.ids).unscope(:order)
         like_ranks = Like.group(:article_id).order('count(article_id) DESC').limit(10).pluck(:article_id)
         @articles = articles.where(id: like_ranks).order("FIELD(id, #{like_ranks.join(',')})")
       elsif params[:like].present? # いいね人気順表示のみ
         like_ranks = Like.group(:article_id).order('count(article_id) DESC').limit(10).pluck(:article_id)
-        @articles = Article.where(id: like_ranks).order("FIELD(id, #{like_ranks.join(',')})")
+        @articles = Article.where(id: like_ranks).unscope(:order).order("FIELD(id, #{like_ranks.join(',')})")
       else # 地域別で全ての投稿を表示したい場合
         @users = User.where(country_id: params[:country_id])
         @articles = Article.where(user_id: @users.ids)
