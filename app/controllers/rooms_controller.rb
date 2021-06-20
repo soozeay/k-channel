@@ -12,7 +12,6 @@ class RoomsController < ApplicationController
       @entry_current_user = Entry.create(room_id: @room.id, user_id: current_user.id)
       @entry_follower = Entry.create(room_params)
     end
-    binding.pry
     redirect_to room_path(@room.id)
   end
 
