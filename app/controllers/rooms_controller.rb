@@ -6,10 +6,13 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create
-    @entry_current_user = Entry.create(room_id: @room.id, user_id: current_user.id)
-    @entry_follower = Entry.create(room_params)
-    redirect_to room_path(@room.id)
+    @room = Room.new
+    if @room.valid?
+      @room.save
+      @entry_current_user = Entry.create(room_id: @room.id, user_id: current_user.id)
+      @entry_follower = Entry.create(room_params)
+      redirect_to room_path(@room.id)
+    end
   end
 
   def show
@@ -17,7 +20,6 @@ class RoomsController < ApplicationController
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages.includes(:user)
       @message = Message.new
-      @entries = @room.entries
       entry = @room.entries.where.not(user_id: current_user)
       @user = entry[0].user
     else
