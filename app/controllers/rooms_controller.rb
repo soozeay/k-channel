@@ -6,13 +6,14 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new
-    if @room.valid?
+    @room = Room.find_or_initialize_by(id: params[:room][:room_id])
+    if @room.id == nil && @room.valid?
       @room.save
       @entry_current_user = Entry.create(room_id: @room.id, user_id: current_user.id)
       @entry_follower = Entry.create(room_params)
-      redirect_to room_path(@room.id)
     end
+    binding.pry
+    redirect_to room_path(@room.id)
   end
 
   def show

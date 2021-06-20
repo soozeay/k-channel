@@ -62,6 +62,7 @@
                     </div>
                   <% else %>
                       <%= form_with model: @room, local: true do |f| %>
+                        <%= f.hidden_field :room_id, value: @roomId %>
                         <%= fields_for @entry do |e| %>
                           <%= e.hidden_field :user_id, value: @user.id %>
                         <% end %>
