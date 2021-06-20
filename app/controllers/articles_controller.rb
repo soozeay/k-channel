@@ -7,15 +7,14 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @tags = Article.tag_counts_on(:tags)
       @page = Article.all.page(params[:page])
-      @notifications = current_user.passive_notifications.page(params[:page]).per(20) if user_signed_in?
       @articles_all = Article.includes(:user, :taggings, :likes)
 
       # トップページの表示切替
       if params[:country_id].present? && params[:plaza_id].present? # 地域別且プラザを選択した場合
         @users = User.where(country_id: params[:country_id])
-        @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id]).order('created_at DESC')
+        @articles = Article.where(user_id: @users.ids, plaza_id: params[:plaza_id])
       elsif params[:plaza_id].present? # プラザのみ選択した場合
-        @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user).order('created_at DESC')
+        @articles = Article.where(plaza_id: params[:plaza_id]).includes(:user)
       elsif params[:country_id].present? && params[:like].present? # いいね人気順表示、且つ地域別に切り替える
         @users = User.where(country_id: params[:country_id])
         articles = Article.where(user_id: @users.ids)
@@ -26,15 +25,15 @@ class ArticlesController < ApplicationController
         @articles = Article.where(id: like_ranks).order("FIELD(id, #{like_ranks.join(',')})")
       else # 地域別で全ての投稿を表示したい場合
         @users = User.where(country_id: params[:country_id])
-        @articles = Article.where(user_id: @users.ids).order('created_at DESC')
+        @articles = Article.where(user_id: @users.ids)
         if @users == []
           # トップページはフォーローユーザーと自身の投稿を表示
           @user = User.find(current_user.id)
           @follow_users = @user.followings
-          @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).order('created_at DESC').page(params[:page]).per(10)
+          @articles = @articles_all.where(user_id: @follow_users).or(@articles_all.where(user_id: current_user.id)).page(params[:page]).per(10)
         end
       end
-      @articles = Article.tagged_with(params[:tag]).order('created_at DESC') if @tag = params[:tag]
+      @articles = Article.tagged_with(params[:tag]) if @tag = params[:tag]
     end
   end
 
