@@ -3,7 +3,7 @@
 }
 
 .chat{
-  margin: 40px 15px;
+  margin: 0 15px 40px;
   width: 100%;
   padding: 30px;
   border: 2px solid #bf8188;
@@ -36,6 +36,7 @@
 
 .msg-content > p {
   color: darkred;
+  margin-bottom: 5px;
 }
 
 .msg-content > p > span {
@@ -63,11 +64,25 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .received_withd_msg {
   width: 65%;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  padding-left: 10px;
+}
+
+.received_withd_msg > p {
+  color: darkred;
+  margin-bottom: 5px;
+}
+
+.received_withd_msg > p > span {
+  text-decoration: line-through;
+  color: darkred;
 }
 
 .avatar-img{
