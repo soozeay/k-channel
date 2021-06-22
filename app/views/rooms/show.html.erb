@@ -14,6 +14,9 @@
         <%= render "rooms" %>
       </div>
       <div class="chats">
+        <div class="partner-name">
+          <%= @user.nickname %>
+        </div>
         <div class="chat">
           <div class="msg_history pt-2" id="js-msg-history">
             <div id= "js-messages">
@@ -57,12 +60,12 @@
                           <% end %>
                         </div>
                       </div>
-                      <div class="partner-info">
-                        <div class="partner-name">
-                          <%= m.user.nickname %>
-                        </div>
                         <div class="received-msg">
                           <div class="received_withd_msg">
+                            <% if m.target_message.present? %>
+                              <p>× <span><%= m.target_message %></span></p>
+                              ○
+                            <% end %>
                             <%= m.message %>
                           </div>
                           <div class="created-time">
@@ -71,7 +74,6 @@
                               <i class="fas fa-spell-check between-space" style="color: #ea352d"></i>
                             <% end %>
                           </div>
-                        </div> 
                       </div>
                     </div>
                   <% end %>
