@@ -95,7 +95,7 @@
     
     <div class="comment-box">
       <h3 class="comments-title pc-size">コメント一覧</h3>
-      <h4 class="comments-title sp-size">コメント一覧</h4>
+      <h5 class="comments-title sp-size">コメント一覧</h5>
       <div class="comments-index">
         <% unless @comment.present? %>
           <%= "コメントはまだありません" %>
@@ -104,13 +104,14 @@
       </div>
       <% if user_signed_in? %>
         <ul class="form-box">
-          <li class="comment-form"><%= form_with model: [@article, @comment], local: true do |f| %>
+          <li class="comment-form">
+            <%= form_with model: [@article, @comment], local: true do |f| %>
               <% f.label :comment, 'コメントの送信' %>
               <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
           </li>
-          <div>
-            <%= f.submit "送信", class: "comment-btn" %>
-          </div>
+          <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
+            送信 <i class="fas fa-paper-plane"></i>
+          <% end %>
           <% end %>
         </ul>
         <p class="comment-warn">

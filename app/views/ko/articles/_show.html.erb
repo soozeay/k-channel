@@ -103,13 +103,13 @@
     </div>
     <% if user_signed_in? %>
       <ul class="form-box">
-        <li><%= form_with model: [@article, @comment], local: true do |f| %>
+        <li class="comment-form"><%= form_with model: [@article, @comment], local: true do |f| %>
             <% f.label :comment, 'コメントの送信' %>
             <%= f.text_field :comment, placeholder: "코멘트 입력", class:"send-comment-text" %>
         </li>
-        <div>
-          <%= f.submit "전송", class: "comment-btn" %>
-        </div>
+        <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
+          전송 <i class="fas fa-paper-plane"></i>
+        <% end %>
         <% end %>
       </ul>
       <p class="comment-warn">
