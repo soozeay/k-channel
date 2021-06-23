@@ -1,10 +1,5 @@
 <%= render "ko/shared/header" %>
 <div class="post-bar">
-  <div class="post-btn">
-    <%= link_to  new_article_path, class: "post-btn" do%>
-      올리다 <i class="fas fa-pencil-alt"></i>
-    <% end %>
-  </div>
   <% if @user == current_user %>
     <div class="post-btn">
       <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn sign-out" do %>
@@ -132,4 +127,10 @@
       </div>
     </div>
   </div>
+  <%= link_to new_article_path, class: "click-post drop-shadow pc-btn" do%>
+    <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+  <% end %>
+  <%= link_to new_article_path, class: "click-post drop-shadow sp-btn" do%>
+    <i class="fas fa-pencil-alt fa-2x post-icon"></i>
+  <% end %>
 </div>

@@ -1,7 +1,4 @@
 <%= render "ko/shared/header" %>
-<div class="pc-size">
-  <%= render "ko/shared/post-bar" %>
-</div>
 <div class="flash-notifications">
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: key) %>
