@@ -143,6 +143,34 @@
 .tags{
   height: 3vh;
 }
+
+.click-post{
+  background-color:#44281e;
+  position: fixed;
+  bottom: 5vh;
+  right: 3vw;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-post:hover{
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+
+.post-icon{
+  color: #ffffff;
+}
+
+.sp-btn{
+  display: none;
+}
+
 /* //ログイン後の表示 */
 
 @media screen and (max-width:767px) {
@@ -231,5 +259,22 @@
     width: 50px;
     height: 50px;
   }
+
+
+  .click-post{
+    bottom: 3vh;
+    right: 3vw;
+    width: 60px;
+    height: 60px;
+  }
+
+  .sp-btn{
+    display: flex;
+  }
+
+  .pc-btn{
+    display: none;
+  }
+
 
 }
