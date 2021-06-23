@@ -3,7 +3,6 @@
     <%= render "shared/logout_index" %>
   <% else %>
     <%= render "shared/header" %>
-    <%= render "shared/post-bar" %>
     <div class="flash-notifications">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: key) %>
@@ -16,6 +15,12 @@
           <%= render partial:"article", collection: @search_articles_result, locals: {article: @article} %>
         <% else %>
           <%= render partial:"article", collection: @articles, locals: {article: @article} %>
+        <% end %>
+        <%= link_to new_article_path, class: "click-post drop-shadow pc-btn" do%>
+          <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+        <% end %>
+        <%= link_to new_article_path, class: "click-post drop-shadow sp-btn" do%>
+          <i class="fas fa-pencil-alt fa-2x post-icon"></i>
         <% end %>
       </div>
     </div>
