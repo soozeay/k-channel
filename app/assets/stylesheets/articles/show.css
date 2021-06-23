@@ -141,7 +141,7 @@
 .send-comment-text {
   width: 90%;
   padding: 7px;
-  border: solid 2px #bf8188;
+  border: solid 1px black;
   border-radius: 3px;
   resize: none;
 }
@@ -181,7 +181,7 @@
 }
 
 .comments-title{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .comments_lists{
@@ -290,17 +290,13 @@
     padding: 0 3vw;
   }
 
-  .comment-form {
-    width: 100%;
-  }
-
   .comments-title{
     font-weight: bold;
   }
 
   .send-comment-text {
-    width: 290px;
-    margin: 0 10px 0 0; 
+    width: 100%;
+    margin: 0 ; 
   }
 
   .comment-btn {

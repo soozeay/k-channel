@@ -121,6 +121,7 @@
   margin: 0 auto;
   padding: 5px;
   display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width:767px) {
