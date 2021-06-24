@@ -37,14 +37,13 @@
 }
 
 .icon-box{
-  width: 120px;
-  height: 100%;
+  width: 65px;
+  height: 65px;
   position: relative;
 }
 
 .user-icon{
   border-radius: 50%;
-  border: 1px solid black;
 }
 
 .country-icon{
@@ -166,8 +165,7 @@
   }
 
   .icon-box{
-    width: 30%;
-    height: 100%;
+    margin: auto 0;
     position: relative;
     padding-left: 3vw;
   }

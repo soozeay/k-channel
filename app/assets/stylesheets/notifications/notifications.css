@@ -44,4 +44,12 @@
   .notifications-list{
     width: 100%;
   }
+
+  .notifications-box{
+    height: 12vh;
+  }
+
+  .notification-text-box{
+    font-size: 14px;
+  }
 }
