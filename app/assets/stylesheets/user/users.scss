@@ -130,6 +130,7 @@
   height: 120px;
   width: 35vw;
   padding: 5px;
+  border: 1px solid black;
 }
 
 .other-info-box{
@@ -207,6 +208,11 @@
   .intro-text{
     padding: 2vh 2vw;
     font-size: 14px;
+  }
+
+  .add-icon{
+    width: 20px;
+    height: 20px;
   }
 
   .edit-intro{
