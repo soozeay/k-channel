@@ -14,6 +14,7 @@
 .kch-icon {
   width: 10vw;
   margin-right: 10vw;
+  vertical-align: revert;
 }
 
 .search-form {
@@ -58,6 +59,7 @@
   min-width: 200px;
   justify-content: space-between;
   list-style: none;
+  margin-bottom: 0;
 }
 
 .lists-right {
