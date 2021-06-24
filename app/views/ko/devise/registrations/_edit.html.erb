@@ -1,18 +1,4 @@
 <%= render "ko/shared/header" %>
-<div class="post-bar">
-  <div class="post-btn">
-    <%= link_to  new_article_path, class: "post-btn" do%>
-      올리다 <i class="fas fa-pencil-alt"></i>
-    <% end %>
-  </div>
-  <div class="post-btn">
-    <% if @user == current_user %>
-      <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn" do %>
-        로그 아웃 <i class="fas fa-sign-out-alt"></i>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 <div class="main sp-hidden">
   <div class="pc-size">
     <%= render "ko/shared/side-bar" %>
@@ -20,21 +6,8 @@
   <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
   <div class="user-main-page">
     <div class="profile-box">
-      <div class="cover-images">
-        <div class="edit-icon">
-          <%= f.label :cover do %>
-            <%= image_tag("add-image.jpeg", size: "40x40", class: "add-cover-icon") %>
-            <%= f.file_field :cover, style:"display:none;" %>
-          <% end %>
-        </div>
-        <% if @user.cover.attached? %>
-          <%= image_tag(@user.cover, class: "cover-img")%>
-        <% else %>
-          <%= image_tag("dammy-cover.png", class: "cover-img") %> 
-        <% end %>
-      </div>
       <div class="profile-bar">
-        <div class="profile-container">
+        <div class="profile-container edit-page">
           <div class="icon-box">
             <div class="user-icon-box set-center">
               <% if @user.avatar.attached? %>
@@ -80,8 +53,8 @@
           <div class="intro-title">
             자기 소개（200글자이내）
           </div>
-            <%= f.label :intro do %>
-              <%= f.text_area :intro, class:"edit-intro", :placeholder => "200글자이내 [예] 처음뵙겠습니다" %>
+            <%= f.label :intro, class:"form-intro-label" do %>
+              <%= f.text_area :intro, class:"edit-intro", placeholder: "200글자이내 [예] 처음뵙겠습니다" %>
             <% end %>
         </div>
       </div>
@@ -94,7 +67,7 @@
         <%= f.label :email, '메일 주소'%>
       </div>
       <div class='field-input'>
-        <%= f.email_field :email %>
+        <%= f.email_field :email, class:'input-box' %>
       </div>
     </div>
     <div class="field-e-user">
@@ -103,7 +76,7 @@
         <span class="check">변경시만 입력</span>
       </div>
       <div class='field-input'>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class:'input-box' %>
       </div>
     </div>
     <div class="field-e-user">
@@ -112,7 +85,7 @@
         <span class="check">변경시만 입력</span>
       </div>
       <div class='field-input'>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, class:'input-box' %>
       </div>
     </div>
   </div>
