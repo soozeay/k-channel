@@ -11,8 +11,10 @@
   <div class="category-list">
     <div class="plaza-list">
       <% if current_user.id == @user.id %>
-        <p class="plaza-name"><%= link_to edit_user_registration_path(locale: I18n.locale, user_id: current_user.id) do %>プロフィールの編集 <i class="fas fa-edit"></i><% end %>
-        <p class="plaza-name"><%= link_to destroy_user_session_path, method: :delete do %>ログアウト <i class="fas fa-sign-out-alt"></i><% end %>
+        <p class="plaza-name pc-size"><%= link_to edit_user_registration_path(locale: I18n.locale, user_id: current_user.id) do %>プロフィールの編集 <i class="fas fa-edit"></i><% end %>
+        <p class="plaza-name sp-size"><%= link_to edit_user_registration_path(locale: I18n.locale, user_id: current_user.id), data: { confirm: 'プロフィールを編集しますか？' } do %><i class="fas fa-edit"></i><% end %>
+        <p class="plaza-name pc-size"><%= link_to destroy_user_session_path, method: :delete do %>ログアウト <i class="fas fa-sign-out-alt"></i><% end %>
+        <p class="plaza-name sp-size"><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } do %><i class="fas fa-sign-out-alt"></i><% end %>
       <% end %>
     </div>
   </div>
