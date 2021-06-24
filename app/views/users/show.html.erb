@@ -1,32 +1,16 @@
 <% if I18n.locale.to_s == "ja"%>
   <%= render "shared/header" %>
-  <div class="post-bar">
-    <% if @user == current_user %>
-      <div class="post-btn">
-        <%= link_to  destroy_user_session_path, method: :delete, class: "post-btn sign-out" do %>
-          ログアウト <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
   <div class="flash-notifications">
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: key) %>
     <% end %>
   </div>
   <div class='main'>
-    <div class="pc-size">
-      <%= render "shared/side-bar" %>
+    <div class="">
+      <%= render "user-side-bar" %>
     </div>
     <div class="user-main-page">
       <div class="profile-box">
-        <div class="cover-images">
-          <% if @user.cover.attached? %>
-            <%= image_tag(@user.cover, class: "cover-img") %>
-          <% else %>
-            <%= image_tag("dammy-cover.png", class: "cover-img") %> 
-          <% end %>
-        </div>
         <div class="profile-bar">
           <div class="profile-container">
             <div class="icon-box">
@@ -39,9 +23,9 @@
               </div>
               <div class="country-icon">
                 <% if @user.country_id == 1 %>
-                  <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+                  <%= image_tag("country_japan.png", class: "country-img") %>
                 <% else %>
-                  <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+                  <%= image_tag("country_korea.png", class: "country-img") %> 
                 <% end %>
               </div>
             </div>
@@ -79,13 +63,7 @@
                   <%= "登録日：" + time_ago_in_words(@user.created_at) + "前" %>
                 </div>
               </div>
-              <% if current_user.id == @user.id %>
-                <div class="edit-profile-icon">
-                  <%= link_to edit_user_registration_path(locale: I18n.locale, user_id: current_user.id), class:"mini-send-btn" do%>
-                    <%= "プロフィールの編集" %> <i class="fas fa-edit" style="color: #fff;"></i>
-                  <% end %>
-                </div>
-              <% else %>
+              <% if current_user.id != @user.id %>
                 <div class="user-follow-btn">
                   <%= render "relationships/follow_button", user: @user %> <%# ユーザーフォローのボタン設置 %>
                 </div>
@@ -107,24 +85,28 @@
         </div>
       </div>
       <div class="articles-box" id="js-tab">
-        <div class="user-nav-bar">
-          <div class="nav-title">
-              <a href="", class="tab-nav-item is-active" data-nav="0"><%= '投稿' %></a>
-            <a href="", class="tab-nav-item" data-nav="1"><%= "フォロー" %></a>
-            <a href="", class="tab-nav-item" data-nav="2"><%= "フォロワー" %></a>
-            <a href="", class="tab-nav-item" data-nav="3"><%= "いいね" %></a>
-          </div>
-        </div>
         <div class="nav-items" data-content="0">
+          <div class="items-header">
+            <h5>投稿一覧<h5>
+          </div>
           <%= render partial: "articles/article", collection: @articles, locals: {article: @article} %>
         </div>
         <div class="nav-items" data-content="1">
+          <div class="items-header">
+            <h5>フォロー<h5>
+          </div>
           <%= render "follow" %>
         </div>
         <div class="nav-items" data-content="2">
+          <div class="items-header">
+            <h5>フォロワー<h5>
+          </div>
           <%= render "follower" %>
         </div>
         <div class="nav-items" data-content="3">
+          <div class="items-header">
+            <h5>いいね<h5>
+          </div>
           <%= render "like" %>
         </div>
       </div>

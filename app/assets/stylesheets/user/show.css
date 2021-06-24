@@ -7,6 +7,7 @@
 .profile-bar{
   height: 50vh;
   width: 50%;
+  margin: 0 auto;
 }
 
 .cover-images{
@@ -36,14 +37,13 @@
 }
 
 .icon-box{
-  width: 120px;
-  height: 100%;
+  width: 65px;
+  height: 65px;
   position: relative;
 }
 
 .user-icon{
   border-radius: 50%;
-  border: 1px solid black;
 }
 
 .country-icon{
@@ -51,6 +51,11 @@
   right: 0;
   bottom: 0;
   z-index: 10;
+}
+
+.country-img{
+  width: 35px;
+  height: 35px;
 }
 
 .edit-profile-icon{
@@ -70,18 +75,12 @@
 }
 
 .tab-nav-item{
-  background-color: #bf8188;
-  border-radius: 3px;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 19px;
-  margin-right: 10px;
-  padding: 5px;
-  color: #fff;
+  color: black;
 }
 
 .tab-nav-item.is-active{
-  background-color: #44281e;
+  border-bottom: 1px solid #bf8188;
 }
 
 .nav-items{
@@ -89,6 +88,15 @@
   display: flex;
   display: none;
   flex-wrap: wrap;
+}
+
+.items-header{
+  width: 95%;
+  border-bottom: 1px solid #bf8188;
+}
+
+.items-header > h5{
+  font-weight: bold;
 }
 
 /* /タブメニュー */
@@ -132,6 +140,10 @@
     padding: 0 3vw;
   }
 
+  .profile-bar{
+    margin: 10px auto;
+  }
+
   .cover-images{
     height: 20vh;
     width: 35%;
@@ -147,17 +159,20 @@
     height: 10vh;
   }
 
-
   .profile-bar{
     height: auto;
     width: 65%;
   }
 
   .icon-box{
-    width: 30%;
-    height: 100%;
+    margin: auto 0;
     position: relative;
     padding-left: 3vw;
+  }
+
+  .country-img{
+    width: 20px;
+    height: 20px;
   }
 
   .edit-profile-icon{
@@ -174,7 +189,7 @@
   }
 
   .tab-nav-item{
-    font-size: 16px;
+    font-size: 14px;
     justify-content: space-between;
     margin-right: 15px;
   }

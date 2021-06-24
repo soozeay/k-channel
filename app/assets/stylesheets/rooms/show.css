@@ -103,6 +103,10 @@
 
 }
 
+.post-msg{
+  display: flex;
+}
+
 .form-text-field{
   border: 1px solid black;
   width: 75%;
@@ -120,6 +124,8 @@
   border-radius: 3px;
   margin: 0 auto;
   padding: 5px;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width:767px) {
