@@ -103,6 +103,10 @@
 
 }
 
+.post-msg{
+  display: flex;
+}
+
 .form-text-field{
   border: 1px solid black;
   width: 75%;
