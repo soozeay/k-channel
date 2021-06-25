@@ -1,7 +1,7 @@
 <% if I18n.locale.to_s == "ja"%>
   <%= render "shared/header" %>
   <div class="post-bar">
-    <div class="post-btn">
+    <div class="post-btn pc-size">
       <%= link_to  new_article_path, class: "post-btn" do%>
         投稿する <i class="fas fa-pencil-alt"></i>
       <% end %>
@@ -11,10 +11,16 @@
         <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
           編集する <i class="fas fa-spell-check"></i>
         <% end %>
+        <%= link_to edit_article_path, class: "edit-btn tb-btn" do%>
+          編集する <i class="fas fa-spell-check"></i>
+        <% end %>
         <%= link_to edit_article_path, class: "sp-size" do%>
           <i class="fas fa-spell-check"></i>
         <% end %>
         <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '記事を削除しますか？' } do %>
+          削除する <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <%= link_to article_path, method: :delete, class:"destroy-btn tb-btn", data: { confirm: '記事を削除しますか？' } do %>
           削除する <i class="fas fa-trash-alt"></i>
         <% end %>
         <%= link_to article_path, method: :delete, class:"sp-size", data: { confirm: '記事を削除しますか？' } do %>
@@ -98,6 +104,9 @@
           <% end %>
         </div>
       </div>
+      <%= link_to new_article_path, class: "click-post drop-shadow tb-size" do%>
+        <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+      <% end %>
     </div>
 
     <%# /記事本文 %>
@@ -118,8 +127,14 @@
               <% f.label :comment, 'コメントの送信' %>
               <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
           </li>
-          <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
+          <%= f.button type: "submit", class:"mini-send-btn pc-size", style:'border-style: none;' do %> 
             送信 <i class="fas fa-paper-plane"></i>
+          <% end %>
+          <%= f.button type: "submit", class:"mini-send-btn tb-size", style:'border-style: none;' do %> 
+            <i class="fas fa-paper-plane"></i>
+          <% end %>
+          <%= f.button type: "submit", class:"mini-send-btn sp-size", style:'border-style: none;' do %> 
+            <i class="fas fa-paper-plane"></i>
           <% end %>
           <% end %>
         </ul>

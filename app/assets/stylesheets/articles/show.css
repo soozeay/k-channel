@@ -210,7 +210,60 @@
   display: none !important;
 }
 
+.tb-size{
+  display: none !important;
+}
+
 /* /コメント */
+
+@media screen and (max-width: 1024px){
+
+  .edit-bar{
+    width: 100%;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+
+  .article-show {
+    width: 60vw;
+    padding: 3vh 2vw;
+  }
+
+  .article-upper-content {
+    width: 100%;
+  }
+
+  .title-box {
+    width: 100%;
+  }
+
+  .article-box-img {
+    height: 30vh;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .article-desc{
+    width: 100%;
+  }
+
+  .comment-box {
+    width: 40vw;
+    padding: 40px 15px;
+  }
+
+  .pc-size{
+    display: none !important;
+  }
+
+  .tb-size{
+    display: flex !important;
+  }
+
+  .form-box > .mini-send-btn{
+    padding: 5px 12px;
+  }
+}
 
 @media screen and (max-width:767px) {
 
@@ -313,4 +366,11 @@
     margin: 0 0 10px;
   }
   
+  .tb-size{
+    display: none !important;
+  }
+
+  .tb-btn{
+    display: none !important;
+  }
 }
