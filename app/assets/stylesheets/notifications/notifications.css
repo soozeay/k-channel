@@ -37,31 +37,7 @@
   font-size: 13px;
 }
 
-@media screen and (max-width: 1024px){
-
-  .notifications-container{
-    width: 100%;
-    padding: 20px 0;
-  }
-
-  .notifications-list{
-    width: 60%;
-  }
-
-  .notifications-box{
-    height: 8vh;
-  }
-
-  .notification-text-box{
-    font-size: 16px;
-  }
-
-  .concerned-item{
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width:767px) {
+@media screen and (max-width:480px) {
 
   .notifications-container{
     width: 100%;
@@ -90,6 +66,30 @@
   }
 
   .notifications-info > .created-time{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px){
+
+  .notifications-container{
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .notifications-list{
+    width: 60%;
+  }
+
+  .notifications-box{
+    height: 8vh;
+  }
+
+  .notification-text-box{
+    font-size: 16px;
+  }
+
+  .concerned-item{
     font-size: 10px;
   }
 }

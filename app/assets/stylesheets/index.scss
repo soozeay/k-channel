@@ -80,38 +80,7 @@ a:hover img{
   height: 7vh;
 }
 
-@media screen and (max-width: 1024px){
-
-  .title-container{
-    width: 80%;
-  }
-
-  .img-container{
-    width: 100%;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .info-container{
-    width: 100%;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .login-container{
-    width: 80%;
-    padding: 0;
-  }
-
-  .store-btn {
-    width: 70%;
-  }
-
-}
-
-@media screen and (max-width:767px) {
+@media screen and (max-width:480px) {
  
   .main{
     width: 100%;
@@ -167,6 +136,37 @@ a:hover img{
 
   .app-link-btn {
     height: 6vh;
+  }
+
+}
+
+@media screen and (max-width: 1024px){
+
+  .title-container{
+    width: 80%;
+  }
+
+  .img-container{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .info-container{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-container{
+    width: 80%;
+    padding: 0;
+  }
+
+  .store-btn {
+    width: 70%;
   }
 
 }
