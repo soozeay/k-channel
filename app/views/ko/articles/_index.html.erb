@@ -3,9 +3,18 @@
 <% else %>
   <%= render "ko/shared/header" %>
   <div class="flash-notifications">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: key) %>
-    <% end %>
+    <script type="text/javascript">
+      <% flash.each do |key, value| %>
+        <% key = "success" if key == "notice" %>
+        <% key = "error" if key == "alert" %>
+        toastr['<%= key %>']('<%= value %>', '', {
+          "closeButton": true,
+          "progressBar": true,
+          "positionClass": "toast-top-right",
+          "timeOut": "3000",
+        });
+      <% end %>
+    </script>
   </div>
   <div class='main'>
     <%= render "ko/shared/side-bar" %>

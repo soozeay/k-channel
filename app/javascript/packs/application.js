@@ -34,9 +34,6 @@ require("@rails/actiontext")
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-  setTimeout("$('.notice').fadeOut('slow')", 2000);
-});
-$(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 2000);
-});
+import '../stylesheets/application.scss'
+import toastr from 'toastr'
+window.toastr = toastr
