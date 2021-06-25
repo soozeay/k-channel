@@ -17,7 +17,7 @@
         <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '記事を削除しますか？' } do %>
           削除する <i class="fas fa-trash-alt"></i>
         <% end %>
-        <%= link_to article_path, method: :delete, class:"sp-size" do %>
+        <%= link_to article_path, method: :delete, class:"sp-size", data: { confirm: '記事を削除しますか？' } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       <% end %>
