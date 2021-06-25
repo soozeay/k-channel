@@ -170,6 +170,13 @@
 
 /* //ユーザー情報の更新ページ */
 
+@media screen and (max-width: 1024px){
+
+  .intro-box{
+    height: 17vh;
+  }
+}
+
 @media screen and (max-width:767px) {
 
   .sp-hidden{
