@@ -188,6 +188,15 @@
     width: auto;
     min-width: auto;
   }
+
+  .edit-user-form{
+    margin: 0 auto;
+  }
+
+  .add-icon{
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width:767px) {
