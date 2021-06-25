@@ -50,7 +50,7 @@
       </div>
     <% when 'comment' then %>
       <% if notification.article.user_id == visited.id %>
-        <%= link_to "あなたの投稿", notification.article %>
+        <span class="partner-name"><%= link_to "あなたの投稿", notification.article %></span>
       <% end %>
       <%= 'にコメントしました' %>
       <div class= "notifications-info">
