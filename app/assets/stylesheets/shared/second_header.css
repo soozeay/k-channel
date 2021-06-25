@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (min-width:481px) and (max-width: 1024px){
 
   .second-header {
     width: auto;
