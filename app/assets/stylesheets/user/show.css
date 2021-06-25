@@ -34,6 +34,7 @@
   height: 20vh;
   position: relative;
   display: flex;
+  align-items: center;
 }
 
 .icon-box{
@@ -51,11 +52,6 @@
   right: 0;
   bottom: 0;
   z-index: 10;
-}
-
-.country-img{
-  width: 35px;
-  height: 35px;
 }
 
 .edit-profile-icon{
@@ -140,10 +136,6 @@
     padding: 0 3vw;
   }
 
-  .profile-bar{
-    margin: 10px auto;
-  }
-
   .cover-images{
     height: 20vh;
     width: 35%;
@@ -160,8 +152,9 @@
   }
 
   .profile-bar{
+    margin: 10px auto;
     height: auto;
-    width: 65%;
+    width: 80%;
   }
 
   .icon-box{

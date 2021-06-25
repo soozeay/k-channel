@@ -1,3 +1,4 @@
+
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 <div class="notifications-box">
@@ -13,9 +14,9 @@
     </div>
     <div class="country-icon">
       <% if visitor.country_id == 1 %>
-        <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+        <%= image_tag("country_japan.png", size: "25x25", class: "country-img") %>
       <% else %>
-        <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+        <%= image_tag("country_korea.png", size: "25x25", class: "country-img") %> 
       <% end %>
     </div>
   </div>

@@ -11,9 +11,9 @@
           <div class="icon-box">
             <div class="user-icon-box set-center">
               <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar, size: "100x100", class:"user-icon set-center" %>
+                <%= image_tag @user.avatar, size: "65x65", class:"user-icon set-center" %>
               <% else %>
-                <%= image_tag("default_user.png", size: "100x100", class: "user-icon set-center") %> 
+                <%= image_tag("default_user.png", size: "65x65", class: "user-icon set-center") %> 
               <% end %>
               <%= f.label :avatar do %>
                 <%= image_tag("add-image.jpeg", size: "40x40", class: "add-icon") %>
@@ -22,9 +22,9 @@
             </div>
             <div class="country-icon">
               <% if @user.country_id == 1 %>
-                <%= image_tag("country_japan.png", size: "35x35", class: "country-img") %>
+                <%= image_tag("country_japan.png", size: "25x25", class: "country-img") %>
               <% else %>
-                <%= image_tag("country_korea.png", size: "35x35", class: "country-img") %> 
+                <%= image_tag("country_korea.png", size: "25x25", class: "country-img") %> 
               <% end %>
             </div>
           </div>
