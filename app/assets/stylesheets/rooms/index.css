@@ -57,6 +57,15 @@
   color: gray;
 }
 
+@media screen and (max-width: 1024px){
+
+  .room-container{
+    margin-left: 0;
+    width: 30vw;
+    padding: 40px 20px;
+  }
+}
+
 @media screen and (max-width:767px) {
 
   .room-container{

@@ -18,6 +18,9 @@
     <div class="pc-size">
       <%= render "ko/rooms/rooms" %>
     </div>
+    <div class="tb-size">
+      <%= render "rooms" %>
+    </div>
     <div class="chats">
       <div class="partner-name">
         <%= @user.nickname %>
@@ -67,6 +70,10 @@
                     </div>
                     <div class="received-msg">
                       <div class="received_withd_msg">
+                        <% if m.target_message.present? %>
+                          <p>× <span><%= m.target_message %></span></p>
+                          ○
+                        <% end %>
                         <%= m.message %>
                       </div>
                       <div class="created-time">
@@ -86,7 +93,7 @@
         </div>
       </div>
       <div class="posts">
-        <%= form_with model: @message do |f| %>
+        <%= form_with model: @message, class:"post-msg" do |f| %>
           <%= f.text_area :message, placeholder: "메시지를 입력", id: "js-input-msg", size: 70, class:"form-text-field" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
