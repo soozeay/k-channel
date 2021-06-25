@@ -178,6 +178,13 @@
   text-align: center;
 }
 
+@media screen and (max-width: 1024px){
+
+  .form-wrap {
+    width: 70%;
+  }
+}
+
 @media screen and (max-width:767px) {
 
   .registration-main{
