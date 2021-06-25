@@ -1,13 +1,11 @@
 <%= render "ko/shared/header" %>
-<div class="post-bar">
-  <div class="post-btn">
-    <%= link_to  new_article_path, class: "post-btn" do%>
-      올리다 <i class="fas fa-pencil-alt"></i>
-    <% end %>
-  </div>
-  <div class="edit-bar">
-    <% if current_user.id == @article.user_id %>
+<% if current_user.id == @article.user_id %>
+  <div class="post-bar">
+    <div class="edit-bar">
       <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
+        편집하다 <i class="fas fa-spell-check"></i>
+      <% end %>
+      <%= link_to edit_article_path, class: "edit-btn tb-btn" do%>
         편집하다 <i class="fas fa-spell-check"></i>
       <% end %>
       <%= link_to edit_article_path, class: "sp-size" do%>
@@ -16,12 +14,15 @@
       <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '삭제합니까?' } do %>
         삭제하다 <i class="fas fa-trash-alt"></i>
       <% end %>
+      <%= link_to article_path, method: :delete, class:"destroy-btn tb-btn", data: { confirm: '삭제합니까?' } do %>
+        삭제하다 <i class="fas fa-trash-alt"></i>
+      <% end %>
       <%= link_to article_path, method: :delete, class:"sp-size", data: { confirm: '삭제합니까?' } do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 <div class="flash-notifications">
   <script type="text/javascript">
     <% flash.each do |key, value| %>
@@ -116,8 +117,14 @@
             <% f.label :comment, 'コメントの送信' %>
             <%= f.text_field :comment, placeholder: "코멘트 입력", class:"send-comment-text" %>
         </li>
-        <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %>
+        <%= f.button type: "submit", class:"mini-send-btn pc-size", style:'border-style: none;' do %>
           전송 <i class="fas fa-paper-plane"></i>
+        <% end %>
+        <%= f.button type: "submit", class:"mini-send-btn tb-size", style:'border-style: none;' do %>
+          <i class="fas fa-paper-plane"></i>
+        <% end %>
+        <%= f.button type: "submit", class:"mini-send-btn sp-size", style:'border-style: none;' do %> 
+          <i class="fas fa-paper-plane"></i>
         <% end %>
         <% end %>
       </ul>
