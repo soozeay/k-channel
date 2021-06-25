@@ -228,7 +228,7 @@
   }
 
   .pc-size{
-    display: none;
+    display: none !important;
   }
 
   .sp-size{
@@ -369,8 +369,5 @@
   .tb-size{
     display: flex !important;
   }
-
-  .form-box > .mini-send-btn{
-    padding: 5px 12px;
-  }
+  
 }
