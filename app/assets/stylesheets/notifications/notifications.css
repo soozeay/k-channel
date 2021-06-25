@@ -11,7 +11,7 @@
 }
 
 .notifications-box{
-  width: 100%;
+  width: 90%;
   height: 11vh;
   border: 1px solid #bf8188;
   border-radius: 3px;
@@ -50,6 +50,7 @@
 
   .notifications-box{
     height: 12vh;
+    width: 95%;
   }
 
   .notifications-box > .icon-box {
