@@ -178,7 +178,7 @@
   text-align: center;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:480px) {
 
   .registration-main{
     width: 100%;
@@ -197,10 +197,6 @@
 
   .form-group {
     width: 65%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding-top: 20px;
   }
 
   .register-red-btn {
@@ -213,4 +209,29 @@
     justify-content: space-around;
   }
 
+}
+
+@media screen and (min-width:481px) and (max-width: 1024px){
+
+  .form-wrap {
+    width: 75%;
+  }
+
+  .registration-main {
+    width: auto;
+    min-width: auto;
+  }
+
+  .edit-user-form{
+    margin: 0 auto;
+  }
+
+  .add-icon{
+    width: 25px;
+    height: 25px;
+  }
+
+  .form-group {
+    width: 65%;
+  }
 }

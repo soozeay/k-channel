@@ -1,14 +1,12 @@
 <% if I18n.locale.to_s == "ja"%>
   <%= render "shared/header" %>
-  <div class="post-bar">
-    <div class="post-btn">
-      <%= link_to  new_article_path, class: "post-btn" do%>
-        投稿する <i class="fas fa-pencil-alt"></i>
-      <% end %>
-    </div>
-    <div class="edit-bar">
-      <% if current_user.id == @article.user_id %>
+  <% if current_user.id == @article.user_id %>
+    <div class="post-bar">
+      <div class="edit-bar">
         <%= link_to edit_article_path, class: "edit-btn pc-size" do%>
+          編集する <i class="fas fa-spell-check"></i>
+        <% end %>
+        <%= link_to edit_article_path, class: "edit-btn tb-btn" do%>
           編集する <i class="fas fa-spell-check"></i>
         <% end %>
         <%= link_to edit_article_path, class: "sp-size" do%>
@@ -17,12 +15,15 @@
         <%= link_to article_path, method: :delete, class:"destroy-btn pc-size", data: { confirm: '記事を削除しますか？' } do %>
           削除する <i class="fas fa-trash-alt"></i>
         <% end %>
+        <%= link_to article_path, method: :delete, class:"destroy-btn tb-btn", data: { confirm: '記事を削除しますか？' } do %>
+          削除する <i class="fas fa-trash-alt"></i>
+        <% end %>
         <%= link_to article_path, method: :delete, class:"sp-size", data: { confirm: '記事を削除しますか？' } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="flash-notifications">
     <script type="text/javascript">
       <% flash.each do |key, value| %>
@@ -98,6 +99,9 @@
           <% end %>
         </div>
       </div>
+      <%= link_to new_article_path, class: "click-post drop-shadow tb-size" do%>
+        <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+      <% end %>
     </div>
 
     <%# /記事本文 %>
@@ -118,8 +122,14 @@
               <% f.label :comment, 'コメントの送信' %>
               <%= f.text_field :comment, placeholder: "コメントを入力", class:"send-comment-text" %>
           </li>
-          <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none;' do %> 
+          <%= f.button type: "submit", class:"mini-send-btn pc-size", style:'border-style: none;' do %> 
             送信 <i class="fas fa-paper-plane"></i>
+          <% end %>
+          <%= f.button type: "submit", class:"mini-send-btn tb-size", style:'border-style: none;' do %> 
+            <i class="fas fa-paper-plane"></i>
+          <% end %>
+          <%= f.button type: "submit", class:"mini-send-btn sp-size", style:'border-style: none;' do %> 
+            <i class="fas fa-paper-plane"></i>
           <% end %>
           <% end %>
         </ul>
@@ -130,6 +140,12 @@
         </p>
       <% end %>
     </div>
+    <%= link_to new_article_path, class: "click-post drop-shadow pc-btn" do%>
+      <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+    <% end %>
+    <%= link_to new_article_path, class: "click-post drop-shadow tb-btn" do%>
+      <i class="fas fa-pencil-alt fa-2x post-icon"></i>
+    <% end %>
   </div>
 <% else %>
   <%= render "ko/articles/show" %>

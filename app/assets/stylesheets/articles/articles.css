@@ -172,7 +172,7 @@
 
 /* //ログイン後の表示 */
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:480px) {
 
   .post-bar{
     height: 40px;
@@ -275,5 +275,37 @@
     display: none;
   }
 
+}
+
+@media screen and (min-width:481px) and (max-width: 1024px){
+
+  .side-bar{
+    min-width: 30vw;
+  }
+
+  .main-bar{
+    width: calc(100vw - 30vw);
+    justify-content: space-between;
+    margin: 2vh 2vw;
+  }
+
+  .article-box{
+    height: 390px;
+    width: 32vw;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .item-img{
+    width: 29vw;
+    height: 16vh;
+    margin-bottom: 7px;
+  }
+
+  .article-title-name{
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+  }
 
 }

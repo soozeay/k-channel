@@ -3,7 +3,7 @@
   <div class="pc-size">
     <%= render "ko/shared/side-bar" %>
   </div>
-  <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, local: true do |f|%>
+  <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "edit-user-form", local: true do |f|%>
   <div class="user-main-page">
     <div class="profile-box">
       <div class="profile-bar">
@@ -31,7 +31,7 @@
           <div class="name-box">
               <div class="user-name-box">
                 <%= f.label :nickname do %>
-                  <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none" %>
+                  <%= f.text_field :nickname, class:"user-name edit-user-name", style: "border: none", autofocus: true %>
                 <% end %>
               </div>
             <div class="sub-profile pc-size">

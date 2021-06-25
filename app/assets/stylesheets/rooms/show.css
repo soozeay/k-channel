@@ -128,7 +128,7 @@
   align-items: center;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:480px) {
 
   .chats{
     width: 100%;
@@ -170,5 +170,30 @@
   .form-text-field{
     width: 80%;
     height: 35px;
+  }
+
+  .mini-send-btn{
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (min-width:481px) and (max-width: 1024px){
+  .chats{
+    width: 68vw;
+  }
+
+  .chat{
+    margin: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form-text-field{
+    width: 80%;
+  }
+
+  .mini-send-btn{
+    padding: 5px 10px;
   }
 }
