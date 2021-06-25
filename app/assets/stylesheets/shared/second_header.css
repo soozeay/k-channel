@@ -13,15 +13,19 @@
   height: 49px;
 }
 
+@media screen and (max-width: 1024px){
+
+  .second-header {
+    width: auto;
+    min-width: auto;
+  }
+
+}
+
 @media screen and (max-width:767px) {
 
   .second-header {
-    width: 100%;
     min-width: 0px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 8vh;
   }
 }
