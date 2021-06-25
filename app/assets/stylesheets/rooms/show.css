@@ -192,4 +192,8 @@
   .form-text-field{
     width: 80%;
   }
+
+  .mini-send-btn{
+    padding: 5px 10px;
+  }
 }
