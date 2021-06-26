@@ -92,3 +92,5 @@ gem 'rails-i18n'
 gem "aws-sdk-s3", require: false
 
 gem "toastr_rails"
+
+gem "news-api"
