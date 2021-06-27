@@ -1,0 +1,27 @@
+<div class="side-bar">
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '한국의 뉴스', news_index_path(country: "kr", category: "general") %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to '비즈니스', news_index_path(country: "kr", category: "business") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '엔터테인먼트', news_index_path(country: "kr", category: "entertainment") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '헬스케어', news_index_path(country: "kr", category: "health") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '사이언스', news_index_path(country: "kr", category: "science") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '스포츠', news_index_path(country: "kr", category: "sports") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '테크놀로지', news_index_path(country: "kr", category: "technology") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '모든 것', news_index_path(country: "kr", category: "general") %></li>
+    </ul>
+  </div>
+  <div class="category-list", id="js-accordion-nav">
+    <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
+      <p class="plaza-header"><%= link_to '일본의 뉴스', news_index_path(country: "jp", category: "general") %></p>
+      <li class="plaza-name", style="display: none;"><%= link_to '비즈니스', news_index_path(country: "jp", category: "business") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '엔터테인먼트', news_index_path(country: "jp", category: "entertainment") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '헬스케어', news_index_path(country: "jp", category: "health") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '사이언스', news_index_path(country: "jp", category: "science") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '스포츠', news_index_path(country: "jp", category: "sports") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '테크놀로지', news_index_path(country: "jp", category: "technology") %></li>
+      <li class="plaza-name", style="display: none;"><%= link_to '모든 것', news_index_path(country: "jp", category: "general") %></li>
+    </ul>
+  </div>
+  Powered by <%= link_to "https://newsapi.org" do %>News API<% end %>
+</div>
