@@ -168,6 +168,12 @@
     display: inline-block;
   }
 
+  .font-awesome-news:before{
+    content:"\f1ea";
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+  }
+
   .font-awesome-user:before{
     content:"\f007";
     font-family: "Font Awesome 5 Free";
@@ -176,7 +182,8 @@
 
   .fa-envelope,
   .fa-bell,
-  .fa-user {
+  .fa-user,
+  .fa-newspaper {
     display: none !important;
   }
   
