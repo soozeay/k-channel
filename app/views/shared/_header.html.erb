@@ -2,15 +2,17 @@
 <header class='top-page-header'>
   <div class='nav'>
     <%= link_to image_tag("kch-logo-color", class:"kch-icon"), root_path %>
-    <ul class='lists-left'>
-      <li class='input-box'><%= search_form_for(@search, url: articles_path, class: "search-form") do |f| %>
-        <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
-        <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none; margin: 0;' do %>
-          <i class="fas fa-search" style="color: #fff;"></i>
+    <% unless controller.controller_name == 'news' && controller.action_name == 'index' %>
+      <ul class='lists-left'>
+        <li class='input-box'><%= search_form_for(@search, url: articles_path, class: "search-form") do |f| %>
+          <%= f.search_field :title_or_user_nickname_cont_all, placeholder: 'キーワードから探す', class:'input-box' %>
+          <%= f.button type: "submit", class:"mini-send-btn", style:'border-style: none; margin: 0;' do %>
+            <i class="fas fa-search" style="color: #fff;"></i>
+          <% end %>
         <% end %>
-      <% end %>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    <% end %>
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li class="header-icons locale-icon">
