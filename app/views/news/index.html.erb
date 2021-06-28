@@ -3,6 +3,18 @@
   <div class='main'>
     <%= render "news-side-bar" %>
     <div class="main-bar">
+      <div class="news-header">
+        <div class="header-name">
+          <% if params[:category].present? %>
+            <%= str = check_jp_header(params[:country], params[:category]) %>
+          <% else %>
+            <%= "日本のニュース一覧" %>
+          <% end %>
+          <div class="powered-by">
+            Powered by <%= link_to "https://newsapi.org" do %>News API<% end %>
+          </div>
+        </div>
+      </div>
       <%= render partial: "data", collection: @news, as: "news" %>
       <%# 投稿ボタンのリンク %>
       <%= link_to new_article_path, class: "click-post drop-shadow pc-btn" do %>
