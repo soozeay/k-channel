@@ -1,0 +1,19 @@
+<% if I18n.locale.to_s == "ja" %>
+  <%= render "shared/header" %>
+  <div class='main'>
+    <%= render "news-side-bar" %>
+    <div class="main-bar">
+      <%= render partial: "data", collection: @news, as: "news" %>
+      <%# 投稿ボタンのリンク %>
+      <%= link_to new_article_path, class: "click-post drop-shadow pc-btn" do %>
+        <i class="fas fa-pencil-alt fa-3x post-icon"></i>
+      <% end %>
+      <%= link_to new_article_path, class: "click-post drop-shadow sp-btn" do %>
+        <i class="fas fa-pencil-alt fa-2x post-icon"></i>
+      <% end %>
+      <%# /投稿ボタンのリンク %>
+    </div>
+  </div>
+<% else %>
+  <%= render "ko/news/index" %>
+<% end %>
