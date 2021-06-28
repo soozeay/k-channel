@@ -11,12 +11,12 @@
   <% end %>
   <%= link_to article_path(article.id) do %>
     <div class="article-body">
-      <h3 class="article-title-name">
+      <p class="article-title-name">
         <%= article.title.truncate(18) %>
         <% if article.youtube_url.present? %>
         <span class="check">유튜브</span>
         <% end %>
-      </h3>
+      </p>
     </div>
   <% end %>
   <div class="tags">
