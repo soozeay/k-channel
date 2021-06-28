@@ -127,6 +127,7 @@
     justify-content: space-between;
     list-style: none;
     margin: auto 0;
+    min-width: unset;
   }
 
   .search-form {
