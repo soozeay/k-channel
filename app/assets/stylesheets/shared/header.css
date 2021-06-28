@@ -108,6 +108,7 @@
   .nav {
     height: 14vh;
     font-size: 16px;
+    padding-top: 0;
   }
   
   .top-page-header {
