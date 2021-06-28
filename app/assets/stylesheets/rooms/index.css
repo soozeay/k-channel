@@ -3,6 +3,10 @@
   display: flex;
 }
 
+.room-main > .tb-size{
+  align-items: unset;
+}
+
 .room-container{
   margin-left: 30px;
   width: 25vw;

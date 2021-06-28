@@ -103,6 +103,10 @@
 
 }
 
+.post-msg > .mini-send-btn{
+  height: 30px;
+}
+
 .post-msg{
   display: flex;
 }
