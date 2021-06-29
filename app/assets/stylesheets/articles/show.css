@@ -2,6 +2,7 @@
 .edit-bar{
   width: 40vw;
   padding: 0 20px;
+  margin: 0 auto;
 }
 
 
@@ -214,6 +215,10 @@
   display: none !important;
 }
 
+.tb-btn{
+  display: none !important;
+}
+
 /* /コメント */
 
 @media screen and (max-width:480px) {
@@ -369,6 +374,10 @@
   .tb-size{
     display: flex !important;
     align-items: center;
+  }
+
+  .edit-bar > .tb-btn{
+    display: unset !important;
   }
   
 }
