@@ -1,7 +1,7 @@
 <div class="side-bar">
   <div class="category-list", id="js-accordion-nav">
     <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
-      <p class="plaza-header">カテゴリー一覧</p>
+      <p class="plaza-header"><%= link_to 'カテゴリー別', articles_path %></p>
       <li class="plaza-name", style="display: none;"><%= link_to 'エンタメ', articles_path(plaza_id: 1) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to 'コスメ', articles_path(plaza_id: 2) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '語学', articles_path(plaza_id: 3) %></li>
