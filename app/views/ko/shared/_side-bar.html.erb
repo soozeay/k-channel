@@ -1,7 +1,7 @@
-<div class="side-bar">
+<div class="side-bar">　
   <div class="category-list", id="js-accordion-nav">
     <ul class="plaza-list"><span class="js-category-bar"><%= link_to "", class:"accordion-nav" do %><i class="fas fa-bars"></i></span><% end %>
-      <p class="plaza-header">카테고리 일람</p>
+      <p class="plaza-header"><%= link_to '카테고리 일람', articles_path %></p>
       <li class="plaza-name", style="display: none;"><%= link_to '연예정보', articles_path(plaza_id: 1) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '코스메틱', articles_path(plaza_id: 2) %></li>
       <li class="plaza-name", style="display: none;"><%= link_to '어학', articles_path(plaza_id: 3) %></li>
